@@ -8,6 +8,7 @@ function Blog() {
             <header className="App-header">
                 <img src={logo} className="App-logo" alt="logo" />
             </header>
+            <h1>Blog Post Page</h1>
         </div>
     );
 }

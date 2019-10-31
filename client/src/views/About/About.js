@@ -5,10 +5,11 @@ import './About.css';
 function About() {
     return (
         <div className="App">
-            <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo" />
-            </header>
-        </div>
+        <header className="App-header">
+            <img src={logo} className="App-logo" alt="logo" />
+        </header>
+        <h1>About the Team Page</h1>
+    </div>
     );
 }
 

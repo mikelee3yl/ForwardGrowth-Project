@@ -7,12 +7,12 @@ const Header = () => {
         <div className='topnav'>
             {/* Logo */}
             <Link id="logo-link" to="/">
-                <img className="topnav-logo" src={ "/logo192.png" } alt="React logo" />
+                <img className="topnav-logo" src={"/logo192.png"} alt="React logo" />
             </Link>
 
             {/* Page Links */}
             <div className="topnav-right">
-                <Link className="topnav-link" to='/Register'>Sign in</Link>
+                {/* <Link className="topnav-link" to='/Register'>Sign in</Link>
                 <Link className="topnav-link" to='/projects'>Projects</Link>
                 <a className="topnav-link" target='_blank' rel="noopener noreferrer" href="https://www.facebook.com/groups/ufosc/events/?source=4&action_history=null&filter=calendar">
                     Events
@@ -22,7 +22,11 @@ const Header = () => {
                     Resources
                     <i className="fas fa-external-link-alt external-link" data-fa-transform="up-6 right-4"></i>
                 </a>
-                <Link className="topnav-link" to="/about">About</Link>
+                <Link className="topnav-link" to="/about">About</Link> */}
+
+                <Link className="topnav-link" to='/Home'>Home</Link>
+                <Link className="topnav-link" to='/About'>About the Team</Link>
+                <Link className="topnav-link" to="/Blog">Blog Posts</Link>
             </div>
         </div>
     )
