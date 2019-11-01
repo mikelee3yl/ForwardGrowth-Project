@@ -7,12 +7,10 @@ function Blog() {
     return (
         <div className="App">
 			<h1>Blog Post Page</h1>
-        </div>
-		<div>
-		componentDidMount: function() {
+            componentDidMount: function() {
 				twttr.widgets.load()
 			}
-		</div>
+        </div>
     );
 }
 
