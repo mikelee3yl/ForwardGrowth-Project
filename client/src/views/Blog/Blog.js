@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from '../../assets/logo.svg';
 import './Blog.css';
-import twttr from '../../../public/index.html'
+import twttr from '../../assets/index.html'
 
 function Blog() {
     return (
