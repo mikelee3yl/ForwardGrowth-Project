@@ -10,8 +10,8 @@ function Blog() {
             window.addEventListener("load", function() {
 				document.getElementById('tweetjs').addEventListener('load', function() {
 					twttr.widgets.load()
-				}, false);
-			}, false);
+				}, false)
+			}, false)
         </div>
     );
 }
