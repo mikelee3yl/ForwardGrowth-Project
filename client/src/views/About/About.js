@@ -6,7 +6,7 @@ function About() {
     return (
         <div className="App">
         <header className="App-header">
-        <a href="/Home"><img src ={logo} width={'7%'} alt = "logo"></img></a>
+        <a href="/Home"><img src ={logo} width={'50 px'} alt = "logo"></img></a>
         </header>
         <h1>About the Team Page</h1>
     </div>
