@@ -7,13 +7,10 @@ function Blog() {
     return (
 		
         <div className="App">
-			//<script src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 			<h1>Blog Post Page</h1>
-            //window.addEventListener("load", function() {
-			//	document.getElementById('tweetjs').addEventListener('load', function() {
-				//	window.twttr.widgets.load()
-				//}, false)
-			//}, false)
+            window.twttr.widgets.load(
+				document.getElementById("container")
+			);
         </div>
     );
 }
