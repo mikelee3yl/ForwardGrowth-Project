@@ -8,7 +8,7 @@ function Blog() {
 		
         <div className="App">
 			<script src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-			<script>window.twttr = (function(d, s, id) {
+			/*<script>window.twttr = (function(d, s, id) {
 			  var js, fjs = d.getElementsByTagName(s)[0],
 				t = window.twttr || {};
 			  if (d.getElementById(id)) return t;
@@ -23,7 +23,7 @@ function Blog() {
 			  };
 
 			return t;
-			}(document, "script", "twitter-wjs"));</script>
+			}(document, "script", "twitter-wjs"));</script>*/
 			<h1>Blog Post Page</h1>
             window.addEventListener("load", function() {
 				document.getElementById('tweetjs').addEventListener('load', function() {
