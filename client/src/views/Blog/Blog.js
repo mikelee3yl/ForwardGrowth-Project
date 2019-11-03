@@ -8,11 +8,10 @@ function Blog() {
 		
         <div className="App">
 			<script src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-			
 			<h1>Blog Post Page</h1>
             window.addEventListener("load", function() {
 				document.getElementById('tweetjs').addEventListener('load', function() {
-					twttr.widgets.load()
+					window.twttr.widgets.load()
 				}, false)
 			}, false)
         </div>
