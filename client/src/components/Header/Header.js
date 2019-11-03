@@ -3,14 +3,16 @@ import { Link } from 'react-router-dom';
 import './Header.css';
 import { slide as Menu } from 'react-burger-menu' //https://www.npmjs.com/package/react-burger-menu
 import logo from '../../assets/OrchardGroveLogo.png';
+import menuButton from '../../assets/Hamburger_icon.png';
 
 
 const Header = () => {
     return (
-        <Menu customBurgerIcon={ <img src= {logo} /> }>
-        <a id="home" className="menu-item" href="/">Home</a>
-        <a id="about" className="menu-item" href="/about">About</a>
-        <a id="contact" className="menu-item" href="/blog">Blog</a>
+        <Menu width = {'30%'} customBurgerIcon={ <img src= {menuButton} /> }>
+        <a id="home" className="menu-item" href="/" style={{ textDecoration: 'none' }}>Home</a>
+        <a id="about" className="menu-item" href="/about" style={{ textDecoration: 'none' }}>About</a>
+        <a id="contact" className="menu-item" href="/blog" style={{ textDecoration: 'none' }}>Blog</a>
+        
       </Menu>
 
       //Below is old code for the top navigation default from the MERN Template 

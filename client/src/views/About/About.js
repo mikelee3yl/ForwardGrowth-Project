@@ -1,12 +1,12 @@
 import React from 'react';
-import logo from '../../assets/logo.svg';
+import logo from '../../assets/OrchardGroveLogo.png';
 import './About.css';
 
 function About() {
     return (
         <div className="App">
         <header className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
+        <a href="/Home"><img src ={logo} width={'7%'} alt = "logo"></img></a>
         </header>
         <h1>About the Team Page</h1>
     </div>

@@ -22,17 +22,25 @@
   }
   /* General sidebar styles */
 .bm-menu {
-    background: #939bc0;
+    background: rgb(160,174,38);
     padding: 2.5em 1.5em 0;
-    font-size: 1.15em;
+    font-size: 1.15rem;
+    font-family: Tahoma, Geneva, sans-serif;
   }
-  /* Wrapper for item list */
-.bm-item-list {
-    color: #b8b7ad;
-    padding: 0.8em;
+/* Individual item */
+.bm-item {
+    display: inline-block;
+  }
+   
+  /* Styling of overlay */
+  .bm-overlay {
+    background: rgba(0, 0, 0, 0.3);
   }
 
-
+  /*Ensures that the color of a link does not change color once visited*/
+a{
+    color: #134e13;
+}
 #wrapper {
     display: grid;
     max-width: 1000px;
