@@ -18,7 +18,7 @@ function Blog() {
                 options={{ height: 500, width: 500 }}
             /> 
 			<InstagramEmbed
-			  url='https://www.instagram.com/elonmusk/?hl=en'
+			  url='https://www.instagr.am/p/B4S2p2vBE5L'
 			  maxWidth={500}
 			  hideCaption={false}
 			  containerTagName='div'
