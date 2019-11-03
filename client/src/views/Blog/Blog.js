@@ -8,9 +8,7 @@ function Blog() {
 		
         <div className="App">
 			<h1>Blog Post Page</h1>
-            window.twttr.widgets.load(
-				document.getElementById("container")
-			);
+            
         </div>
     );
 }
