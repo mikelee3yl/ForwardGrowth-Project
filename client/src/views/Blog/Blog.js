@@ -12,7 +12,7 @@ function Blog() {
             </header>
             <h1>Blog Page</h1>
             <div class="row">
-			  <div class="column">
+			  <div class="column" >
 				<h2>Check us out on Twitter</h2>
 				<TwitterTimelineEmbed
                 sourceType="profile"
