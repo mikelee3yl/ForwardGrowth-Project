@@ -11,24 +11,31 @@ function Blog() {
             <a href="/Home"><img src ={logo} width={'50 px'} alt = "logo"></img></a>
             </header>
             <h1>Blog Page</h1>
-            
-            <TwitterTimelineEmbed
+            <div class="row">
+			  <div class="column">
+				<h2>Check us out on Twitter</h2>
+				<TwitterTimelineEmbed
                 sourceType="profile"
                 screenName="elonmusk"
                 options={{ height: 500, width: 500 }}
-            /> 
-			<InstagramEmbed
-			  url='https://www.instagr.am/p/B4S2p2vBE5L'
-			  maxWidth={500}
-			  hideCaption={false}
-			  containerTagName='div'
-			  protocol=''
-			  injectScript
-			  onLoading={() => {}}
-			  onSuccess={() => {}}
-			  onAfterRender={() => {}}
-			  onFailure={() => {}}
-			/>
+				/> 
+			  </div>
+			  <div class="column">
+				<h2>Check us out on Instagram</h2>
+				<InstagramEmbed
+				  url='https://www.instagr.am/p/B4S2p2vBE5L'
+				  maxWidth={500}
+				  hideCaption={false}
+				  containerTagName='div'
+				  protocol=''
+				  injectScript
+				  onLoading={() => {}}
+				  onSuccess={() => {}}
+				  onAfterRender={() => {}}
+				  onFailure={() => {}}
+				/>
+			  </div>
+			</div>
         </div>
     );
 }
