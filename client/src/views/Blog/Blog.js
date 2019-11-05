@@ -17,7 +17,7 @@ function Blog() {
 				<TwitterTimelineEmbed
                 sourceType="profile"
                 screenName="elonmusk"
-                options={{ height: 500}}
+                options={{ height: 500, width: 500 }}
 				/> 
 			  </div>
 			  <div class="column">
