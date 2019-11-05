@@ -7,9 +7,6 @@ import InstagramEmbed from 'react-instagram-embed';
 function Blog() {
     return (
         <div className="App">
-            <header className="App-header">
-            <a href="/Home"><img src ={logo} width={'50 px'} alt = "logo"></img></a>
-            </header>
             <h1>Blog Page</h1>
             <div class="row">
 			  <div class="column" >
