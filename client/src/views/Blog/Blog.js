@@ -7,29 +7,6 @@ import InstagramEmbed from 'react-instagram-embed';
 function Blog() {
     return (
         <div className="App">
-			<head>
-				<meta name="viewport" content="width=device-width, initial-scale=1">
-				<style>
-					* {
-					  box-sizing: border-box;
-					}
-					.column {
-					  float: left;
-					  width: 50%;
-					  padding: 10px;
-					}
-					.row:after {
-					  content: "";
-					  display: table;
-					  clear: both;
-					}
-					@media screen and (max-width: 600px) {
-					  .column {
-						width: 100%;
-					  }
-					}
-				</style>
-			</head>
             <header className="App-header">
             <a href="/Home"><img src ={logo} width={'50 px'} alt = "logo"></img></a>
             </header>
