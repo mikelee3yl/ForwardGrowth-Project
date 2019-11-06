@@ -3,7 +3,8 @@ const path = require('path'),
     mongoose = require('mongoose'),
     morgan = require('morgan'),
     bodyParser = require('body-parser'),
-    exampleRouter = require('../routes/examples.server.routes');
+    exampleRouter = require('../routes/examples.server.routes'),
+    mail = require("../controllers/mail");
 
 module.exports.init = () => {
     /* 
@@ -27,6 +28,21 @@ module.exports.init = () => {
 
     // add a router
     app.use('/api/example', exampleRouter);
+
+    app.post("/api/send_email", function (req, res) {
+        mail.request(req.body.email, req.body.subject, req.body.body);
+
+        //res.set("Content-Type", "application/json");
+
+        //const locals = { userName: req.body.userName };
+        //const messageInfo = {
+        //    email: req.body.email, fromEmail: "citrusjacob@gmail.com",
+        //    fromName: "Star Wars", subject: "Checkout this awesome droids"
+        //};
+        //mailer.sendOne("droids", messageInfo, locals);
+
+        //res.send('{"message":"Email sent."}');
+    });
 
     if (process.env.NODE_ENV === 'production') {
         // Serve any static files
