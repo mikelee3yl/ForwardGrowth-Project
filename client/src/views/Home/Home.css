@@ -26,3 +26,14 @@ h1,
 .App-link {
     color: #09d3ac;
 }
+
+.row {
+	margin: 1rem;
+}
+
+.row:after {
+	padding: 1 0rem;
+	content: '';
+	display: table;
+	clear: both;
+}
