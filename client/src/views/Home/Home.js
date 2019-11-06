@@ -1,6 +1,8 @@
 import React from 'react';
 import logo from '../../assets/OrchardGroveLogo.png';
 import og from '../../assets/OrchardGrove(1).png';
+import demo from '../../assets/ForwardGrowthDemo.png';
+import demo1 from '../../assets/ForwardGrowthDemo-1.png';
 import './Home.css';
 //import Image from 'react-bootstrap/Image'
 
@@ -19,10 +21,10 @@ function Home() {
             <img src={og} alt="Backpack Adventures Gaming App"></img>
             </div>
             <div className="row">
-            <img src="ForwardGrowthDemo.png" alt="Backpack Adventures Gaming App"></img>
+            <img src={demo} alt="Backpack Adventures Gaming App"></img>
             </div>
             <div className="row">
-            <img src="/ForwardGrowthDemo-1.png" alt="Backpack Adventures Gaming App"></img>
+            <img src={demo1} alt="Backpack Adventures Gaming App"></img>
             </div>
         </div>
     );
