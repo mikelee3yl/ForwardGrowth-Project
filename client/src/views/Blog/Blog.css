@@ -1,0 +1,23 @@
+* {
+  box-sizing: border-box;
+}
+.column {
+  float: left;
+  width: 50%;
+  padding: 10px;
+  align-content: center;
+}
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+@media screen and (max-width: 600px) {
+  .column {
+	width: 100%;
+  }
+}
+h2,
+.h2 {
+	font-family: Tahoma, Geneva, sans-serif;
+}

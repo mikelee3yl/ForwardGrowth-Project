@@ -1,9 +1,8 @@
 import React from 'react';
-import logo from '../../assets/OrchardGroveLogo.png';
+import './Home.css'
 import og from '../../assets/OrchardGrove(1).png';
 import demo from '../../assets/ForwardGrowthDemo.png';
 import demo1 from '../../assets/ForwardGrowthDemo-1.png';
-import './Home.css';
 //import Image from 'react-bootstrap/Image'
 
 //Home Page: Sofia & Mark
@@ -11,11 +10,12 @@ import './Home.css';
 //Sofia: Boostrap and CSS
 
 function Home() {
+    const getUser = (_name,_email) => {
+        
+    };
+  
     return (
         <div className="App">
-            <header className="App-header">
-            <a href="/Home"><img src ={logo} width={'50 px'} alt = "logo"></img></a>
-            </header>
             <h1>Home Page</h1>
             <div className="row">
             <img src={og} alt="Backpack Adventures Gaming App"></img>
