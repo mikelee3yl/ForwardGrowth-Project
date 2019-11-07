@@ -28,6 +28,8 @@ h1,
 }
 
 .bg-1{
-    background-color: sandybrown;
-    color: #ffffff
+    background-image: url("homepage-bg.jpg");
+    color: #ffffff;
+    height: 500px;
+    line-height: 12;
 }
