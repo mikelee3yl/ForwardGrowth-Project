@@ -28,7 +28,7 @@ h1,
 }
 
 .bg-1{
-    background-image: url("homepage-bg.jpg");
+    background-image: url('../../assets/homepage-bg.JPG');
     color: #ffffff;
     height: 500px;
     line-height: 12;
