@@ -34,3 +34,35 @@ h1,
     line-height: 12;
     background-size: cover;
 }
+
+.bg-2{
+    background-color: aquamarine;
+    color: #ffffff;
+    height: 500px;
+    line-height: 12;
+    background-size: cover;
+}
+
+.bg-3{
+    background-color: white;
+    color: #000000;
+    height: 500px;
+    line-height: 12;
+    background-size: cover;
+}
+
+.bg-4{
+    background-color: aquamarine;
+    color: #ffffff;
+    height: 500px;
+    line-height: 12;
+    background-size: cover;
+}
+
+.bg-5{
+    background-color: white;
+    color: #000000;
+    height: 500px;
+    line-height: 12;
+    background-size: cover;
+}
