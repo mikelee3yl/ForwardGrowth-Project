@@ -28,7 +28,7 @@ function Home() {
             <img src={demo1} alt="Backpack Adventures Gaming App"></img>
             </div>
             <div className="row">
-            <a href="https://apps.apple.com/us/app/temple-run/id420009108?mt=8"><img src ={app} width={'80 px'} height={'270 px'} alt = "App Store"></img></a>
+            <a href="https://apps.apple.com/us/app/temple-run/id420009108?mt=8"><img src ={app} width={'120 px'} height={'405 px'} alt = "App Store"></img></a>
             </div>
         </div>
     );
