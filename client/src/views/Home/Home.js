@@ -58,14 +58,13 @@ function Home() {
                     <form>
                         <div className="form-row">
                             <div className="form-group col-ml">
-                                <label>Name</label>
                                 <input className="form-control form-control-sm" placeholder="Name" name="name" type="text"/>
                             </div>
                             <div className="form-group col-mr">
-                                <label>Email</label>
                                 <input className="form-control form-control-sm" placeholder="EMusk@hotmail.com" name="email" type="text"/>
                             </div>
                         </div>
+                        <br></br>
                         <button className="mybutton" type="submit">Submit</button>
                     </form>
                 </div>

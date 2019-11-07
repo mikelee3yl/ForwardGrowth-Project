@@ -33,6 +33,7 @@ h1,
     height: 500px;
     line-height: 10;
     background-size: cover;
+    position:fixed;
 }
 
 .bg-2{
@@ -94,26 +95,14 @@ p {
 }
 
 input{
-    width: 100%;
+    width: 60%;
     padding: 12px 20px;
     margin: 8px 0;
     box-sizing: border-box;
     border: 2px solid #fda55d;
 }
 
-textarea {
-    width: 100%;
-    height: 150px;
-    padding: 12px 20px;
-    box-sizing: border-box;
-    border: 2px solid #fda55d;
-    border-radius: 4px;
-    background-color: #ffffff;
-    font-size: 16px;
-    resize: none;
-  }
-
   label {
     font-family: Tahoma, Geneva, sans-serif;
-    font-size: 45px;
+    font-size: 25px;
   }
