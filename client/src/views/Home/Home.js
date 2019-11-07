@@ -10,8 +10,13 @@ function Home() {
   
     return (
         <div className="App">
-            <h1>Home Page</h1>
+            <h1>Home Page</h1>       
+                <div className="container-fluid .bg-1">
+                    <h1>Backpack</h1>
+                </div>
         </div>
+ 
+
     );
 }
 
