@@ -58,19 +58,20 @@ function Home() {
                     <form>
                 <div className="form-row">
                     <div className="form-group col-ml">
-                        <label for="addBuildingName">Name</label>
+                        <label>Name</label>
                         <input className="form-control form-control-sm" placeholder="Name" name="name" type="text"/>
                     </div>
                     <div className="form-group col-mr">
-                        <label for="addBuildingCode">Email</label>
+                        <label>Email</label>
                         <input className="form-control form-control-sm" placeholder="EMusk@hotmail.com" name="email" type="text"/>
                     </div>
                 </div>
 
                 <div className="form-group form-row">
-                    <label for="addAddress">Message</label>
-                    <input className="form-control form-control-sm" placeholder="Type something here" name="message" type="text"/>
+                    <label>Message</label>
+                    <textarea>Some text...</textarea>
                 </div>
+                <button className="mybutton" type="submit">Submit</button>
                     </form>
                 </div>
         </div>
