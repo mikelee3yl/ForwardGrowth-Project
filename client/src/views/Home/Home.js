@@ -17,6 +17,18 @@ function Home() {
                     <h1>Backpack Adventures</h1>
                     <button>App Store</button>
                 </div>
+                <div className="container-fluid bg-2 text-center">
+                    {/* features */}
+                </div>
+                <div className="container-fluid bg-3 text-center">
+                    {/* About */}
+                </div>
+                <div className="container-fluid bg-4 text-center">
+                    {/* Screenshots */}
+                </div>
+                <div className="container-fluid bg-5 text-center">
+                    {/* Be in touch */}
+                </div>
         </div>
     );
 }
