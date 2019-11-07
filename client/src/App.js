@@ -5,7 +5,6 @@ import About from "./views/About/About.js"
 import Blog from "./views/Blog/Blog.js"
 import NotFound from "./views/NotFound"
 import Header from "./components/Header/Header"
-import "bootstrap/dist/css/bootstrap.css";
 
 
 const App = () => {
