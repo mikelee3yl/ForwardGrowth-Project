@@ -56,10 +56,21 @@ function Home() {
                 <div className="bg-5 text-center">
                     <h1>Be in touch</h1>
                     <form>
-                        <label>
-                            Email:
-                            <input placeholder="EMusk@gmail.com" type="text" name="email"></input>
-                        </label>
+                <div className="form-row">
+                    <div className="form-group col-ml">
+                        <label for="addBuildingName">Name</label>
+                        <input className="form-control form-control-sm" placeholder="Name" name="name" type="text"/>
+                    </div>
+                    <div className="form-group col-mr">
+                        <label for="addBuildingCode">Email</label>
+                        <input className="form-control form-control-sm" placeholder="EMusk@hotmail.com" name="email" type="text"/>
+                    </div>
+                </div>
+
+                <div className="form-group form-row">
+                    <label for="addAddress">Message</label>
+                    <input className="form-control form-control-sm" placeholder="Type something here" name="message" type="text"/>
+                </div>
                     </form>
                 </div>
         </div>
