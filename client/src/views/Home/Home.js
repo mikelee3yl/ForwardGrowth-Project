@@ -26,9 +26,9 @@ function Home() {
             <div className="row">
             <img src={demo1} alt="Backpack Adventures Gaming App"></img>
             </div>
-            {/* <div className="row">
-            <a href="https://apps.apple.com/us/app/tumblr/id305343404?mt=8" style="display:inline-block;overflow:hidden;background:url(https://linkmaker.itunes.apple.com/en-us/badge-lrg.svg?releaseDate=2009-02-25&kind=iossoftware&bubble=ios_apps) no-repeat;width:135px;height:40px;"></a>
-            </div> */}
+            <div className="row">
+            <a href="https://apps.apple.com/us/app/temple-run/id420009108?mt=8" style="display:inline-block;overflow:hidden;background:url(https://linkmaker.itunes.apple.com/en-us/badge-lrg.svg?releaseDate=2011-08-04&kind=iossoftware&bubble=ios_apps) no-repeat;width:135px;height:40px;"></a>
+            </div>
         </div>
     );
 }
