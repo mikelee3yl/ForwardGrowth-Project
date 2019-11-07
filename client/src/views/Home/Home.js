@@ -18,17 +18,17 @@ function Home() {
     return (
         <div className="App">
             <h1>Home Page</h1>
-            <div className="row">
+            <div className="bg">
             <img src={og} alt="Backpack Adventures Gaming App"></img>
             </div>
-            <div className="row">
+            <div className="bg">
             <img src={demo} alt="Backpack Adventures Gaming App"></img>
             </div>
-            <div className="row">
+            <div className="bg">
             <img src={demo1} alt="Backpack Adventures Gaming App"></img>
             </div>
             <div className="row">
-            <a href="https://apps.apple.com/us/app/temple-run/id420009108?mt=8"><img src ={app} width={'40 px'} height={'135 px'} alt = "App Store"></img></a>
+            <a href="https://apps.apple.com/us/app/temple-run/id420009108?mt=8"><img src ={app} width={'80 px'} height={'270 px'} alt = "App Store"></img></a>
             </div>
         </div>
     );
