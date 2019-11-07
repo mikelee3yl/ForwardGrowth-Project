@@ -55,6 +55,12 @@ function Home() {
                 </div>
                 <div className="bg-5 text-center">
                     <h1>Be in touch</h1>
+                    <form>
+                        <label>
+                            Email:
+                            <input placeholder="EMusk@gmail.com" type="text" name="email"></input>
+                        </label>
+                    </form>
                 </div>
         </div>
     );
