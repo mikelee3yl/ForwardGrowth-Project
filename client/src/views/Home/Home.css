@@ -17,6 +17,25 @@
     padding-top: 25px;
     position: top;
 }
+
+body, html {
+    height: 100%;
+    margin: 0;
+  }
+  
+  .bg {
+    /* The image used */
+    /*background-image: url("img_girl.jpg");*/
+  
+    /* Full height */
+    height: 25%;
+  
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
 h1,
 .h1 {
     font-family: Tahoma, Geneva, sans-serif;
@@ -134,3 +153,13 @@ input{
     font-family: Tahoma, Geneva, sans-serif;
     font-size: 25px;
   }
+.row {
+	margin: 1rem;
+}
+
+.row:after {
+	padding: 1 0rem;
+	content: '';
+	display: table;
+	clear: both;
+}
