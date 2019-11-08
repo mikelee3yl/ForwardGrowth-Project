@@ -21,9 +21,7 @@ function Home() {
             <h1>Home Page</h1>       
                 <div className="container-fluid bg-1 text-center">
                     <h1>Backpack Adventures</h1>
-                <div className="row">
-                    <a target="_blank" rel="noopener noreferrer" href="https://apps.apple.com/us/app/temple-run/id420009108?mt=8"><img src ={app} width={'120 px'} height={'405 px'} alt = "App Store"></img></a>
-                 </div>
+                    <a target="_blank" rel="noopener noreferrer" href="https://apps.apple.com/us/app/temple-run/id420009108?mt=8"><img src ={app} width={'120 px'} height={'100 px'} alt = "App Store"></img></a>
                 </div>
                 <div className="bg-2 text-center">
                     <h1>Features</h1>
@@ -65,10 +63,10 @@ function Home() {
                         <img src={og} alt="Backpack Adventures Gaming App"></img>
                     </div> */}
                     <div className="bg">
-                        <img src={demo} alt="Backpack Adventures Gaming App"></img>
+                        <img className="graphics" src={demo} alt="Backpack Adventures Gaming App"></img>
                     </div>
                     <div className="bg">
-                        <img src={demo1} alt="Backpack Adventures Gaming App"></img>
+                        <img className="graphics" src={demo1} alt="Backpack Adventures Gaming App"></img>
                     </div>
                 </div>
                 <div className="bg-5 text-center">
