@@ -20,6 +20,7 @@
 h1,
 .h1 {
     font-family: Tahoma, Geneva, sans-serif;
+    margin: auto;
 }
 
 .App-link {
@@ -44,7 +45,7 @@ h1,
     position: relative;
     min-height: 100%;
     width: 100%;
-    z-index: 1000;
+    z-index: 999;
 }
 
 .bg-2{
@@ -54,7 +55,7 @@ h1,
     height: 100%;
     min-height: 100%;
     width: 100%;
-    z-index: 1000;
+    z-index: 998;
     line-height: 2;
     background-size: cover;
 }
@@ -66,7 +67,7 @@ h1,
     height: 100%;
     min-height: 100%;
     width: 100%;
-    z-index: 1000;
+    z-index: 997;
     line-height: 2;
     background-size: cover;
 }
@@ -78,7 +79,7 @@ h1,
     height: 100%;
     min-height: 100%;
     width: 100%;
-    z-index: 1000;
+    z-index: 996;
     line-height: 2;
     background-size: cover;
 }
@@ -90,7 +91,7 @@ h1,
     height: 100%;
     min-height: 100%;
     width: 100%;
-    z-index: 1000;
+    z-index: 995;
     line-height: 2;
     background-size: cover;
 }
