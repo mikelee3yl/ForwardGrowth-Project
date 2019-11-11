@@ -41,6 +41,5 @@ exports.request = function (req, res) {
             res.send('{"message":"error while sending email with error code: '.concat(err.statusCode,'"}'));
         })
 
-    res.send('{"message":"Email successfully sent."}');
 
 }

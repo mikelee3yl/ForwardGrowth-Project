@@ -3,7 +3,9 @@ const path = require('path'),
     mongoose = require('mongoose'),
     morgan = require('morgan'),
     bodyParser = require('body-parser'),
-    exampleRouter = require('../routes/examples.server.routes');
+    exampleRouter = require('../routes/examples.server.routes'),
+    mail = require("../controllers/mail.js");
+
 
 module.exports.init = () => {
     /* 
