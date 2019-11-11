@@ -4,11 +4,11 @@ import './About.css';
 import avatar from './img_avatar.png';
 
 
-const sendyEmail = (email, subject, body) => {
+const sendyEmail = (sender, subject, body) => {
     return fetch("/api/send_email", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, subject, body })
+        body: JSON.stringify({ sender, subject, body })
     }).then(response => response.json());
 
 };
@@ -73,7 +73,7 @@ class About extends React.Component {
                     </table>
                 </div>
                 <form>
-                    <input type="text" placeholder="from email" ref="email" />
+                    <input type="text" placeholder="Your Name" ref="sender" />
                 </form>
                 <form>
                     <input type="text" placeholder="Subject" ref="subject" />
@@ -84,8 +84,8 @@ class About extends React.Component {
                 </form>
                 <button
                     onClick={() => {
-                        if (this.refs.email.value && this.refs.subject.value && this.refs.body.value) {
-                            sendyEmail(this.refs.email.value, this.refs.subject.value, this.refs.body.value).then(({ message }) => {
+                        if (this.refs.sender.value && this.refs.subject.value && this.refs.body.value) {
+                            sendyEmail(this.refs.sender.value, this.refs.subject.value, this.refs.body.value).then(({ message }) => {
                                 alert(message);
                             });
                         }

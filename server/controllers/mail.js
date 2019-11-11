@@ -15,8 +15,8 @@ exports.request = function (req, res) {
             "Messages": [
                 {
                     "From": {
-                        "Email": req.body.email,
-                        "Name": "emailBoi"
+                        "Email": "jacobroberge@ufl.edu",
+                        "Name": req.body.sender
                     },
                     "To": [
                         {
