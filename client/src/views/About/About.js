@@ -1,6 +1,7 @@
 import React from 'react';
 import logo from '../../assets/OrchardGroveLogo.png';
 import './About.css';
+import avatar from './img_avatar.png';
 
 function About() {
     return (
@@ -22,7 +23,7 @@ function About() {
                             <div class="flip-card">
                                 <div class="flip-card-inner">
                                     <div class="flip-card-front">
-                                        <img src="img_avatar.png" alt="Avatar" />
+                                        <img src= {avatar} alt="Avatar" />
                                         <div class="container">
                                             <h4><b>John Doe</b></h4>
                                             <p>Architect &#38; Engineer</p>
@@ -40,7 +41,7 @@ function About() {
                             <div class="flip-card">
                                 <div class="flip-card-inner">
                                     <div class="flip-card-front">
-                                        <img src="img_avatar.png" alt="Avatar" />
+                                        <img src={avatar} alt="Avatar" />
                                         <div class="container">
                                             <h4><b>John Doe</b></h4>
                                             <p>Architect &#38; Engineer</p>
