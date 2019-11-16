@@ -6,7 +6,8 @@
 
   h3,
 .h3 {
-	font-family: Tahoma, Geneva, sans-serif;
+  font-family: Tahoma, Geneva, sans-serif;
+  margin-bottom: 0;
 }
 
 .LoginButton{
