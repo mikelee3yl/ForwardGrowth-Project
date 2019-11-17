@@ -5,7 +5,8 @@ const path = require('path'),
     bodyParser = require('body-parser'),
     exampleRouter = require('../routes/examples.server.routes'),
     mail = require("../controllers/mail.js"),
-    emailList = require("../controllers/emailList.server.controller");
+    emailList = require("../controllers/emailList.server.controller"),
+    insta_update = require("../controllers/blog.server.controller");
 
 
 
@@ -43,6 +44,9 @@ module.exports.init = () => {
     });
     app.post("/api/list_serve", function (req, res) {
         emailList.listServe(req, res);
+    });
+    app.post("/api/update_insta", function (req, res) {
+        insta_update.update(req, res);
     });
     // add a router
     app.use('/api/example', exampleRouter);
