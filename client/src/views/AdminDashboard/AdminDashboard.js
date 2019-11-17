@@ -9,32 +9,31 @@ const updateyInsta = (instagramlink) => {
         body: JSON.stringify({ instagramlink })
     }).then(response => response.json());
 }   
-    class AdminDashboard extends React.Component {
-        render() {
-            return (
-                <div className="App">
-                    <h1>Admin Dashboard</h1>
-                    <form>
-                        <textarea type="text" placeholder="body" ref="body" />
+class AdminDashboard extends React.Component {
+    render() {
+        return (
+            <div className="App">
+                <h1>Admin Dashboard</h1>
+                <form>
+                    <textarea type="text" placeholder="body" ref="body" />
 
-                    </form>
-                    <button
-                        onClick={() => {
-                            if (this.refs.body.value) {
-                                updateyInsta(this.refs.body.value).then(({ message }) => {
-                                    alert(message);
-                                });
-                            }
-                            else {
-                                alert("Make sure all entries are completed.");
-                            }
-                        }}
-                    >
-                        Update Instagram
-          </button>
-                </div>
-            );
-        }
+                </form>
+                <button
+                    onClick={() => {
+                        if (this.refs.body.value) {
+                            updateyInsta(this.refs.body.value).then(({ message }) => {
+                                alert(message);
+                            });
+                        }
+                        else {
+                            alert("Make sure all entries are completed.");
+                        }
+                    }}
+                >
+                    Update Instagram
+        </button>
+            </div>
+        );
     }
 }
 export default AdminDashboard;
