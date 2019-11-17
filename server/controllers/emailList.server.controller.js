@@ -31,6 +31,7 @@ exports.create = function (req, res) {
         if (err) {
             res.status(400).send(err);
         } else {
+            res.send('{"message":"Email successfully added to list serve."}');
         }
     });
 };

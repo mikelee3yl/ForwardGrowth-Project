@@ -2,16 +2,14 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 
-var listingSchema = new Schema({
-/* your code here from Bootcamp Assignment #2 - ListingSchema.js File*/
+var emailListingSchema = new Schema({
     name: String,
     email: String,
     created_at: Date,
     updated_at: Date
 });
 
-listingSchema.pre('save', function (next) {
-    /* your code here from Bootcamp Assignment #2 - ListingSchema.js File */
+emailListingSchema.pre('save', function (next) {
     if (this.name == null)
         throw err;
     if (this.email == null)
@@ -24,5 +22,5 @@ listingSchema.pre('save', function (next) {
     next();
 });
 
-var emailList = mongoose.model('Listing', listingSchema);
+var emailList = mongoose.model('Listing', emailListingSchema);
 module.exports = emailList;

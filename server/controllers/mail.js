@@ -1,14 +1,11 @@
 // JavaScript source code
 
-//const mailjet = require("node-mailjet").connect(
-//    process.env.MAILJET_KEY_PUBLIC,
-//    process.env.MAILJET_KEY_PRIVATE
-//);
-
 const mailjet = require("node-mailjet").connect(
-    '6985f34c9cd9618795ddd13715d53d30',
-    '3dc0cff44753d80c8592e6073f660be1'
+    process.env.MAILJET_KEY_PUBLIC,
+    process.env.MAILJET_KEY_PRIVATE
 );
+
+
 
 
 exports.request = function (req, res) {
