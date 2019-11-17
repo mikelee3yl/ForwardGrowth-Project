@@ -4,13 +4,13 @@
     "\\client",
     "\\client\\src",
     "\\client\\src\\components",
-    "\\client\\src\\components\\Header",
     "\\client\\src\\views",
+    "\\client\\src\\views\\About",
     "\\client\\src\\views\\Home",
     "\\server",
-    "\\server\\models",
-    "\\server\\routes"
+    "\\server\\config",
+    "\\server\\controllers"
   ],
-  "SelectedNode": "\\server\\controllers\\mail.js",
+  "SelectedNode": "\\server\\config\\config.example.js",
   "PreviewInSolutionExplorer": false
 }
