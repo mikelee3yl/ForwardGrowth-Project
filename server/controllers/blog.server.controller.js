@@ -14,7 +14,7 @@ var mongoose = require('mongoose')
             if (err) {
                 res.status(400).send(err);
             } else {
-                res.send('{"message":"Email successfully added to list serve."}');
+                res.send('{"message":"Instagram link successfully updated."}');
             }
         });
     };

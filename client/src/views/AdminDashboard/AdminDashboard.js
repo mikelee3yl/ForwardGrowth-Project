@@ -2,13 +2,39 @@ import React from 'react';
 import './AdminDashboard.css';
 
 
-function AdminDashboard() {
+const updateyInsta = (instagramlink) => {
+    return fetch("/api/update_insta", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ instagramlink })
+    }).then(response => response.json());
 
-    return (
-        <div className="App">
-        <h1>Admin Dashboard</h1>
-        </div>
-    );
+    class AdminDashboard extends React.Component {
+        render {
+        return (
+            <div className="App">
+                <h1>Admin Dashboard</h1>
+            </div>
+            <form>
+                <textarea type="text" placeholder="body" ref="body" />
+
+            </form>
+            <button
+                onClick={() => {
+                    if (this.refs.body.value) {
+                        sendyEmail(this.refs.body.value).then(({ message }) => {
+                            alert(message);
+                        });
+                    }
+                    else {
+                        alert("Make sure all entries are completed.");
+                    }
+                }}
+            >
+                Update Instagram
+          </button>
+        );
+    }
 }
 
 
