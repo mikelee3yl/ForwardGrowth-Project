@@ -14,7 +14,6 @@ const updateyInsta = (instagramlink) => {
         return (
             <div className="App">
                 <h1>Admin Dashboard</h1>
-            </div>
             <form>
                 <textarea type="text" placeholder="body" ref="body" />
 
@@ -33,6 +32,7 @@ const updateyInsta = (instagramlink) => {
             >
                 Update Instagram
           </button>
+            </div>
         );
     }
 }
