@@ -11,31 +11,30 @@ const updateyInsta = (instagramlink) => {
 
     class AdminDashboard extends React.Component {
         render() {
-        return (
-            <div className="App">
-                <h1>Admin Dashboard</h1>
-            <form>
-                <textarea type="text" placeholder="body" ref="body" />
+            return (
+                <div className="App">
+                    <h1>Admin Dashboard</h1>
+                    <form>
+                        <textarea type="text" placeholder="body" ref="body" />
 
-            </form>
-            <button
-                onClick={() => {
-                    if (this.refs.body.value) {
-                        sendyEmail(this.refs.body.value).then(({ message }) => {
-                            alert(message);
-                        });
-                    }
-                    else {
-                        alert("Make sure all entries are completed.");
-                    }
-                }}
-            >
-                Update Instagram
+                    </form>
+                    <button
+                        onClick={() => {
+                            if (this.refs.body.value) {
+                                sendyEmail(this.refs.body.value).then(({ message }) => {
+                                    alert(message);
+                                });
+                            }
+                            else {
+                                alert("Make sure all entries are completed.");
+                            }
+                        }}
+                    >
+                        Update Instagram
           </button>
-            </div>
-        );
+                </div>
+            );
+        }
     }
 }
-
-
 export default AdminDashboard;
