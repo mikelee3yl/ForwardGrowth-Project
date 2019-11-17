@@ -10,7 +10,7 @@ const updateyInsta = (instagramlink) => {
     }).then(response => response.json());
 
     class AdminDashboard extends React.Component {
-        render {
+        render() {
         return (
             <div className="App">
                 <h1>Admin Dashboard</h1>
