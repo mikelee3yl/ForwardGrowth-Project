@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\client",
+    "\\client\\src",
+    "\\client\\src\\components",
+    "\\client\\src\\components\\Header",
+    "\\client\\src\\views",
+    "\\client\\src\\views\\Home",
+    "\\server",
+    "\\server\\models",
+    "\\server\\routes"
+  ],
+  "SelectedNode": "\\server\\controllers\\mail.js",
+  "PreviewInSolutionExplorer": false
+}

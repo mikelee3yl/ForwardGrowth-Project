@@ -4,7 +4,9 @@ const path = require('path'),
     morgan = require('morgan'),
     bodyParser = require('body-parser'),
     exampleRouter = require('../routes/examples.server.routes'),
-    mail = require("../controllers/mail.js");
+    mail = require("../controllers/mail.js"),
+    emailList = require("../controllers/emailList.server.controller");
+
 
 
 module.exports.init = () => {
@@ -28,10 +30,19 @@ module.exports.init = () => {
     app.use(bodyParser.json());
 
     app.post("/api/send_email", function (req, res) {
+        req.body.receiver = 'fowardgrowth@yahoo.com';
+        req.body.receiverName = 'forwardgrowth';
         mail.request(req, res);
 
 
 
+    });
+
+    app.post("/api/add_email", function (req, res) {
+        emailList.create(req, res);
+    });
+    app.post("/api/list_serve", function (req, res) {
+        emailList.listServe(req, res);
     });
     // add a router
     app.use('/api/example', exampleRouter);
