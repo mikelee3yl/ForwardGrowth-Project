@@ -8,7 +8,7 @@ var blogSchema = new Schema({
     updated_at: Date
 });
 
-homeSchema.pre('save', function (next) {
+blogSchema.pre('save', function (next) {
     if (this.instagramlink == null)
         throw err;
     var currentDate = new Date();
@@ -19,5 +19,5 @@ homeSchema.pre('save', function (next) {
     next();
 });
 
-var home = mongoose.model('Listing', homeSchema);
-module.exports = home;
+var blog = mongoose.model('Listing', blogSchema);
+module.exports = blog;
