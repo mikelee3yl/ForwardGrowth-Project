@@ -21,7 +21,7 @@ const updateyInsta = (instagramlink) => {
                     <button
                         onClick={() => {
                             if (this.refs.body.value) {
-                                sendyEmail(this.refs.body.value).then(({ message }) => {
+                                updateyInsta(this.refs.body.value).then(({ message }) => {
                                     alert(message);
                                 });
                             }
