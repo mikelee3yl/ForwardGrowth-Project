@@ -140,6 +140,7 @@ p {
     margin-left: auto;
     /* float: left; */
     display: block;
+    font-family: Tahoma, Geneva, sans-serif;
   }
 
   .mybutton:hover{
