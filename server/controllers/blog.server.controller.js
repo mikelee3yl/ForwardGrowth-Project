@@ -8,14 +8,17 @@ var mongoose = require('mongoose')
     exports.update = function (req, res) {
 
         /* Instantiate a Listing */
-        var insta = new insta_update({ code: 0, instagramlink: req.body.instagramlink });
+        //var insta = new insta_update({ code: 0, instagramlink: req.body.instagramlink });
         /* Then save the listing */
-        insta.save(function (err) {
-            if (err) {
-                res.status(400).send(err);
-            } else {
-                res.send('{"message":"Instagram link successfully updated."}');
-            }
+        //insta.save(function (err) {
+        //    if (err) {
+        //        res.status(400).send(err);
+        //    } else {
+        //        res.send('{"message":"Instagram link successfully updated."}');
+        //    }
+        //});
+        insta.findOneAndUpdate({ 'code': 0 }, { 'instagramlink': req.body.instagramlink }, function (err, blog) {
+            if (err) throw err;
         });
   
     };
