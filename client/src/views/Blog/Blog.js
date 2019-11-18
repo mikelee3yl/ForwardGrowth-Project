@@ -8,17 +8,17 @@ class Blog extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            instagramlink: 'https://www.instagram.com/p/B46OvFgBiUC/'
+            instagramlink: ''
         }
     }
     componentDidMount() {
         fetch('/api/instagramlink')
             .then(res => res.json())
-            .then(result => this.setState({ instagramlink: result.instagramlink }))
+            .then(result => this.setState({ instagramlink: result }))
     }
     
     render() {
-        console.log(this.state.instagramlink);
+        //console.log(this.state.instagramlink);
         return (
             <div className="App">
                 <h1>Blog Page</h1>
