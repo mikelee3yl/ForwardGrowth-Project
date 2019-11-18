@@ -16,8 +16,9 @@ class Blog extends React.Component {
             .then(res => res.json())
             .then(result => this.setState({ instagramlink: result.instagramlink }))
     }
-    console.long(this.state.instagramlink);
+    
     render() {
+        console.log(this.state.instagramlink);
         return (
             <div className="App">
                 <h1>Blog Page</h1>
