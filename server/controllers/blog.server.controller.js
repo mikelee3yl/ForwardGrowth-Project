@@ -14,11 +14,15 @@ var mongoose = require('mongoose')
         //    if (err) {
         //        res.status(400).send(err);
         //    } else {
-        //        res.send('{"message":"Instagram link successfully updated."}');
+        //        res.send('{"message":"Instagram link successfully created."}');
         //    }
         //});
-        insta.findOneAndUpdate({ 'code': 0 }, { 'instagramlink': req.body.instagramlink }, function (err, blog) {
-            if (err) throw err;
+        insta_update.findOneAndUpdate({ 'code': 0 }, { 'instagramlink': req.body.instagramlink }, function (err, blog) {
+            if (err) {
+                res.status(400).send(err);
+            } else {
+                res.send('{"message":"Instagram link successfully updated."}');
+            }
         });
   
     };
