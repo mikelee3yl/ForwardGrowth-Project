@@ -19,5 +19,5 @@ blogSchema.pre('save', function (next) {
     next();
 });
 
-var blog = mongoose.model('Listing', blogSchema);
+var blog = mongoose.model('blog', blogSchema);
 module.exports = blog;

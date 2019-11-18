@@ -8,7 +8,7 @@ const updateyInsta = (instagramlink) => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ instagramlink })
     }).then(response => response.json());
-}   
+};   
 class AdminDashboard extends React.Component {
     render() {
         return (

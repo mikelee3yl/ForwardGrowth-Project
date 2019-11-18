@@ -22,5 +22,5 @@ emailListingSchema.pre('save', function (next) {
     next();
 });
 
-var emailList = mongoose.model('Listing', emailListingSchema);
+var emailList = mongoose.model('emailList', emailListingSchema);
 module.exports = emailList;

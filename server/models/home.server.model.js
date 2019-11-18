@@ -23,5 +23,5 @@ homeSchema.pre('save', function (next) {
     next();
 });
 
-var home = mongoose.model('Listing', homeSchema);
+var home = mongoose.model('home', homeSchema);
 module.exports = home;

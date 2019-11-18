@@ -2,15 +2,8 @@
   "ExpandedNodes": [
     "",
     "\\client",
-    "\\client\\src",
-    "\\client\\src\\components",
-    "\\client\\src\\views",
-    "\\client\\src\\views\\About",
-    "\\client\\src\\views\\Home",
-    "\\server",
-    "\\server\\config",
-    "\\server\\controllers"
+    "\\client\\public"
   ],
-  "SelectedNode": "\\server\\config\\config.example.js",
+  "SelectedNode": "\\client\\public\\favicon.ico",
   "PreviewInSolutionExplorer": false
 }
