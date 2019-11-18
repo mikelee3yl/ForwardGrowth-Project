@@ -5,8 +5,9 @@ import { TwitterTimelineEmbed } from 'react-twitter-embed';
 import InstagramEmbed from 'react-instagram-embed';
 
 class Blog extends React.Component {
-    constructor() {
-        this.state = this.state = {
+    constructor(props) {
+        super(props)
+        this.state = {
             instagramlink: ''
         }
     }
