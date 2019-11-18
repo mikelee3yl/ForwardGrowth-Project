@@ -3,6 +3,7 @@ var mongoose = require('mongoose'),
 
 
 var blogSchema = new Schema({
+    id: int,
     instagramlink: String,
     created_at: Date,
     updated_at: Date
