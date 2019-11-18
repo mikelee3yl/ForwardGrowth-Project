@@ -48,6 +48,9 @@ module.exports.init = () => {
     app.post("/api/update_insta", function (req, res) {
         insta_update.update(req, res);
     });
+    app.get("/api/instagramlink", function (req, res) {
+        insta_update.get(req, res);
+    });
     // add a router
     app.use('/api/example', exampleRouter);
 
