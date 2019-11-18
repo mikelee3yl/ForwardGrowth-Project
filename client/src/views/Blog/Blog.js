@@ -8,7 +8,7 @@ class Blog extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            instagramlink: ''
+            instagramlink: 'https://www.instagram.com/p/B46OvFgBiUC/'
         }
     }
     componentDidMount() {
@@ -16,6 +16,7 @@ class Blog extends React.Component {
             .then(res => res.json())
             .then(result => this.setState({ instagramlink: result.instagramlink }))
     }
+    console.long(this.state.instagramlink);
     render() {
         return (
             <div className="App">
