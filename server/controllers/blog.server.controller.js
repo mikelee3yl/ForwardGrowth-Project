@@ -8,7 +8,7 @@ var mongoose = require('mongoose')
     exports.update = function (req, res) {
 
         /* Instantiate a Listing */
-        var insta = new insta_update({ id: 0, instagramlink: req.body.instagramlink });
+        var insta = new insta_update({ code: 0, instagramlink: req.body.instagramlink });
         /* Then save the listing */
         insta.save(function (err) {
             if (err) {
