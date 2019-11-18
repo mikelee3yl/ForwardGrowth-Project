@@ -21,7 +21,14 @@ class TeamCards extends React.Component {
 
     render() {
         return (
-            this.showCard()
+            <div className="wrapper">
+                {this.showCard()}
+                {this.showCard()}
+                {this.showCard()}
+                {this.showCard()}
+                {this.showCard()}
+            </div>
+            
         )
     }
 };
