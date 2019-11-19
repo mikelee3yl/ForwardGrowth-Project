@@ -25,8 +25,8 @@ class About extends React.Component {
                 <div class="card">
                 <img src={avatar} alt="Avatar" alt="Avatar" />
                 <div class="container">
-                    <h4><b>John Doe</b></h4>
-                    <p>Architect &#38; Engineer</p>
+                    <h4><b>Daniel Luckman</b></h4>
+                    <p>UF STUDENT</p>
                 </div>
             </div>
                 {/* <div class="card-row">

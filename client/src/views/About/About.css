@@ -93,8 +93,8 @@
   }
   
   .email-body {
-    border-top-width: 60px;
-    border-bottom-width: 60px;
+    border-top-width: 2px;
+    border-bottom-width: 2px;
     border-left-width: 2px;
     border-right-width: 2px;
     border-color:  #fda55d;
@@ -102,7 +102,7 @@
     text-align: center;
     background-color: white;
     width: 50%;
-    height: auto;
+    height: 180px;
     margin: 10px auto;
   }
 
