@@ -4,6 +4,7 @@ import './Blog.css';
 import { TwitterTimelineEmbed } from 'react-twitter-embed';
 import InstagramEmbed from 'react-instagram-embed';
 
+
 class Blog extends React.Component {
     constructor(props) {
         super(props)
@@ -11,16 +12,56 @@ class Blog extends React.Component {
             instagramlink: ''
         }
     }
-    componentDidMount() {
-        fetch('/api/instagramlink')
-            .then(res => res.json())
-            .then(result => this.setState({ instagramlink: result }))
+    //  componentDidMount() {
+    //    //fetch('/api/instagramlink')
+    //    //    .then(res => res.json())
+    //    //    .then(result => console.log(result)/*this.setState({ instagramlink: result })*/)
+    //      fetch('/api/instagramlink')
+    //        .then(res => {
+    //            return res.text();
+    //        })
+    //        .then(res => {
+    //            if (this.state.instagramlink !== res) {
+    //                this.setState({
+    //                    instagramlink: res 
+    //                })
+    //            }
+    //        })
+
+
+    //}
+    getInsta() {
+         
+            //fetch('/api/instagramlink')
+            //    .then(res => res.json())
+            //    .then(result => console.log(result)/*this.setState({ instagramlink: result })*/)
+            fetch('/api/instagramlink')
+                .then(res => {
+                    return res.text();
+                })
+                .then(res => {
+                    if (this.state.instagramlink !== res) {
+                        this.setState({
+                            instagramlink: res
+                        })
+                    }
+                })
+
+
+        
     }
+
     
     render() {
-        //console.log(this.state.instagramlink);
+        this.getInsta();
+
+        const urlll = this.state.instagramlink;
+        console.log(urlll);
+        if (urlll == '') {
+            return(<div/>);
+        }
         return (
-            <div className="App">
+            <div className="App" >
                 <h1>Blog Page</h1>
                 <div class="row">
                     <div class="column" >
@@ -34,7 +75,7 @@ class Blog extends React.Component {
                     <div class="column">
                         <h2>Check us out on Instagram</h2>
                         <InstagramEmbed
-                            url={this.state.instagramlink}
+                            url={urlll}
                             maxWidth={500}
                             hideCaption={false}
                             containerTagName='div'
@@ -51,5 +92,7 @@ class Blog extends React.Component {
         );
     }
 }
+
+
 
 export default Blog;

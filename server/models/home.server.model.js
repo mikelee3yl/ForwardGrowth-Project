@@ -3,6 +3,7 @@ var mongoose = require('mongoose'),
 
 
 var homeSchema = new Schema({
+    code: Number,
     company: String,
     payment: String,
     about: String,
@@ -11,10 +12,7 @@ var homeSchema = new Schema({
 });
 
 homeSchema.pre('save', function (next) {
-    if (this.name == null)
-        throw err;
-    if (this.email == null)
-        throw err;
+    
     var currentDate = new Date();
     this.updated_at = currentDate;
     if (!this.created_at) {

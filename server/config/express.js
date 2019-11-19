@@ -6,7 +6,8 @@ const path = require('path'),
     exampleRouter = require('../routes/examples.server.routes'),
     mail = require("../controllers/mail.js"),
     emailList = require("../controllers/emailList.server.controller"),
-    insta_update = require("../controllers/blog.server.controller");
+    insta_update = require("../controllers/blog.server.controller"),
+    homeCtrl = require("../controllers/home.server.controller");
 
 
 
@@ -15,7 +16,7 @@ module.exports.init = () => {
         connect to database
         - reference README for db uri
     */
-    mongoose.connect(process.env.DB_URI || require('./config').db.uri, {
+    mongoose.connect(process.env.DB_URI || 'mongodb+srv://ForwardGrowth:Secure_Password7@database-q25ho.mongodb.net/test?retryWrites=true&w=majority'/*require('./config').db.uri*/, {
         useNewUrlParser: true
     });
     mongoose.set('useCreateIndex', true);
@@ -49,7 +50,13 @@ module.exports.init = () => {
         insta_update.update(req, res);
     });
     app.get("/api/instagramlink", function (req, res) {
-        insta_update.get(req, res);
+        insta_update.get(req, res );
+    });
+    app.post("/api/update_home", function (req, res) {
+        homeCtrl.update(req, res);
+    });
+    app.get("/api/get_home", function (req, res) {
+        homeCtrl.get(req, res);
     });
     // add a router
     app.use('/api/example', exampleRouter);

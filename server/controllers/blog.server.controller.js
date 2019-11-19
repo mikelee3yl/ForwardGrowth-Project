@@ -29,9 +29,12 @@ var mongoose = require('mongoose')
 exports.get = function (req, res) {
     insta_update.findOne({ 'code': 0 }, function (err, blog) {
         if (err) {
+            console.log(err);
+
             res.status(400).send(err);
         } else {
             res.send(blog.instagramlink);
+
         }
     });
 }
