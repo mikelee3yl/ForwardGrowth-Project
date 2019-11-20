@@ -62,18 +62,19 @@ class Blog extends React.Component {
         }
         return (
             <div className="App" >
-                <h1>Blog Page</h1>
+                <h1>Blog</h1>
                 <div class="row">
+                    <h2>Check out our Twitter and Instagram!</h2>
                     <div class="column" >
-                        <h2>Check us out on Twitter</h2>
+                        {/* <h2>Check us out on Twitter</h2> */}
                         <TwitterTimelineEmbed
                             sourceType="profile"
                             screenName="ForwardGrowth0"
                             options={{ height: 500, width: 500 }}
                         />
                     </div>
-                    <div class="column">
-                        <h2>Check us out on Instagram</h2>
+                    <div class="column2">
+                        {/* <h2>Check us out on Instagram</h2> */}
                         <InstagramEmbed
                             url={urlll}
                             maxWidth={500}

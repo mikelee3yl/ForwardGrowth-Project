@@ -35,7 +35,7 @@ class Home extends React.Component {
 
         return (
             <div className="App">
-                <h1>Home Page</h1>
+                {/* <h1>Home Page</h1> */}
                 <div className="container-fluid bg-1 text-center">
                     <h1>Backpack Adventures</h1>
                     <a target="_blank" rel="noopener noreferrer" href="https://apps.apple.com/us/app/temple-run/id420009108?mt=8"><img src={app} width={'120 px'} height={'100 px'} alt="App Store"></img></a>
