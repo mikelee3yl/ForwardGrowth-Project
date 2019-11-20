@@ -62,7 +62,7 @@ class Blog extends React.Component {
         }
         return (
             <div className="App" >
-                <h1>Blog Page</h1>
+                <h1>Blog</h1>
                 <div class="row">
                     <h2>Check out our Twitter and Instagram!</h2>
                     <div class="column" >
