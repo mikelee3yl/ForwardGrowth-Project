@@ -96,6 +96,7 @@ componentDidMount() {
                 </Collapsible>
           </div>
           <footer>
+            {/* footer skeleton */}
             <button className="myButton" type="button" margin-right= "auto"></button>
           </footer>
         </div>
