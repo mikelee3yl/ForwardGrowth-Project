@@ -104,7 +104,7 @@ class AdminDashboard extends React.Component {
                             }}
                         >
                             Update Instagram
-        </button>
+                     </button>
                     </Collapsible>
                 </div>
             </div>
