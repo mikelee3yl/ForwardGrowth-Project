@@ -16,6 +16,19 @@ const updateyHome = (company,payment,about) => {
         body: JSON.stringify({ company, payment, about })
     }).then(response => response.json());
 };  
+const deleteTile = (name) => {
+    return fetch("/api/delete_tile", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name})
+    }).then(response => response.json());
+};  
+const addTile = (form) => {
+    return fetch("/api/add_tile", {
+        method: "POST",
+        body:  form
+    }).then(response => response.json());
+};  
 
 
     
@@ -23,11 +36,13 @@ class AdminDashboard extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            photo: null,
             company: '',
             payment: '',
             about: ''
 
         };
+
     }
     componentDidMount() {
 
@@ -47,13 +62,19 @@ class AdminDashboard extends React.Component {
             })
     }
     
+    onChange = e => {
+       
+        this.setState({
+            photo: e.target.files
+        })
+    }
     
     render() {
         return (
             <div className="App">
                 <h1>Admin Dashboard</h1>
                 <form>
-                    <textarea type="text" placeholder="body" ref="body" />
+                    <textarea type="text" placeholder="instagram page url" ref="body" />
 
                 </form>
                 <button
@@ -96,6 +117,61 @@ class AdminDashboard extends React.Component {
                 >
                     Update home
         </button>
+                <form>
+                    <textarea type="text" placeholder="name" ref="name" />
+
+                </form>
+                <form>
+                    <textarea type="text" placeholder="position info" ref="position" />
+
+                </form>
+               
+                <button
+                    onClick={() => {
+                        if (this.refs.name.value && this.refs.position.value) {
+                            var formData = new FormData();
+                            formData.append('name', this.refs.name.value);
+                            formData.append('position', this.refs.position.value);
+                            formData.append('file', this.state.photo[0]);
+
+                            addTile(formData).then(({ message }) => {
+                                alert(message);
+                            });
+                        }
+                        else {
+                            alert("Make sure all entries are completed.");
+                        }
+                    }}
+                >
+                    Add Tile
+        </button>
+                <div>
+                    <input type="file" onChange={this.onChange} />
+                </div>
+
+
+                <form>
+                    <textarea type="text" placeholder="name of tile you want to delete" ref="name" />
+
+                </form>
+
+                <button
+                    onClick={() => {
+                        if (this.refs.name.value) {
+                            
+
+                            deleteTile(this.refs.name.value).then(({ message }) => {
+                                alert(message);
+                            });
+                        }
+                        else {
+                            alert("Make sure all entries are completed.");
+                        }
+                    }}
+                >
+                    remove Tile
+        </button>
+
             </div>
 
         );
