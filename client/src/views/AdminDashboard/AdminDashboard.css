@@ -1,9 +1,8 @@
 .colStyle{
     background-color: rgb(253, 185, 100);
-      width: 1000px;
+      width: auto;
       display: inline-block;
       border: 10px;
-    border-color: hotpink;
 }
 
 h4, h2, h3{
@@ -31,12 +30,70 @@ h1{
       font-size: 40px;
   }
 
+
+  .Collapsible {
+    background-color: white; }
+  
+  .Collapsible__contentInner {
+    padding: 10px;
+    border: 1px solid #fda55d;
+    border-top: 0; }
+
+    .Collapsible__contentInner p {
+      margin-bottom: 10px;
+      font-size: 14px;
+      line-height: 20px; }
+
+      .Collapsible__contentInner p:last-child {
+        margin-bottom: 0; }
+
   .ReactCollapse--collapse {
     max-width: 800px;
-    border: 1px solid rgba(3, 169, 244, 0.3);
+    border: 1px solid ;
     border-radius: 10px;
     background-color: rgba(100, 255, 100, 0.1);
     transition: height 500ms;
   }
 
+  .Collapsible__trigger {
+    display: block;
+    font-weight: 400;
+    text-decoration: none;
+    color: #333333;
+    position: relative;
+    border: 1px solid white;
+    padding: 10px;
+    background:#fda55d;
+    color: white; }
+    .Collapsible__trigger:after {
+      font-family: 'FontAwesome';
+      content: url("..\..\assets\chevron-down.svg");
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      display: block;
+      transition: transform 300ms; }
 
+      button {
+        border: none;
+        outline: 0;
+        padding: 12px;
+        color: rgb(255, 255, 255);
+        background-color: #fda55d;
+        text-align: center;
+        cursor: pointer;
+        width: 50%;
+        font-size: 22px;
+        margin-left: auto;
+        font-family: Tahoma, Geneva, sans-serif;
+      }
+    
+      button:hover{
+        background-color: #ff933b;
+    }
+
+    .myButton{
+        content: url("..\..\assets\chevron-down.svg");
+    }
+
+    footer { position: fixed; bottom: 0; }
