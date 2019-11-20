@@ -115,12 +115,12 @@ class Home extends React.Component {
                         Add Email
                     </button>
                 </div>
-                <button
+                <button 
                     onClick={() => {
                         listServe('testy', 'wazoo is an odd word').then(({ message }) => {
                             alert(message);
                         });
-                    }}
+                    }} className="myButton"
                 >
                     list serve test
                     </button>
