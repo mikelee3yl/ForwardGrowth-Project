@@ -125,6 +125,10 @@ class AdminDashboard extends React.Component {
                     <textarea type="text" placeholder="position info" ref="position" />
 
                 </form>
+                <div>
+                    <input type="file" onChange={this.onChange} />
+                </div>
+
                
                 <button
                     onClick={() => {
@@ -145,22 +149,19 @@ class AdminDashboard extends React.Component {
                 >
                     Add Tile
         </button>
-                <div>
-                    <input type="file" onChange={this.onChange} />
-                </div>
-
+                
 
                 <form>
-                    <textarea type="text" placeholder="name of tile you want to delete" ref="name" />
+                    <textarea type="text" placeholder="name of tile you want to delete" ref="deleteName" />
 
                 </form>
 
                 <button
                     onClick={() => {
-                        if (this.refs.name.value) {
+                        if (this.refs.deleteName.value) {
                             
 
-                            deleteTile(this.refs.name.value).then(({ message }) => {
+                            deleteTile(this.refs.deleteName.value).then(({ message }) => {
                                 alert(message);
                             });
                         }
