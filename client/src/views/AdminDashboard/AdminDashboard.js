@@ -93,14 +93,22 @@ componentDidMount() {
                 >
                     Update Instagram
         </button>
-                </Collapsible>
-          </div>
-          <footer>
-            <button className="myButton" type="button" margin-right= "auto"></button>
-          </footer>
-        </div>
-    );
-  }
-};
+// <<<<<<< sofia_zheng
+//                 </Collapsible>
+//           </div>
+//           <footer>
+//             <button className="myButton" type="button" margin-right= "auto"></button>
+//           </footer>
+//         </div>
+//     );
+//   }
+// };
  
+// =======
+            </div>
+
+        );
+    }
+}
+// >>>>>>> master
 export default AdminDashboard;
