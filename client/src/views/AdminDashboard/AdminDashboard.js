@@ -96,16 +96,9 @@ class AdminDashboard extends React.Component {
                 >
                     Update home
         </button>
-                </Collapsible>
-          </div>
-          <footer>
-            {/* footer skeleton */}
-            <button className="myButton" type="button" margin-right= "auto"></button>
-          </footer>
-        </div>
-    );
-  }
-};
- 
+            </div>
 
+        );
+    }
+}
 export default AdminDashboard;
