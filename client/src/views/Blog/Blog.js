@@ -32,9 +32,7 @@ class Blog extends React.Component {
     //}
     getInsta() {
          
-            //fetch('/api/instagramlink')
-            //    .then(res => res.json())
-            //    .then(result => console.log(result)/*this.setState({ instagramlink: result })*/)
+
             fetch('/api/instagramlink')
                 .then(res => {
                     return res.text();

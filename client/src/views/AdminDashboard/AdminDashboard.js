@@ -27,7 +27,8 @@ class AdminDashboard extends React.Component {
         this.state = {
             company: '',
             payment: '',
-            about: ''
+            about: '',
+            instagramlink: '',
         };
     }
     componentDidMount() {
@@ -44,8 +45,19 @@ class AdminDashboard extends React.Component {
                     payment: obj.payment,
                     about: obj.about
                 })
-                console.log(obj.about);
             })
+
+            fetch('/api/instagramlink')
+                .then(res => {
+                    return res.text();
+                })
+                .then(res => {
+                    if (this.state.instagramlink !== res) {
+                        this.setState({
+                            instagramlink: res
+                        })
+                    }
+                })
     }
 
     render() {
@@ -77,7 +89,7 @@ class AdminDashboard extends React.Component {
 
                     <Collapsible trigger={blogTrigger} className="headerStyle" transitionTime="10" transitionCloseTime="10">
                         <form className="formStyle" id="socialMedia">
-                            <h3>Instagram link: </h3> <input type="text" placeholder="body" ref="body"></input>
+                            <h3>Instagram link: </h3> <input type="text" defaultValue={this.state.instagramlink} ref="body"></input>
                         </form>
                         <button className="myButton" type="button"
                             onClick={() => {
@@ -92,12 +104,9 @@ class AdminDashboard extends React.Component {
                             }}
                         >
                             Update Instagram
-        </button>
+                     </button>
                     </Collapsible>
                 </div>
-                <footer>
-                    <button className="myButton" type="button" margin-right="auto"></button>
-                </footer>
             </div>
         );
     };
