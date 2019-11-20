@@ -45,7 +45,6 @@ class AdminDashboard extends React.Component {
                     payment: obj.payment,
                     about: obj.about
                 })
-                console.log(obj.about);
             })
 
             fetch('/api/instagramlink')
@@ -108,9 +107,6 @@ class AdminDashboard extends React.Component {
         </button>
                     </Collapsible>
                 </div>
-                <footer>
-                    <button className="myButton" type="button" margin-right="auto"></button>
-                </footer>
             </div>
         );
     };
