@@ -19,7 +19,7 @@ var fs = require('fs');
             if (err) {
                 res.status(400).send(err);
             } else {
-                res.send('{"message":"Instagram link successfully created."}');
+                res.send('{"message":"Successfully added a team member."}');
             }
         });
         
@@ -30,7 +30,7 @@ exports.delete = function (req, res) {
         if (err) {
             res.status(400).send(err);
         } else {
-            res.send('{"message":"successfully deleted :'.concat(tileDeleted.name, ' tile"}'));
+            res.send('{"message":"Successfully deleted '.concat(req.body.name, '\'s card"}'));
         }
     });
 
