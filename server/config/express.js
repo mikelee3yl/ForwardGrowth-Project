@@ -4,7 +4,18 @@ const path = require('path'),
     morgan = require('morgan'),
     bodyParser = require('body-parser'),
     exampleRouter = require('../routes/examples.server.routes'),
-    mail = require("../controllers/mail.js");
+    mail = require("../controllers/mail.js"),
+    emailList = require("../controllers/emailList.server.controller"),
+    insta_update = require("../controllers/blog.server.controller"),
+    homeCtrl = require("../controllers/home.server.controller"),
+    tileCtrl = require("../controllers/tile.server.controller");
+
+const multer = require('multer');
+const upload = multer();
+
+
+
+
 
 
 module.exports.init = () => {
@@ -27,11 +38,59 @@ module.exports.init = () => {
     // body parsing middleware
     app.use(bodyParser.json());
 
+    //const storage = multer.diskStorage({
+    //    destination: './files',
+    //    filename(req, file, cb) {
+    //        cb(null, `${new Date()}-${file.originalname}`);
+    //    },
+    //});
+    //const upload = multer({ storage });
+
+    var storage = multer.diskStorage({
+        destination: './files',
+
+        filename: function (req, file, cb) {
+            cb(null, file.fieldname + '-' + Date.now())
+        }
+    })
+
+    var upload = multer({ storage: storage })
+
     app.post("/api/send_email", function (req, res) {
+        req.body.receiver = 'fowardgrowth@yahoo.com';
+        req.body.receiverName = 'forwardgrowth';
         mail.request(req, res);
 
 
 
+    });
+
+    app.post("/api/add_email", function (req, res) {
+        emailList.create(req, res);
+    });
+    app.post("/api/list_serve", function (req, res) {
+        emailList.listServe(req, res);
+    });
+    app.post("/api/update_insta", function (req, res) {
+        insta_update.update(req, res);
+    });
+    app.get("/api/instagramlink", function (req, res) {
+        insta_update.get(req, res );
+    });
+    app.post("/api/update_home", function (req, res) {
+        homeCtrl.update(req, res);
+    });
+    app.get("/api/get_home", function (req, res) {
+        homeCtrl.get(req, res);
+    });
+    app.post("/api/add_tile", upload.single('file'), function (req, res) {
+        tileCtrl.add(req, res);
+    });
+    app.post("/api/delete_tile", function (req, res) {
+        tileCtrl.delete(req, res);
+    });
+    app.get("/api/get_tile", function (req, res) {
+        tileCtrl.get(req, res);
     });
     // add a router
     app.use('/api/example', exampleRouter);

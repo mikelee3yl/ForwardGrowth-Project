@@ -10,6 +10,14 @@ npm install react-burger-menu --save
 npm install --save react-twitter-embed
 
 npm i react-instagram-embed
+
+npm install node-mailjet 
+
+npm install react-collapsible --save
+
+npm install --save jimp
+
+
 ## Available Scripts
 
 In the project directory, you can run:

@@ -172,7 +172,7 @@ p {
     font-family: Tahoma, Geneva, sans-serif;
 }
 
-.mybutton {
+button {
     border: none;
     outline: 0;
     padding: 12px;
@@ -188,7 +188,7 @@ p {
     font-family: Tahoma, Geneva, sans-serif;
   }
 
-  .mybutton:hover{
+button:hover{
     background-color: #ff933b;
 }
 

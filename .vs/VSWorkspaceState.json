@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\client",
+    "\\client\\src",
+    "\\client\\src\\components",
+    "\\client\\src\\components\\TeamCard",
+    "\\client\\src\\views",
+    "\\client\\src\\views\\AdminDashboard",
+    "\\server",
+    "\\server\\controllers",
+    "\\server\\models"
+  ],
+  "SelectedNode": "\\server\\controllers\\tile.server.controller.js",
+  "PreviewInSolutionExplorer": false
+}
