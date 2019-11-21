@@ -88,7 +88,8 @@ class AdminDashboard extends React.Component {
         return (
             <div className="App">
                 <h1>Admin Dashboard</h1>
-
+                <h4>Here you can edit the contents of your website. Make sure to save your changes once you're done editing!</h4>
+                <br></br>
                 <div className="colStyle">
                     <Collapsible trigger={homeTrigger} className="headerStyle" transitionTime="10" transitionCloseTime="10">
                         <form className="formStyle" id="homePage">
@@ -151,7 +152,7 @@ class AdminDashboard extends React.Component {
 
         <h2>Add a team member:</h2>
                         <form>
-                            <input type="text" placeholder="Name of member to delete" ref="input" />
+                            <input type="text" placeholder="Name of member" ref="input" />
 
                         </form>
 
