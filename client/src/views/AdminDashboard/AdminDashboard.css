@@ -82,8 +82,8 @@ h1{
         background-color: #fda55d;
         text-align: center;
         cursor: pointer;
-        width: 50%;
-        font-size: 22px;
+        width: 20%;
+        font-size: 16px;
         margin-left: auto;
         font-family: Tahoma, Geneva, sans-serif;
       }
@@ -96,5 +96,15 @@ h1{
         content: url("..\..\assets\chevrons-down.svg");
     }
 
-    footer { position: fixed; bottom: 0; }
-
+    textarea{
+      resize: auto;
+      min-height: 75px;
+      max-height: 350px;
+      width: 70%;
+      font-size: 16px; 
+      border-color: #f8994c;
+    }
+    input{
+      font-family: Tahoma, Geneva, sans-serif;
+      font-size:16px;
+    }
