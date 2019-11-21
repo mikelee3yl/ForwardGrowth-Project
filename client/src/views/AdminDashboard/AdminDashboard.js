@@ -150,7 +150,7 @@ class AdminDashboard extends React.Component {
                             Add a team member
         </button>
 
-        <h2>Add a team member:</h2>
+        <h2>Delete a team member:</h2>
                         <form>
                             <input type="text" placeholder="Name of member" ref="input" />
 
