@@ -4,26 +4,59 @@ import app from '../../assets/AppStore.svg';
 import og from '../../assets/OrchardGrove(1).png';
 import demo from '../../assets/ForwardGrowthDemo.png';
 import demo1 from '../../assets/ForwardGrowthDemo-1.png';
-//import Image from 'react-bootstrap/Image'
+import Slider from 'react-slick';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
 
 //Home Page: Sofia & Mark
-//Mark: Static
+//Mark: HTML
 //Sofia: Boostrap and CSS
 
+//npm install react-slick --save
+//npm install slick-carousel
 
 function Home() {
+
     const getUser = (_name,_email) => {
         
     };
-  
+
     return (
         <div className="App">
-            <h1>Home Page</h1>       
+
+            <h1>Home Page</h1> 
+            <h2 class="font_2">
+                <span class="color_11">
+                    Backpack Adventurers
+                </span>
+            </h2>
+            {/* <p className="font_7">
+            A gaming app that will teach about the fundamentals of budgeting and traveling
+            </p> */}
+                <Slider
+                speed={500}
+                slidesToShow={1}
+                slidesToScroll={1}
+                infinite={true}
+                dots={true}
+                autoplay={true}
+                autoplaySpeed={3000}
+                cssEase={"linear"}
+                >
+                    <div>
+                        <img className="graphics" src={demo} alt="Backpack Adventures Gaming App"></img>
+                    </div>
+                    <div>
+                        <img className="graphics" src={demo1} alt="Backpack Adventures Gaming App"></img>
+                    </div>
+                </Slider>
                 <div className="container-fluid bg-1 text-center">
-                    <h1>Backpack Adventures</h1>
-                    <a target="_blank" rel="noopener noreferrer" href="https://apps.apple.com/us/app/temple-run/id420009108?mt=8"><img src ={app} width={'120 px'} height={'100 px'} alt = "App Store"></img></a>
+                    <a target="_blank" rel="noopener noreferrer" href="https://apps.apple.com/us/app/temple-run/id420009108?mt=8">
+                        <img src ={app} width={'180 px'} height={'150 px'} alt = "App Store"></img>
+                    </a>
                 </div>
-                <div className="bg-2 text-center">
+                <div className="container-fluid bg-6 text-center">
                     <h1>Features</h1>
                     <h2> Company </h2>
                         <p>
@@ -40,7 +73,7 @@ function Home() {
                             but Orchard Grove comes with in-app purchases. 
                         </p>
                 </div>
-                <div className="bg-3 text-center">
+                <div className="container-fluid bg-6 text-center">
                     <h1>About</h1>
                         <p>
                             Orchard will provide a service that will help the user 
@@ -57,19 +90,7 @@ function Home() {
                              similarly to the mechanics of a video game.
                         </p>
                 </div>
-                <div className="bg-4 text-center">
-                    <h1>Screenshots</h1>
-                    {/* <div className="bg">
-                        <img src={og} alt="Backpack Adventures Gaming App"></img>
-                    </div> */}
-                    <div className="bg">
-                        <img className="graphics" src={demo} alt="Backpack Adventures Gaming App"></img>
-                    </div>
-                    <div className="bg">
-                        <img className="graphics" src={demo1} alt="Backpack Adventures Gaming App"></img>
-                    </div>
-                </div>
-                <div className="bg-5 text-center">
+                <div className="container-fluid bg-6 text-center">
                     <h1>Be in touch</h1>
                     <form>
                         <div className="form-row">
