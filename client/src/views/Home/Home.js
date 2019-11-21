@@ -1,7 +1,6 @@
 import React from 'react';
 import './Home.css'
 import app from '../../assets/AppStore.svg';
-import og from '../../assets/OrchardGrove(1).png';
 import demo from '../../assets/ForwardGrowthDemo.png';
 import demo1 from '../../assets/ForwardGrowthDemo-1.png';
 import Slider from 'react-slick';
@@ -33,10 +32,32 @@ const listServe = (subject, body) => {
 
 };
 class Home extends React.Component {
-    render() {
-        const getUser = (_name, _email) => {
-
+    constructor(props) {
+        super(props);
+        this.state = {
+            company: '',
+            payment: '',
+            about: '',
         };
+
+    }
+    componentDidMount() {
+
+        fetch('/api/get_home')
+            .then(res => {
+                return res.text();
+            })
+            .then(res => {
+                var obj = JSON.parse(res);
+
+                this.setState({
+                    company: obj.company,
+                    payment: obj.payment,
+                    about: obj.about
+                })
+            })
+    }
+    render() {
         this.inputRef = React.createRef();
 
         return (
@@ -75,36 +96,13 @@ class Home extends React.Component {
                 <div className="container-fluid bg-6 text-center">
                     <h1>Features</h1>
                     <h2> Company </h2>
-                    <p>
-                        Forward Growth is company that focuses on providing
-                        a service for educational applications to tutoring
-                        and early learning resources. This company was created
-                        to bridge the gap between financial literacy and youth.
-                        Our commitment is to better serve lower income families
-                        with the ability to learn about saving money.
-                        </p>
+                    <p>{this.state.company}</p>
                     <h2>Payment Methods</h2>
-                    <p>
-                        The payment method for this application is free to download
-                        but Orchard Grove comes with in-app purchases.
-                        </p>
+                    <p>{this.state.payment}</p>
                 </div>
                 <div className="container-fluid bg-6 text-center">
                     <h1>About</h1>
-                    <p>
-                        Orchard will provide a service that will help the user
-                        complete daily goals to save money. Each goal will have
-                        a growth tree and every time you save up for the goal.
-                        The tree will create an animation of your progress on the
-                        goal. Daily friendly reminders to remember to save money.
-                        A list that will hold all your goal names, deadlines, and
-                        amounts. (It will act as a budget list for all your saving
-                        goals.) Every time you aim to save money towards your
-                        budgeting goals you can earn points each time you update it.
-                         If you earn enough points, you can receive special badges
-                         for the user as an incentive for saving. It’s operated
-                         similarly to the mechanics of a video game.
-                        </p>
+                    <p>{this.state.about}</p>
                 </div>
                 <div className="container-fluid bg-6 text-center">
                     <h1>Be in touch</h1>
