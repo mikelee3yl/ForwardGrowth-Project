@@ -152,15 +152,13 @@ class AdminDashboard extends React.Component {
 
         <h2>Delete a team member:</h2>
                         <form>
-                            <input type="text" placeholder="Name of member" ref="input" />
+                            <input type="text" placeholder="Name of member" ref="deleteName" />
 
                         </form>
 
                         <button
                             onClick={() => {
                                 if (this.refs.deleteName.value) {
-
-
                                     deleteTile(this.refs.deleteName.value).then(({ message }) => {
                                         alert(message);
                                     });
