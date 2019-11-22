@@ -17,6 +17,7 @@
   .container {
     text-align: center;
     padding: 2px 16px;
+    position: relative;
   }
   
   .card-row table{

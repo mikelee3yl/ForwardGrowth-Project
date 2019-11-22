@@ -152,8 +152,7 @@ class AdminDashboard extends React.Component {
         </button>
 
         <h2>Delete a team member:</h2>
-                        <br></br>
-                        <TeamCardsAdmin></TeamCardsAdmin>
+                    <TeamCardsAdmin></TeamCardsAdmin>
                     </Collapsible>
                     <Collapsible trigger={blogTrigger} className="headerStyle" transitionTime="10" transitionCloseTime="10">
                         <form className="formStyle" id="socialMedia">

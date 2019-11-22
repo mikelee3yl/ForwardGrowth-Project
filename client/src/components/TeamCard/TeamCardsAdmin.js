@@ -1,10 +1,30 @@
 import React from 'react';
 import './TeamCards.css';
-import avatar from '../../assets/img_avatar.png'
 var Jimp = require('jimp')
 const fs = require('fs');
 
 //This file is intended to create a grid of cards pulled from the database
+
+{/* <form>
+                            <input type="text" placeholder="Name of member" ref="deleteName" />
+
+                        </form>
+
+                        <button
+                            onClick={() => {
+                                if (this.refs.deleteName.value) {
+                                    deleteTile(this.refs.deleteName.value).then(({ message }) => {
+                                        alert(message);
+                                    });
+                                }
+                                else {
+                                    alert("Make sure all entries are completed.");
+                                }
+                            }}
+                        >
+                            Delete a team member
+        </button> */}
+
 
 const deleteTile = (name) => {
     return fetch("/api/delete_tile", {
@@ -48,13 +68,10 @@ render() {
                     <p>{person.position}</p>
                     <button
                             onClick={() => {
-                                if (this.refs.deleteName.value) {
-                                    deleteTile(this.refs.deleteName.value).then(({ message }) => {
+                                if (person.name) {
+                                    deleteTile(person.name).then(({ message }) => {
                                         alert(message);
                                     });
-                                }
-                                else {
-                                    alert("Make sure all entries are completed.");
                                 }
                             }}
                         >
