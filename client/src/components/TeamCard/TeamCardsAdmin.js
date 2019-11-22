@@ -83,7 +83,6 @@ render() {
     });
         return (
             <div className="wrapper">
-            
                 {cards}
             </div>
             
