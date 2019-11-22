@@ -15,6 +15,8 @@ npm install node-mailjet
 
 npm install react-collapsible --save
 
+npm install --save jimp
+
 
 ## Available Scripts
 
