@@ -1,6 +1,7 @@
 import React from 'react';
 import './AdminDashboard.css';
 import Collapsible from 'react-collapsible';
+import TeamCardsAdmin from '../../components/TeamCard/TeamCardsAdmin';
 
 const homeTrigger = <h1>Home Page</h1>
 const aboutTrigger = <h1>About the Team Page</h1>
@@ -151,26 +152,8 @@ class AdminDashboard extends React.Component {
         </button>
 
         <h2>Delete a team member:</h2>
-                        <form>
-                            <input type="text" placeholder="Name of member" ref="deleteName" />
-
-                        </form>
-
-                        <button
-                            onClick={() => {
-                                if (this.refs.deleteName.value) {
-                                    deleteTile(this.refs.deleteName.value).then(({ message }) => {
-                                        alert(message);
-                                    });
-                                }
-                                else {
-                                    alert("Make sure all entries are completed.");
-                                }
-                            }}
-                        >
-                            Delete a team member
-        </button>
-
+                        <br></br>
+                        <TeamCardsAdmin></TeamCardsAdmin>
                     </Collapsible>
                     <Collapsible trigger={blogTrigger} className="headerStyle" transitionTime="10" transitionCloseTime="10">
                         <form className="formStyle" id="socialMedia">
