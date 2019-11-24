@@ -1,4 +1,3 @@
-
 .wrapper {
     /** Top padding so that initially, the content is below the header **/
     padding-top: 100px;
@@ -63,4 +62,12 @@ img.banner {
   /*Ensures that the color of a link does not change color once visited*/
 a{
     color: #134e13;
+}
+
+.login{
+  font-family: Tahoma, Geneva, sans-serif; 
+  position: absolute; 
+  top: 20px; 
+  right: 20px;
+  text-decoration: none;
 }
