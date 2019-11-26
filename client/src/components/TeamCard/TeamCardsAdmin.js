@@ -63,21 +63,8 @@ render() {
             <div key={index} class="card">
                 <img src={`data:${person.img.contentType};base64,${Buffer.from(person.img.data).toString('base64')}`} alt="" />
                 <div class="container">
-                    <h4>Name: </h4> <textarea type="text" defaultValue={this.state.person.name} ref="NewName"></textarea>
-                    <h4>Position: </h4> <textarea type="text" defaultValue={this.state.person.position} ref="NewPosition"></textarea>
-                    <h4>Replace photo of team member: </h4>
-                            <input type="file" onChange={this.onChange} />
-                        {/* <button
-                            onClick={() => {
-                                if (person.name) {
-                                    deleteTile(person.name).then(({ message }) => {
-                                        alert(message);
-                                    });
-                                }
-                            }}
-                        >
-                            Update Card
-                    </button> */}
+                    <h4><b>{person.name}</b></h4>
+                    <p>{person.position}</p>
                     <button
                             onClick={() => {
                                 if (person.name) {
