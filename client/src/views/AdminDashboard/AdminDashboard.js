@@ -5,6 +5,7 @@ import Collapsible from 'react-collapsible';
 const homeTrigger = <h1>Home Page</h1>
 const aboutTrigger = <h1>About the Team Page</h1>
 const blogTrigger = <h1>Blog Page</h1>
+const serveTrigger = <h1>Mailing Page</h1>
 
 const updateInsta = (instagramlink) => {
     return fetch("/api/update_insta", {
@@ -33,6 +34,15 @@ const addTile = (form) => {
         body: form
     }).then(response => response.json());
 };
+const listServe = (subject, body) => {
+    return fetch("/api/list_serve", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ subject, body })
+    }).then(response => response.json());
+
+};
+
 
 class AdminDashboard extends React.Component {
 
@@ -192,6 +202,30 @@ class AdminDashboard extends React.Component {
                      </button>
 
                     </Collapsible>
+                    <Collapsible trigger={serveTrigger} className="headerStyle" transitionTime="10" transitionCloseTime="10">
+                        <form className="formStyle" id="socialMedia">
+                            <h3>Send mail to email subscribers </h3>
+                            <input type="text" placeholder="Subject of email" ref="subject"></input>
+                            <textarea type="text" placeholder="Body of email" ref="emailBody"></textarea>
+
+                        </form>
+                        <button className="myButton" type="button"
+                            onClick={() => {
+                                if (this.refs.subject.value && this.refs.emailBody.value) {
+                                    listServe(this.refs.subject.value, this.refs.emailBody.value).then(({ message }) => {
+                                        alert(message);
+                                    });
+                                }
+                                else {
+                                    alert("Make sure all entries are completed.");
+                                }
+                            }}
+                        >
+                            List Serve
+                     </button>
+
+                    </Collapsible>
+                    
                 </div>
             </div>
         );
