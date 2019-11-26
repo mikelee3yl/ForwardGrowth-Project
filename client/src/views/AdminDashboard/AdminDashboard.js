@@ -13,11 +13,11 @@ const updateInsta = (instagramlink) => {
         body: JSON.stringify({ instagramlink })
     }).then(response => response.json());
 };
-const updateHome = (company, payment, about) => {
+const updateHome = (company, payment, about, applink) => {
     return fetch("/api/update_home", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ company, payment, about })
+        body: JSON.stringify({ company, payment, about, applink })
     }).then(response => response.json());
 };
 const deleteTile = (name) => {
@@ -44,6 +44,7 @@ class AdminDashboard extends React.Component {
             payment: '',
             about: '',
             instagramlink: '',
+            applink:'',
         };
 
     }
@@ -59,7 +60,8 @@ class AdminDashboard extends React.Component {
                 this.setState({
                     company: obj.company,
                     payment: obj.payment,
-                    about: obj.about
+                    about: obj.about,
+                    applink: obj.applink
                 })
             })
 
@@ -101,16 +103,21 @@ class AdminDashboard extends React.Component {
                             <br></br>
                             <textarea type="text" defaultValue={this.state.about} ref="about"></textarea>
                             <br></br>
+                            <h3><u>Link to application: </u></h3>
+                            <br></br>
+                            <input type="text" defaultValue={this.state.applink} ref="applink"></input>
+                            <br></br>
                         </form>
                         <button
                             onClick={() => {
-                                if (this.refs.company.value && this.refs.payment.value && this.refs.about.value) {
-                                    updateHome(this.refs.company.value, this.refs.payment.value, this.refs.about.value).then(({ message }) => {
+                                if (this.refs.company.value && this.refs.payment.value && this.refs.about.value && this.refs.applink.value) {
+                                    updateHome(this.refs.company.value, this.refs.payment.value, this.refs.about.value, this.refs.applink.value).then(({ message }) => {
                                         alert('Home page successfully updated.');
                                     });
                                 }
                                 else {
-                                    alert("Make sure all entries are completed.");
+                                     alert("Make sure all entries are completed.");
+                                     console.log(this.refs);
                                 }
                             }}>
                             Update home

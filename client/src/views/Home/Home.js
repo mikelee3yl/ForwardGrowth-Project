@@ -38,6 +38,7 @@ class Home extends React.Component {
             company: '',
             payment: '',
             about: '',
+            applink: '',
         };
 
     }
@@ -53,7 +54,8 @@ class Home extends React.Component {
                 this.setState({
                     company: obj.company,
                     payment: obj.payment,
-                    about: obj.about
+                    about: obj.about,
+                    applink: obj.applink
                 })
             })
     }
@@ -90,7 +92,7 @@ class Home extends React.Component {
                     </div>
                 </Slider>
                 <div className="container-fluid bg-1 text-center">
-                    <a target="_blank" rel="noopener noreferrer" href="https://apps.apple.com/us/app/temple-run/id420009108?mt=8">
+                    <a target="_blank" rel="noopener noreferrer" href={this.state.applink}>
                         <img src ={app} width={'180 px'} height={'150 px'} alt = "App Store"></img>
                     </a>
                 <div className="container-fluid bg-6 text-center">
