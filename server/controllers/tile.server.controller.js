@@ -48,7 +48,29 @@ exports.get = function (req, res) {
 
         }
     });
-}
+};
+
+// exports.update = function (req, res) {
+
+//     /* Instantiate a Listing */
+//     //var insta = new home({ code: 0,  company: req.body.company, payment: req.body.payment, about: req.body.about });
+//     ///* Then save the listing */
+//     //insta.save(function (err) {
+//     //    if (err) {
+//     //        res.status(400).send(err);
+//     //    } else {
+//     //        res.send('{"message":"Instagram link successfully created."}');
+//     //    }
+//     //});
+//     tile.findOneAndUpdate({ 'code': 0 }, { 'name': req.body.name, 'position': req.body.position}, function (err, list) {
+//         if (err) {
+//             res.status(400).send(err);
+//         } else {
+//             res.send('{"message":"Home page successfully updated."}');
+//         }
+//     });
+
+// };
 
 
 

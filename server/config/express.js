@@ -92,6 +92,9 @@ module.exports.init = () => {
     app.get("/api/get_tile", function (req, res) {
         tileCtrl.get(req, res);
     });
+    // app.get("/api/update_tile", function (req, res) {
+    //     tileCtrl.update(req, res);
+    // });
     // add a router
     app.use('/api/example', exampleRouter);
 

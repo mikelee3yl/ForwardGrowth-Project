@@ -21,6 +21,13 @@ const updateHome = (company, payment, about) => {
         body: JSON.stringify({ company, payment, about })
     }).then(response => response.json());
 };
+// const updateCards = (name, position, photo) => {
+//     return fetch("/api/update_home", {
+//         method: "POST",
+//         headers: { "Content-Type": "application/json" },
+//         body: JSON.stringify({ company, payment, about })
+//     }).then(response => response.json());
+// };
 const deleteTile = (name) => {
     return fetch("/api/delete_tile", {
         method: "POST",
@@ -153,6 +160,7 @@ class AdminDashboard extends React.Component {
 
         <h2>Delete a team member:</h2>
                     <TeamCardsAdmin></TeamCardsAdmin>
+
                     </Collapsible>
                     <Collapsible trigger={blogTrigger} className="headerStyle" transitionTime="10" transitionCloseTime="10">
                         <form className="formStyle" id="socialMedia">
