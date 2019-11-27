@@ -59,10 +59,10 @@ exports.update = function (req, res) {
         if (err) {
           res.json(err);
         }
-    
-        _tile.name = req.body.name;
-        _tile.position = req.body.position;
-        _tile.photo = req.body.photo;
+        
+        if(_tile.name != req.body.name) _tile.name = req.body.name;
+        if (_tile.position != req.body.position) _tile.position = req.body.position;
+        // _tile.photo = req.body.photo;
     
         _tile.save(function (err) {
           if (err)
