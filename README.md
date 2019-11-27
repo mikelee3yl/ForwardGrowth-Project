@@ -13,6 +13,8 @@ npm i react-instagram-embed
 
 npm install node-mailjet 
 
+npm install --save multer
+
 ## Available Scripts
 
 In the project directory, you can run:
