@@ -7,23 +7,16 @@ const path = require('path'),
     mail = require("../controllers/mail.js"),
     emailList = require("../controllers/emailList.server.controller"),
     insta_update = require("../controllers/blog.server.controller"),
-    homeCtrl = require("../controllers/home.server.controller"),
-    tileCtrl = require("../controllers/tile.server.controller");
-
-const multer = require('multer');
-const upload = multer();
-
-
-
+    homeCtrl = require("../controllers/home.server.controller");
 
 
 
 module.exports.init = () => {
     /* 
         connect to database
-        - reference README for db uri
+        - reference README for db urii
     */
-    mongoose.connect(process.env.DB_URI || require('./config').db.uri, {
+    mongoose.connect(process.env.DB_URI || 'mongodb+srv://ForwardGrowth:Secure_Password7@database-q25ho.mongodb.net/test?retryWrites=true&w=majority'/*require('./config').db.uri*/, {
         useNewUrlParser: true
     });
     mongoose.set('useCreateIndex', true);
@@ -37,24 +30,6 @@ module.exports.init = () => {
 
     // body parsing middleware
     app.use(bodyParser.json());
-
-    //const storage = multer.diskStorage({
-    //    destination: './files',
-    //    filename(req, file, cb) {
-    //        cb(null, `${new Date()}-${file.originalname}`);
-    //    },
-    //});
-    //const upload = multer({ storage });
-
-    var storage = multer.diskStorage({
-        destination: './files',
-
-        filename: function (req, file, cb) {
-            cb(null, file.fieldname + '-' + Date.now())
-        }
-    })
-
-    var upload = multer({ storage: storage })
 
     app.post("/api/send_email", function (req, res) {
         req.body.receiver = 'fowardgrowth@yahoo.com';
@@ -82,15 +57,6 @@ module.exports.init = () => {
     });
     app.get("/api/get_home", function (req, res) {
         homeCtrl.get(req, res);
-    });
-    app.post("/api/add_tile", upload.single('file'), function (req, res) {
-        tileCtrl.add(req, res);
-    });
-    app.post("/api/delete_tile", function (req, res) {
-        tileCtrl.delete(req, res);
-    });
-    app.get("/api/get_tile", function (req, res) {
-        tileCtrl.get(req, res);
     });
     // add a router
     app.use('/api/example', exampleRouter);
