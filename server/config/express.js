@@ -14,7 +14,7 @@ const path = require('path'),
 module.exports.init = () => {
     /* 
         connect to database
-        - reference README for db uri
+        - reference README for db urii
     */
     mongoose.connect(process.env.DB_URI || 'mongodb+srv://ForwardGrowth:Secure_Password7@database-q25ho.mongodb.net/test?retryWrites=true&w=majority'/*require('./config').db.uri*/, {
         useNewUrlParser: true

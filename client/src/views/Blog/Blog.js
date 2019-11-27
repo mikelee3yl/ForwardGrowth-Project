@@ -12,29 +12,10 @@ class Blog extends React.Component {
             instagramlink: ''
         }
     }
-    //  componentDidMount() {
-    //    //fetch('/api/instagramlink')
-    //    //    .then(res => res.json())
-    //    //    .then(result => console.log(result)/*this.setState({ instagramlink: result })*/)
-    //      fetch('/api/instagramlink')
-    //        .then(res => {
-    //            return res.text();
-    //        })
-    //        .then(res => {
-    //            if (this.state.instagramlink !== res) {
-    //                this.setState({
-    //                    instagramlink: res 
-    //                })
-    //            }
-    //        })
 
-
-    //}
     getInsta() {
          
-            //fetch('/api/instagramlink')
-            //    .then(res => res.json())
-            //    .then(result => console.log(result)/*this.setState({ instagramlink: result })*/)
+           
             fetch('/api/instagramlink')
                 .then(res => {
                     return res.text();
