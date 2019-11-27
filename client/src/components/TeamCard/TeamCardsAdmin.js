@@ -25,11 +25,11 @@ const fs = require('fs');
                             Delete a team member
         </button> */}
 
-const updateTile = (name) => {
+const updateTile = (name, position, photo) => {
     return fetch("/api/update_tile", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name })
+        body: JSON.stringify({ name, position, photo })
     }).then(response => response.json());
 };
 const deleteTile = (name) => {
@@ -75,11 +75,11 @@ class TeamCards extends React.Component {
                         <input type="file" onChange={this.onChange} />
                         <button
                             onClick={() => {
-                                if (person.name) {
-                                    updateTile(person.name).then(({ message }) => {
+                                // if (person.name) {
+                                    updateTile(person.name,person.position,person.photo).then(({ message }) => {
                                         alert(message);
                                     });
-                                }
+                                // }
                             }}
                         >
                             Update Card
