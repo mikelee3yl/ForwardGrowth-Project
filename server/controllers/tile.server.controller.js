@@ -52,23 +52,24 @@ exports.get = function (req, res) {
 
 
 exports.update = function (req, res) {
-    console.log(req);
-    var _tile = req;
-    tile.findById(_tile._id, function (err, _tile) {
-        if (err) {
-            res.json(err);
-        }
+    //updateTile(person.name,this.refs.NewName, this.refs.NewPosition, this.refs.NewPhoto).then(({ message }) => {
+    //body: JSON.stringify({ originalname, name, position, photo })
 
+    tile.findOne(req.body.originalname, function (err, _tile) {
+        if (err) {
+          res.json(err);
+        }
+    
         _tile.name = req.body.name;
         _tile.position = req.body.position;
         _tile.photo = req.body.photo;
-
+    
         _tile.save(function (err) {
-            if (err)
-                res.json(err);
-            res.json(_tile);
+          if (err)
+            res.json(err);
+          res.json(_tile);
         });
-    });
+      });
 };
 
 
