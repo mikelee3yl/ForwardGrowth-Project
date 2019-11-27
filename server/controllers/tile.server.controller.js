@@ -52,7 +52,23 @@ exports.get = function (req, res) {
 
 
 exports.update = function (req, res) {
-    console.log("help")
+    var _tile = req.tile;
+    tile.findById(tile._id, function (err, _tile) {
+        if (err) {
+            res.json(err);
+        }
+
+        _tile.name = req.body.name;
+        _tile.position = req.body.position;
+        _tile.photo = req.body.photo;
+
+        _tile.save(function (err) {
+            if (err)
+                res.json(err);
+            res.json(_tile);
+        });
+    });
+};
 
 };
 
