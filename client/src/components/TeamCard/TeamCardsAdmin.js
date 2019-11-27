@@ -25,7 +25,13 @@ const fs = require('fs');
                             Delete a team member
         </button> */}
 
-
+const updateTile = (name) => {
+    return fetch("/api/update_tile", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name })
+    }).then(response => response.json());
+};
 const deleteTile = (name) => {
     return fetch("/api/delete_tile", {
         method: "POST",
@@ -53,32 +59,32 @@ class TeamCards extends React.Component {
                 })
             })
     }
-    
 
-render() {
-    const cards = this.state.people.map((person,index) => {
-        
 
-        return (
-            <div key={index} class="card">
-                <img src={`data:${person.img.contentType};base64,${Buffer.from(person.img.data).toString('base64')}`} alt="" />
-                <div class="container">
-                    <h4>Name: </h4> <textarea type="text" defaultValue={person.name} ref="NewName"></textarea>
-                    <h4>Position: </h4> <textarea type="text" defaultValue={person.position} ref="NewPosition"></textarea>
-                    <h4>Replace photo of team member: </h4>
-                            <input type="file" onChange={this.onChange} />
-                        {/* <button
+    render() {
+        const cards = this.state.people.map((person, index) => {
+
+
+            return (
+                <div key={index} class="card">
+                    <img src={`data:${person.img.contentType};base64,${Buffer.from(person.img.data).toString('base64')}`} alt="" />
+                    <div class="container">
+                        <h4>Name: </h4> <textarea type="text" defaultValue={person.name} ref="NewName"></textarea>
+                        <h4>Position: </h4> <textarea type="text" defaultValue={person.position} ref="NewPosition"></textarea>
+                        <h4>Replace photo of team member: </h4>
+                        <input type="file" onChange={this.onChange} />
+                        <button
                             onClick={() => {
                                 if (person.name) {
-                                    deleteTile(person.name).then(({ message }) => {
+                                    updateTile(person.name).then(({ message }) => {
                                         alert(message);
                                     });
                                 }
                             }}
                         >
                             Update Card
-                    </button> */}
-                    <button
+                    </button>
+                        <button
                             onClick={() => {
                                 if (person.name) {
                                     deleteTile(person.name).then(({ message }) => {
@@ -89,16 +95,17 @@ render() {
                         >
                             Delete Card
                     </button>
+                    </div>
                 </div>
-            </div>
-        );
-    });
+            );
+        });
         return (
             <div className="wrapper">
                 {cards}
             </div>
-            
+
         )
     }
 };
+
 export default TeamCards;

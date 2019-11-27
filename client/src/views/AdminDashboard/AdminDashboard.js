@@ -21,13 +21,13 @@ const updateHome = (company, payment, about) => {
         body: JSON.stringify({ company, payment, about })
     }).then(response => response.json());
 };
-// const updateCards = (name, position, photo) => {
-//     return fetch("/api/update_home", {
-//         method: "POST",
-//         headers: { "Content-Type": "application/json" },
-//         body: JSON.stringify({ company, payment, about })
-//     }).then(response => response.json());
-// };
+const updateTile = (name, position, photo) => {
+    return fetch("/api/update_tile", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, position, photo})
+    }).then(response => response.json());
+};
 const deleteTile = (name) => {
     return fetch("/api/delete_tile", {
         method: "POST",
