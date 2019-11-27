@@ -62,7 +62,7 @@ class AdminDashboard extends React.Component {
                 return res.text();
             })
             .then(res => {
-                var obj = JSON.parse(res);
+                var obj = JSON.parse(JSON.stringify(res));
 
                 this.setState({
                     company: obj.company,

@@ -52,16 +52,8 @@ exports.get = function (req, res) {
 
 
 exports.update = function (req, res) {
-//   var _tile = req.tile;
-//   tile.findById(_tile._id, function (err, _tile) {
-//     if (err) {
-//       res.json(err);
-//     }
-    console.log(req)
-    // _tile.name = req.body._tile;
-    // _tile.code = req.body.code;
+    console.log("help")
 
-});
 };
 
 
