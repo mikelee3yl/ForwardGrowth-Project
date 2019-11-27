@@ -52,8 +52,9 @@ exports.get = function (req, res) {
 
 
 exports.update = function (req, res) {
-    var _tile = req.tile;
-    tile.findById(tile._id, function (err, _tile) {
+    console.log(req);
+    var _tile = req;
+    tile.findById(_tile._id, function (err, _tile) {
         if (err) {
             res.json(err);
         }
