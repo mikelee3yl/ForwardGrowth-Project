@@ -1,8 +1,13 @@
 import React from 'react';
 import './AdminDashboard.css';
+import Collapsible from 'react-collapsible';
 
+const homeTrigger = <h1>Home Page</h1>
+const aboutTrigger = <h1>About the Team Page</h1>
+const blogTrigger = <h1>Blog Page</h1>
+const serveTrigger = <h1>Mailing Page</h1>
 
-const updateyInsta = (instagramlink) => {
+const updateInsta = (instagramlink) => {
     return fetch("/api/update_insta", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -10,20 +15,41 @@ const updateyInsta = (instagramlink) => {
     }).then(response => response.json());
 };
 const updateHome = (company, payment, about, applink) => {
-
     return fetch("/api/update_home", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ company, payment, about, applink })
     }).then(response => response.json());
-};  
+};
+const deleteTile = (name) => {
+    return fetch("/api/delete_tile", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name })
+    }).then(response => response.json());
+};
+const addTile = (form) => {
+    return fetch("/api/add_tile", {
+        method: "POST",
+        body: form
+    }).then(response => response.json());
+};
+const listServe = (subject, body) => {
+    return fetch("/api/list_serve", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ subject, body })
+    }).then(response => response.json());
+
+};
 
 
-    
 class AdminDashboard extends React.Component {
+
     constructor(props) {
         super(props);
         this.state = {
+            photo: null,
             company: '',
             payment: '',
             about: '',
@@ -31,8 +57,6 @@ class AdminDashboard extends React.Component {
             applink:'',
         };
 
-
-        };
     }
     componentDidMount() {
 
@@ -49,11 +73,29 @@ class AdminDashboard extends React.Component {
                     about: obj.about,
                     applink: obj.applink
                 })
-                console.log(obj.about);
+            })
+
+        fetch('/api/instagramlink')
+            .then(res => {
+                return res.text();
+            })
+            .then(res => {
+                if (this.state.instagramlink !== res) {
+                    this.setState({
+                        instagramlink: res
+                    })
+                }
             })
     }
-    
-    
+
+    onChange = e => {
+
+        this.setState({
+            photo: e.target.files
+        })
+    }
+
+
     render() {
         return (
             <div className="App">
@@ -123,37 +165,77 @@ class AdminDashboard extends React.Component {
                             }}
                         >
                             Add a team member
-
         </button>
-                <form>
-                    <textarea type="text" defaultValue={this.state.company} ref="company"/>
 
-                </form>
-                <form>
-                    <textarea type="text" defaultValue={this.state.payment} ref="payment" />
+        <h2>Delete a team member:</h2>
+                        <form>
+                            <input type="text" placeholder="Name of member" ref="deleteName" />
 
-                </form>
-                <form>
-                    <textarea type="text" defaultValue={this.state.about} ref="about" />
+                        </form>
 
-                </form>
-                <button
-                    onClick={() => {
-                        if (this.refs.company.value && this.refs.payment.value && this.refs.about.value) {
-                            updateyHome(this.refs.company.value , this.refs.payment.value , this.refs.about.value).then(({ message }) => {
-                                alert(message);
-                            });
-                        }
-                        else {
-                            alert("Make sure all entries are completed.");
-                        }
-                    }}
-                >
-                    Update home
+                        <button
+                            onClick={() => {
+                                if (this.refs.deleteName.value) {
+                                    deleteTile(this.refs.deleteName.value).then(({ message }) => {
+                                        alert(message);
+                                    });
+                                }
+                                else {
+                                    alert("Make sure all entries are completed.");
+                                }
+                            }}
+                        >
+                            Delete a team member
         </button>
+
+                    </Collapsible>
+                    <Collapsible trigger={blogTrigger} className="headerStyle" transitionTime="10" transitionCloseTime="10">
+                        <form className="formStyle" id="socialMedia">
+                            <h3>Link to an Instagram post: </h3> <input type="text" defaultValue={this.state.instagramlink} ref="body"></input>
+                        </form>
+                        <button className="myButton" type="button"
+                            onClick={() => {
+                                if (this.refs.body.value) {
+                                    updateInsta(this.refs.body.value).then(({ message }) => {
+                                        alert(message);
+                                    });
+                                }
+                                else {
+                                    alert("Make sure all entries are completed.");
+                                }
+                            }}
+                        >
+                            Update Instagram
+                     </button>
+
+                    </Collapsible>
+                    <Collapsible trigger={serveTrigger} className="headerStyle" transitionTime="10" transitionCloseTime="10">
+                        <form className="formStyle" id="socialMedia">
+                            <h3>Send mail to email subscribers </h3>
+                            <input type="text" placeholder="Subject of email" ref="subject"></input>
+                            <textarea type="text" placeholder="Body of email" ref="emailBody"></textarea>
+
+                        </form>
+                        <button className="myButton" type="button"
+                            onClick={() => {
+                                if (this.refs.subject.value && this.refs.emailBody.value) {
+                                    listServe(this.refs.subject.value, this.refs.emailBody.value).then(({ message }) => {
+                                        alert(message);
+                                    });
+                                }
+                                else {
+                                    alert("Make sure all entries are completed.");
+                                }
+                            }}
+                        >
+                            List Serve
+                     </button>
+
+                    </Collapsible>
+                    
+                </div>
             </div>
-
         );
-    }
+    };
 }
 export default AdminDashboard;

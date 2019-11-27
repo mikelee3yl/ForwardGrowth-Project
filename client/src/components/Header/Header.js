@@ -19,9 +19,8 @@ const Header = () => {
 
 
       <Menu width={'15rem'} customBurgerIcon={<img src={menuButton} />}>
-
         <a id="home" className="menu-item" href="/" style={{ textDecoration: 'none' }}>Home</a>
-        <a id="about" className="menu-item" href="/about" style={{ textDecoration: 'none' }}>About</a>
+        <a id="about" className="menu-item" href="/about" style={{ textDecoration: 'none' }}>About the Team</a>
         <a id="contact" className="menu-item" href="/blog" style={{ textDecoration: 'none' }}>Blog</a>
         
       </Menu>
@@ -30,7 +29,7 @@ const Header = () => {
 
 
 
-    //Below is old code for the top navigation default from the MERN Template 
+    //Below is old code for the top navigation default from the MERN Template in case we want to switch back to this
     // <div className='topnav'>
     //         <Link className="topnav-link" to="/about">About</Link> */}
 
