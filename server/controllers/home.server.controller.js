@@ -11,7 +11,7 @@ exports.update = function (req, res) {
         if (err) {
             res.status(400).send(err);
         } else {
-            res.send('{"message":"Instagram link successfully updated."}');
+            res.send('{"message":"Home page successfully updated."}');
         }
     });
 
