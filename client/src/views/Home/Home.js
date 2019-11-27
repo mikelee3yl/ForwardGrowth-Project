@@ -1,19 +1,14 @@
 import React from 'react';
 import './Home.css'
 import app from '../../assets/AppStore.svg';
+import og from '../../assets/OrchardGrove(1).png';
 import demo from '../../assets/ForwardGrowthDemo.png';
 import demo1 from '../../assets/ForwardGrowthDemo-1.png';
-import Slider from 'react-slick';
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-
+//import Image from 'react-bootstrap/Image'
 
 //Home Page: Sofia & Mark
-//Mark: HTML
+//Mark: Static
 //Sofia: Boostrap and CSS
-
-//npm install react-slick --save
-//npm install slick-carousel
 
 const newEmail = (name, email) => {
     return fetch("/api/add_email", {
@@ -23,7 +18,14 @@ const newEmail = (name, email) => {
     }).then(response => response.json());
 
 };
+const listServe = (subject, body) => {
+    return fetch("/api/list_serve", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ subject, body })
+    }).then(response => response.json());
 
+};
 class Home extends React.Component {
     constructor(props) {
         super(props);
@@ -52,54 +54,68 @@ class Home extends React.Component {
                 })
             })
     }
+
     render() {
+        const getUser = (_name, _email) => {
+
+        };
         this.inputRef = React.createRef();
 
         return (
             <div className="App">
-                {/* <h1>Home Page</h1> */}
-                <h1>Home Page</h1> 
-            <h2 class="font_2">
-                <span class="color_11">
-                    Backpack Adventurers
-                </span>
-            </h2>
-            {/* <p className="font_7">
-            A gaming app that will teach about the fundamentals of budgeting and traveling
-            </p> */}
-                <Slider
-                speed={500}
-                slidesToShow={1}
-                slidesToScroll={1}
-                infinite={true}
-                dots={true}
-                autoplay={true}
-                autoplaySpeed={3000}
-                cssEase={"linear"}
-                >
-                    <div>
-                        <img className="graphics" src={demo} alt="Backpack Adventures Gaming App"></img>
-                    </div>
-                    <div>
-                        <img className="graphics" src={demo1} alt="Backpack Adventures Gaming App"></img>
-                    </div>
-                </Slider>
+                <h1>Home Page</h1>
                 <div className="container-fluid bg-1 text-center">
                     <a target="_blank" rel="noopener noreferrer" href={this.state.applink}>
                         <img src ={app} width={'180 px'} height={'150 px'} alt = "App Store"></img>
                     </a>
                 <div className="container-fluid bg-6 text-center">
+
                     <h1>Features</h1>
                     <h2> Company </h2>
-                    <p>{this.state.company}</p>
+                    <p>
+                        Forward Growth is company that focuses on providing
+                        a service for educational applications to tutoring
+                        and early learning resources. This company was created
+                        to bridge the gap between financial literacy and youth.
+                        Our commitment is to better serve lower income families
+                        with the ability to learn about saving money.
+                        </p>
                     <h2>Payment Methods</h2>
-                    <p>{this.state.payment}</p>
+                    <p>
+                        The payment method for this application is free to download
+                        but Orchard Grove comes with in-app purchases.
+                        </p>
                 </div>
-                <div className="container-fluid bg-6 text-center">
+                <div className="bg-3 text-center">
                     <h1>About</h1>
-                    <p>{this.state.about}</p>
+                    <p>
+                        Orchard will provide a service that will help the user
+                        complete daily goals to save money. Each goal will have
+                        a growth tree and every time you save up for the goal.
+                        The tree will create an animation of your progress on the
+                        goal. Daily friendly reminders to remember to save money.
+                        A list that will hold all your goal names, deadlines, and
+                        amounts. (It will act as a budget list for all your saving
+                        goals.) Every time you aim to save money towards your
+                        budgeting goals you can earn points each time you update it.
+                         If you earn enough points, you can receive special badges
+                         for the user as an incentive for saving. It’s operated
+                         similarly to the mechanics of a video game.
+                        </p>
                 </div>
-                <div className="container-fluid bg-6 text-center">
+                <div className="bg-4 text-center">
+                    <h1>Screenshots</h1>
+                    {/* <div className="bg">
+                        <img src={og} alt="Backpack Adventures Gaming App"></img>
+                    </div> */}
+                    <div className="bg">
+                        <img className="graphics" src={demo} alt="Backpack Adventures Gaming App"></img>
+                    </div>
+                    <div className="bg">
+                        <img className="graphics" src={demo1} alt="Backpack Adventures Gaming App"></img>
+                    </div>
+                </div>
+                <div className="bg-5 text-center">
                     <h1>Be in touch</h1>
                     <form>
                         <div className="form-row">
@@ -128,8 +144,15 @@ class Home extends React.Component {
                         Add Email
                     </button>
                 </div>
-                
-            </div>
+                <button
+                    onClick={() => {
+                        listServe('testy', 'wazoo is an odd word').then(({ message }) => {
+                            alert(message);
+                        });
+                    }}
+                >
+                    list serve test
+                    </button>
             </div>
         );
     }

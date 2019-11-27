@@ -4,13 +4,13 @@
     "\\client",
     "\\client\\src",
     "\\client\\src\\views",
+    "\\client\\src\\views\\About",
     "\\client\\src\\views\\AdminDashboard",
     "\\client\\src\\views\\Blog",
+    "\\client\\src\\views\\Home",
     "\\server",
-    "\\server\\config",
-    "\\server\\controllers",
-    "\\server\\models"
+    "\\server\\config"
   ],
-  "SelectedNode": "\\server\\config",
+  "SelectedNode": "\\client\\src\\views\\AdminDashboard\\AdminDashboard.js",
   "PreviewInSolutionExplorer": false
 }
