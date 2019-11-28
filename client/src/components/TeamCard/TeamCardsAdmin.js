@@ -47,8 +47,8 @@ class TeamCards extends React.Component {
                 <div key={index} class="card">
                     <img src={`data:${person.img.contentType};base64,${Buffer.from(person.img.data).toString('base64')}`} alt="" />
                     <div class="container">
-                        <h4>Name: </h4> <textfield type="text" defaultValue={person.name} ref="NewName"></textfield>
-                        <h4>Position: </h4> <textfield type="text" defaultValue={person.position} ref="NewPosition"></textfield>
+                        <h4>Name: </h4> <input type="text" defaultValue={person.name} ref="NewName"></input>
+                        <h4>Position: </h4> <input type="text" defaultValue={person.position} ref="NewPosition"></input>
                         <h4>Replace photo of team member: </h4>
                         <input type="file" onChange={this.onChange} ref="NewPhoto"/>
                         <button
