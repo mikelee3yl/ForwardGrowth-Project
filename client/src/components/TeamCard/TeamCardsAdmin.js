@@ -75,7 +75,7 @@ class TeamCards extends React.Component {
                         <input type="file" onChange={this.onChange} ref="NewPhoto"/>
                         <button
                             onClick={() => {
-                                    updateTile(person.name,this.refs.NewName, this.refs.NewPosition,this.refs.NewPhoto).then(({ message }) => {
+                                    updateTile(person.name,this.refs.NewName.value, this.refs.NewPosition.value,this.refs.NewPhoto.value).then(({ message }) => {
                                         alert("Team member has been updated");
                                     });
                             }}
