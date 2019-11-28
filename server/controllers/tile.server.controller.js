@@ -54,12 +54,11 @@ exports.get = function (req, res) {
 exports.update = function (req, res) {
     //updateTile(person.name,this.refs.NewName, this.refs.NewPosition, this.refs.NewPhoto).then(({ message }) => {
     //body: JSON.stringify({ originalname, name, position, photo })
-
-    tile.findOne(req.body.originalname, function (err, _tile) {
+    var original = String(req.body.originalname);
+    tile.findOne({name: original}, function (err, _tile) {
         if (err) {
           res.json(err);
         }
-        
         if(_tile.name != req.body.name) _tile.name = req.body.name;
         if (_tile.position != req.body.position) _tile.position = req.body.position;
         // _tile.photo = req.body.photo;
