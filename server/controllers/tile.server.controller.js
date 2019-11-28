@@ -57,7 +57,7 @@ exports.update = function (req, res) {
     var original = String(req.body.originalname);
     tile.findOne({name: original}, function (err, _tile) {
         if (err) {
-            res.status(400).send(err);
+          res.json("err");
         }
         if(_tile.name != req.body.name) _tile.name = req.body.name;
         if (_tile.position != req.body.position) _tile.position = req.body.position;
@@ -68,6 +68,7 @@ exports.update = function (req, res) {
             res.json(err);
           res.json(_tile);
         });
+        res.send('{"message":"Team member has been updated"');
       });
 };
 

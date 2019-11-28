@@ -3,28 +3,6 @@ import './TeamCards.css';
 var Jimp = require('jimp')
 const fs = require('fs');
 
-//This file is intended to create a grid of cards pulled from the database
-
-{/* <form>
-                            <input type="text" placeholder="Name of member" ref="deleteName" />
-
-                        </form>
-
-                        <button
-                            onClick={() => {
-                                if (this.refs.deleteName.value) {
-                                    deleteTile(this.refs.deleteName.value).then(({ message }) => {
-                                        alert(message);
-                                    });
-                                }
-                                else {
-                                    alert("Make sure all entries are completed.");
-                                }
-                            }}
-                        >
-                            Delete a team member
-        </button> */}
-
 const updateTile = (originalname, name, position, photo) => {
     return fetch("/api/update_tile", {
         method: "POST",
@@ -69,15 +47,17 @@ class TeamCards extends React.Component {
                 <div key={index} class="card">
                     <img src={`data:${person.img.contentType};base64,${Buffer.from(person.img.data).toString('base64')}`} alt="" />
                     <div class="container">
-                        <h4>Name: </h4> <textarea type="text" defaultValue={person.name} ref="NewName"></textarea>
-                        <h4>Position: </h4> <textarea type="text" defaultValue={person.position} ref="NewPosition"></textarea>
+                        <h4>Name: </h4> <textfield type="text" defaultValue={person.name} ref="NewName"></textfield>
+                        <h4>Position: </h4> <textfield type="text" defaultValue={person.position} ref="NewPosition"></textfield>
                         <h4>Replace photo of team member: </h4>
                         <input type="file" onChange={this.onChange} ref="NewPhoto"/>
                         <button
                             onClick={() => {
+                                if (this.refs.NewName.value && this.refs.NewPosition.value)
                                     updateTile(person.name,this.refs.NewName.value, this.refs.NewPosition.value,this.refs.NewPhoto.value).then(({ message }) => {
-                                        alert("Team member has been updated");
+                                        alert(message);
                                     });
+                                else alert("Ensure that the name and position of the team member is valid.");
                             }}
                         >
                             Update Card
@@ -86,7 +66,7 @@ class TeamCards extends React.Component {
                             onClick={() => {
                                 if (person.name) {
                                     deleteTile(person.name).then(({ message }) => {
-                                        alert("Team member has been deleted");
+                                        alert(message);
                                     });
                                 }
                             }}
