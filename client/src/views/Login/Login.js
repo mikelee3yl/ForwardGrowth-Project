@@ -1,38 +1,20 @@
-import React, { useState } from 'react';
 import './Login.css';
+import React, { useState } from 'react';
 import { Link, Redirect } from "react-router-dom";
-import { useAuth } from "../context/auth";
+import { useAuth } from "../../context/auth";
 
-
-//const email = "";
-//const password = "";
-
-
+const email = "";
+const password = "";
 
 class Login extends React.Component {
-    
-    constructor(props) {
-        super(props);
-        this.state = {
-            email: '',
-            password: '',
-            [isLoggedIn, setLoggedIn]: useState(false),
-            [isError, setIsError]: useState(false),
-            [userName, setUserName]: useState(""),
-            [password, setPassword]: useState(""),
-            setAuthTokens: useAuth()
-
-        };
-
-    }
-    
+     
 
 
     //Need to change the below function so that only client can login
     submit(username, password) {
-
+        var boolie = false;
         //console.log(email, password)
-        if (email.length > 0 && password.length > 0) {
+        if (username.length > 0 && password.length > 0) {
             //clear email,pass after login button clicked 
             this.setState({
                 password: ""
@@ -40,10 +22,10 @@ class Login extends React.Component {
             this.setState({
                 username: ""
             })
-                //console.log(this.state.email, this.state.password,"empty")
-                
+            //console.log(this.state.email, this.state.password,"empty")
+
             //Redirect
-            this.props.history.push('/admin')
+            //this.props.history.push('/admin')
 
         }
         fetch("/api/login", {
@@ -51,39 +33,48 @@ class Login extends React.Component {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ username, password })
         }).then(result => {
+            //console.log(result.status);
             if (result.status === 200) {
-                setAuthTokens(result.data);
-                setLoggedIn(true);
+                this.props.tokenUpdate("kapow");
+                //useAuth().setToken("al.kgnlanglagal");
+                boolie = true;
+                //console.log(useAuth().token)
             } else {
-                setIsError(true);
+                //this.state.setIsError = true;
+            } 
+            //console.log(boolie);
+            if (boolie) {
+                return this.props.history.push('/admin')
+                //return null; 
+                //  this.props.history.push('/home')
+
             }
+            else {
+                alert("Incorrect login info.");
+                this.props.history.push('/login')
+            }
+
         })
-        if (isLoggedIn) {
-            return <Redirect to="/admin" />;
-        }
-        else {
-            alert("Incorrect login info.");
-        }
+        
 
     }
 
     render() {
+        //const {  } = this.props;
         return (
             <div className="App" >
                 <div className="Login">
-                    <form id="LoginForm">                   
-                     <h1>Login to the Admin Dashboard</h1>
-
+                    <h1>Login to the Admin Dashboard</h1>
+                    <form id="LoginForm">
                         <h3>Username:</h3> <input name="user"></input>
                         <h3>Password:</h3> <input name="pass"></input>
-                        <br></br>
-                        <button text-align='center' onClick={() => this.submit(
-                            document.getElementById("LoginForm").elements["user"].value,
-                            document.getElementById("LoginForm").elements["pass"].value
-                        )}>Login</button>
                     </form>
                     <br></br>
-
+                    <button className="LoginButton" onClick={() => this.submit(
+                        document.getElementById("LoginForm").elements["user"].value,
+                        document.getElementById("LoginForm").elements["pass"].value
+                    )
+                    }> Login</button>
                 </div>
             </div>
         );

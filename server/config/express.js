@@ -92,6 +92,9 @@ module.exports.init = () => {
     app.get("/api/get_tile", function (req, res) {
         tileCtrl.get(req, res);
     });
+    app.post("/api/login", function (req, res) {
+        res.status(200).send();
+    });
     // add a router
     app.use('/api/example', exampleRouter);
 

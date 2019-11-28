@@ -6,21 +6,22 @@ import AdminDashboard from './views/AdminDashboard/AdminDashboard';
 import NotFound from "./views/NotFound"
 
 
-function PrivateRoute({ component: Component, ...rest }) {
-    const { authTokens } = useAuth();
-
-    return (
-        <Route
-            {...rest}
-            render={props =>
-                authTokens ? (
-                    <Component {...props} />
-                ) : (
-                        <Redirect to="/login" />
-                    )
-            }
-        />
-    );
+class PrivateRoute extends React.Component {
+    //const { authTokens } = useAuth();
+    render() {
+        return (
+            <Route
+                {...() =>
+                    true ? (
+                        <Redirect to="/admin" component={this.props.component}/>
+                        
+                    ) : (
+                            <Redirect to="/login"  />
+                        )
+                }
+            />
+        );
+    }
 }
 export default PrivateRoute;
 

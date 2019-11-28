@@ -1,11 +1,17 @@
 import React from 'react';
 import './AdminDashboard.css';
 import Collapsible from 'react-collapsible';
+import { useAuth } from "../../context/auth";
+import {Redirect } from 'react-router-dom';
+
 
 const homeTrigger = <h1>Home Page</h1>
 const aboutTrigger = <h1>About the Team Page</h1>
 const blogTrigger = <h1>Blog Page</h1>
 const serveTrigger = <h1>Mailing Page</h1>
+
+
+//const { setAuthority } = useAuth();
 
 const updateInsta = (instagramlink) => {
     return fetch("/api/update_insta", {
@@ -43,7 +49,7 @@ const listServe = (subject, body) => {
 
 };
 function logOut() {
-    setAuthTokens();
+    //setAuthority();
 }
 
 
@@ -98,8 +104,11 @@ class AdminDashboard extends React.Component {
         })
     }
 
-
+    
     render() {
+        console.log(this.props.token)
+        if (!(this.props.token === 'blah')) {
+            
         return (
             <div className="App">
                 <h1>Admin Dashboard</h1>
@@ -129,8 +138,8 @@ class AdminDashboard extends React.Component {
                                     });
                                 }
                                 else {
-                                     alert("Make sure all entries are completed.");
-                                     console.log(this.refs);
+                                    alert("Make sure all entries are completed.");
+                                    console.log(this.refs);
                                 }
                             }}>
                             Update home
@@ -170,7 +179,7 @@ class AdminDashboard extends React.Component {
                             Add a team member
         </button>
 
-        <h2>Delete a team member:</h2>
+                        <h2>Delete a team member:</h2>
                         <form>
                             <input type="text" placeholder="Name of member" ref="deleteName" />
 
@@ -235,11 +244,21 @@ class AdminDashboard extends React.Component {
                      </button>
 
                     </Collapsible>
-                    <Button onClick={logOut}>Log out</Button>
+                    <div>
+                        <button onClick={logOut}>Log out</button>
+                    </div>
 
                 </div>
             </div>
-        );
+            );
+        }
+        else {
+            //console.log(this.props.token)
+            this.props.history.push('/login')
+            return null; 
+
+        }
     };
+
 }
 export default AdminDashboard;
