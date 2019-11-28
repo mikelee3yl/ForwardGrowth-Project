@@ -42,6 +42,9 @@ const listServe = (subject, body) => {
     }).then(response => response.json());
 
 };
+function logOut() {
+    setAuthTokens();
+}
 
 
 class AdminDashboard extends React.Component {
@@ -232,7 +235,8 @@ class AdminDashboard extends React.Component {
                      </button>
 
                     </Collapsible>
-                    
+                    <Button onClick={logOut}>Log out</Button>
+
                 </div>
             </div>
         );

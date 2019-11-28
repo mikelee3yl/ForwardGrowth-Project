@@ -13,17 +13,16 @@ import PrivateRoute from './PrivateRoute';
 import { BrowserRouter as Router, Link } from "react-router-dom";
 
 const App = () => {
-    //const [authority, setAuthority] = useState();
+    const [authority, setAuthority] = useState();
 
-    //const setAuth = (data) => {
-    //    localStorage.setItem("tokens", JSON.stringify(data));
-    //    setAuthTokens(data);
-    //}
-    //value  = {.....} right now value = true so the admin page is still accessible 
+    const setAuth = (data) => {
+        localStorage.setItem("tokens", JSON.stringify(data));
+        setAuthority(data);
+    }
     return (
         <div>
             
-            <AuthContext.Provider value={true }>
+            <AuthContext.Provider value={{ authority, setAuthority: setAuth } }>
             
 
                 <Header />

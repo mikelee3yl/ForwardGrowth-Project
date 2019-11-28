@@ -1,23 +1,36 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Login.css';
+import { Link, Redirect } from "react-router-dom";
+import { useAuth } from "../context/auth";
 
 
-const email = "";
-const password = "";
+//const email = "";
+//const password = "";
+
+
 
 class Login extends React.Component {
+    
     constructor(props) {
         super(props);
         this.state = {
             email: '',
-            password: ''
+            password: '',
+            [isLoggedIn, setLoggedIn]: useState(false),
+            [isError, setIsError]: useState(false),
+            [userName, setUserName]: useState(""),
+            [password, setPassword]: useState(""),
+            setAuthTokens: useAuth()
+
         };
 
     }
+    
 
 
     //Need to change the below function so that only client can login
-    submit(email, password) {
+    submit(username, password) {
+
         //console.log(email, password)
         if (email.length > 0 && password.length > 0) {
             //clear email,pass after login button clicked 
@@ -25,14 +38,33 @@ class Login extends React.Component {
                 password: ""
             })
             this.setState({
-                email: ""
+                username: ""
             })
-            //console.log(this.state.email, this.state.password,"empty")
-
+                //console.log(this.state.email, this.state.password,"empty")
+                
             //Redirect
             this.props.history.push('/admin')
 
         }
+        fetch("/api/login", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ username, password })
+        }).then(result => {
+            if (result.status === 200) {
+                setAuthTokens(result.data);
+                setLoggedIn(true);
+            } else {
+                setIsError(true);
+            }
+        })
+        if (isLoggedIn) {
+            return <Redirect to="/admin" />;
+        }
+        else {
+            alert("Incorrect login info.");
+        }
+
     }
 
     render() {
