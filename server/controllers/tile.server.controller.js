@@ -57,12 +57,12 @@ exports.update = function (req, res) {
     var original = String(req.body.originalname);
     tile.findOne({name: original}, function (err, _tile) {
         if (err) {
-          res.json(err);
+            res.status(400).send(err);
         }
         if(_tile.name != req.body.name) _tile.name = req.body.name;
         if (_tile.position != req.body.position) _tile.position = req.body.position;
-        // _tile.photo = req.body.photo;
-    
+        if (req.body.photo != null) _tile.photo = req.body.photo;
+
         _tile.save(function (err) {
           if (err)
             res.json(err);

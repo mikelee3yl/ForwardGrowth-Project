@@ -29,8 +29,7 @@ const updateTile = (originalname, name, position, photo) => {
     return fetch("/api/update_tile", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        // body: JSON.stringify({ originalname, name, position, photo })
-        body: JSON.stringify({ originalname, name, position })
+        body: JSON.stringify({ originalname, name, position, photo })
     }).then(response => response.json());
 };
 const deleteTile = (name) => {
@@ -76,8 +75,8 @@ class TeamCards extends React.Component {
                         <input type="file" onChange={this.onChange} ref="NewPhoto"/>
                         <button
                             onClick={() => {
-                                    updateTile(person.name,this.refs.NewName, this.refs.NewPosition, this.refs.NewPhoto).then(({ message }) => {
-                                        alert(message);
+                                    updateTile(person.name,this.refs.NewName, this.refs.NewPosition,this.refs.NewPhoto).then(({ message }) => {
+                                        alert("Team member has been updated");
                                     });
                             }}
                         >
@@ -87,7 +86,7 @@ class TeamCards extends React.Component {
                             onClick={() => {
                                 if (person.name) {
                                     deleteTile(person.name).then(({ message }) => {
-                                        alert(message);
+                                        alert("Team member has been deleted");
                                     });
                                 }
                             }}
