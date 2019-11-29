@@ -117,7 +117,7 @@ class AdminDashboard extends React.Component {
                             <button
                                 onClick={() => {
                                     if (this.state.header[0]) {
-                                        addheader(this.state.header[0]).then(({ message }) => {
+                                        addheader(this.state.header).then(({ message }) => {
                                             alert("Header uploaded");
                                         });
                                     }
