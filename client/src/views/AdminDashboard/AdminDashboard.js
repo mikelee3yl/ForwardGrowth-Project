@@ -108,10 +108,10 @@ class AdminDashboard extends React.Component {
     render() {
         return (
             <div className="App">
-                    <div>
+                    
                                 <h4>Update the header of the website:</h4>
                                 <input type="file" onChange={this.onChange} ref="header"/>
-                            </div>
+                            
                             <button
                                 onClick={() => {
                                     if (this.refs.header) {
@@ -125,7 +125,7 @@ class AdminDashboard extends React.Component {
                                 }}
                             >
                                 Update Header
-        </button>
+                    </button>
 
                     <h1>Admin Dashboard</h1>
                     <h4>Here you can edit the contents of your website. Make sure to save your changes once you're done editing!</h4>

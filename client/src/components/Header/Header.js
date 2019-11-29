@@ -1,7 +1,7 @@
 import React from 'react';
 import './Header.css';
 import { slide as Menu } from 'react-burger-menu' //https://www.npmjs.com/package/react-burger-menu
-// import logo from '../../assets/OrchardGroveLogo.png';
+import _logo from '../../assets/OrchardGroveLogo.png';
 import menuButton from '../../assets/Hamburger_icon.png';
 
 
@@ -20,16 +20,16 @@ class Header extends React.Component {
       })
       .then(res => {
         this.setState({
-          logo: `data:${res.img.contentType};base64,${Buffer.from(res.img.data).toString('base64')}`
+          logo: _logo//`data:${res.img.contentType};base64,${Buffer.from(res.img.data).toString('base64')}`
         })
       })
   }
 
   render() {
-
-    <div class="wrapper">
+    return (
+    < div class="wrapper" >
       <div class="header" align="center">
-        <a href="/Home"><img src={logo} width={'100 px'} alt="logo"></img></a>
+        <a href="/Home"><img src={_logo} width={'100 px'} alt="logo"></img></a>
         <a id="login" href="/login" className="login">Login</a>
       </div>
 
@@ -40,7 +40,8 @@ class Header extends React.Component {
         <a id="contact" className="menu-item" href="/blog" style={{ textDecoration: 'none' }}>Blog</a>
 
       </Menu>
-    </div>
+    </div >
+    );
   };
 }
 
