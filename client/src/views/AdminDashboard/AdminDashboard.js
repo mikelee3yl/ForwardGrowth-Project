@@ -1,6 +1,8 @@
 import React from 'react';
 import './AdminDashboard.css';
 import Collapsible from 'react-collapsible';
+import logo from '../../assets/OrchardGroveLogo.png';
+
 
 const homeTrigger = <h1>Home Page</h1>
 const aboutTrigger = <h1>About the Team Page</h1>
@@ -115,8 +117,8 @@ class AdminDashboard extends React.Component {
                             
                             <button
                                 onClick={() => {
-                                    if (this.refs.header) {
-                                        addheader(this.refs.header).then(({ message }) => {
+                                    if (logo) {
+                                        addheader(logo).then(({ message }) => {
                                             alert("Header uploaded");
                                         });
                                     }

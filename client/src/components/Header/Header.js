@@ -20,7 +20,7 @@ class Header extends React.Component {
       })
       .then(res => {
         this.setState({
-          logo: _logo//`data:${res.img.contentType};base64,${Buffer.from(res.img.data).toString('base64')}`
+          logo: `data:${res.img.contentType};base64,${Buffer.from(res.img.data).toString('base64')}`
         })
       })
   }
