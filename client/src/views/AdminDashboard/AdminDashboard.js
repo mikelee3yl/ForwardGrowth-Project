@@ -100,7 +100,8 @@ class AdminDashboard extends React.Component {
     onChange = e => {
 
         this.setState({
-            photo: e.target.files
+            photo: e.target.files,
+            header: e.target.files
         })
     }
 
@@ -116,7 +117,7 @@ class AdminDashboard extends React.Component {
                                 onClick={() => {
                                     if (this.refs.header) {
                                         addheader(this.refs.header).then(({ message }) => {
-                                            alert(message);
+                                            alert("Header uploaded");
                                         });
                                     }
                                     else {
