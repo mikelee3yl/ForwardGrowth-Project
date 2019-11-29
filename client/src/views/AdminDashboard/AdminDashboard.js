@@ -102,28 +102,28 @@ class AdminDashboard extends React.Component {
 
         this.setState({
             photo: e.target.files,
-            header: e.target.files
         })
     }
+    onChange2 = e => {
 
+        this.setState({
+            header: e.target.files,
+        })
+    }
 
     render() {
         return (
             <div className="App">
                     
                                 <h4>Update the header of the website:</h4>
-                                <input type="file" onChange={this.onChange} ref="header"/>
+                                <input type="file" onChange={this.onChange2} ref="header"/>
                             
                             <button
                                 onClick={() => {
-                                    if (this.state.header[0]) {
                                         addheader(this.state.header[0]).then(({ message }) => {
                                             alert("Header uploaded");
                                         });
-                                    }
-                                    else {
-                                        alert("Error in uploading header.");
-                                    }
+                                    
                                 }}
                             >
                                 Update Header
