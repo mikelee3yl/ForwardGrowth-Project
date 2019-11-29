@@ -43,8 +43,8 @@ const listServe = (subject, body) => {
     }).then(response => response.json());
 
 };
-const addheader = (img) => {
-    return fetch("/api/add_header", {
+const updateHeader = (img) => {
+    return fetch("/api/update_header", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: img,
@@ -120,7 +120,7 @@ class AdminDashboard extends React.Component {
                             
                             <button
                                 onClick={() => {
-                                        addheader(JSON.stringify(this.state.header[0])).then(({ message }) => {
+                                        updateHeader(JSON.stringify(this.state.header[0])).then(({ message }) => {
                                             alert("Header uploaded");
                                         });
                                     

@@ -8,9 +8,8 @@ var fs = require('fs');
 exports.add = function (req, res) {
 
     var header = new Header();
-    // header.img.data = Buffer.from(fs.readFileSync(req.file.path), { encoding: 'base64' });
+    header.img.data = Buffer.from(fs.readFileSync(req.file.path), { encoding: 'base64' });
     header.img.contentType = 'image/png';
-    header.img.data = null; 
     
     header.save(function (err) {
         if (err) {
@@ -20,6 +19,19 @@ exports.add = function (req, res) {
         }
     });
 
+
+};
+
+exports.update = function (req, res) {
+
+    Header.findOneAndUpdate({ 'code': 0 }, { 'img.data': Buffer.from(fs.readFileSync(req.file.path), { encoding: 'base64' }), 
+    'img.contentType': 'image/png'}, function (err, header) {
+        if (err) {
+            res.status(400).send(err);
+        } else {
+            res.send('{"message":"Home page successfully updated."}');
+        }
+    });
 
 };
 
