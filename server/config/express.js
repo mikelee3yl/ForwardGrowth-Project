@@ -96,7 +96,7 @@ module.exports.init = () => {
         headerController.get(req, res);
     });
     app.post("/api/update_header", function (req, res) {
-        homeCtrl.update(req, res);
+        headerController.update(req, res);
     });
     // add a router
     app.use('/api/example', exampleRouter);
