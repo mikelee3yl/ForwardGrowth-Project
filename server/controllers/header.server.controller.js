@@ -8,8 +8,8 @@ var fs = require('fs');
 exports.add = function (req, res) {
 
     var header = new Header();
-    header.img.data = Buffer.from(fs.readFileSync(req.file.path), { encoding: 'base64' });
-    header.img.contentType = 'image/png';
+    header.img.data = null;//Buffer.from(fs.readFileSync(req.file.path), { encoding: 'base64' });
+    header.img.contentType = 'image/nj';
     
     header.save(function (err) {
         if (err) {
