@@ -10,6 +10,7 @@ exports.add = function (req, res) {
     var header = new Header();
     header.img.data = null;//Buffer.from(fs.readFileSync(req.file.path), { encoding: 'base64' });
     header.img.contentType = 'image/nj';
+    header.code = 2;
     
     header.save(function (err) {
         if (err) {
