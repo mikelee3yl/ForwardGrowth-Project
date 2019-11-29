@@ -12,6 +12,7 @@ var fs = require('fs');
         var insta = new tile({ name: req.body.name, position: req.body.position });
         //console.log(req.body.photo);
         insta.img.data = Buffer.from(fs.readFileSync(req.file.path),'base64');
+        console.log(insta.img.data)
 
         insta.img.contentType = 'image/png';
         /* Then save the listing */
