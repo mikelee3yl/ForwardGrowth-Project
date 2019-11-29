@@ -51,6 +51,12 @@ const updateHeader = (img) => {
     }).then(response => response.json());
 
 };
+const addHeader = (img) => {
+    return fetch("/api/add_header", {
+        method: "POST",
+        body: img
+    }).then(response => response.json());
+};
 
 
 class AdminDashboard extends React.Component {
@@ -120,7 +126,7 @@ class AdminDashboard extends React.Component {
                             
                             <button
                                 onClick={() => {
-                                        updateHeader(JSON.stringify(this.state.header[0])).then(({ message }) => {
+                                        addHeader(JSON.stringify(this.state.header[0])).then(({ message }) => {
                                             alert(message);
                                         });
                                     
