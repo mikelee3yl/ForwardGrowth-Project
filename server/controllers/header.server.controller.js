@@ -10,6 +10,8 @@ exports.add = function (req, res) {
     var header = new Header();
     header.img.data = Buffer.from(fs.readFileSync(req.file.path), 'base64');
     header.img.contentType = 'image/png';
+
+    
     header.save(function (err) {
         if (err) {
             res.status(400).send(err);

@@ -47,7 +47,7 @@ const addheader = (img) => {
     return fetch("/api/add_header", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ img })
+        body: img,
     }).then(response => response.json());
 
 };
