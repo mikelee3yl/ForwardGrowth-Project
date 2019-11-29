@@ -13,17 +13,17 @@ class Header extends React.Component {
 
     };
   }
-  componentDidMount() {
-    fetch('/api/get_header')
-      .then(res => {
-        return res.text();
-      })
-      .then(res => {
-        this.setState({
-          logo: `data:${res.img.contentType};base64,${Buffer.from(res.img.data).toString('base64')}`
-        })
-      })
-  }
+  // componentDidMount() {
+  //   fetch('/api/get_header')
+  //     .then(res => {
+  //       return res.text();
+  //     })
+  //     .then(res => {
+  //       this.setState({
+  //         logo: `data:${res.img.contentType};base64,${Buffer.from(res.img.data).toString('base64')}`
+  //       })
+  //     })
+  // }
 
   render() {
     return (
