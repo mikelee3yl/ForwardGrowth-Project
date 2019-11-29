@@ -3,10 +3,11 @@ var mongoose = require('mongoose'),
 
 
 var headerSchema = new Schema({
+    code: Number,
     img:
         {data:Buffer, contentType:String},
     created_at: Date,
-    updated_at: Date
+    updated_at: Date,
 });
 
 headerSchema.pre('save', function (next) {
