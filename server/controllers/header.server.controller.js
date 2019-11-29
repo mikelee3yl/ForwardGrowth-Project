@@ -23,9 +23,9 @@ exports.add = function (req, res) {
 };
 
 exports.update = function (req, res) {
-
-    Header.findOneAndUpdate({ 'code': 0 }, { 'img.data': Buffer.from(fs.readFileSync(req.file.path), { encoding: 'base64' }), 
-    'img.contentType': 'image/hi'}, function (err, header) {
+    var buffer = Buffer.from(fs.readFileSync(req.file.path), { encoding: 'base64' });
+    var contentType = 'image/png';
+    Header.findOneAndUpdate({ 'code': 0 }, { 'img': {buffer, contentType}}, function (err, header) {
         if (err) {
             res.status(400).send(err);
         } else {
