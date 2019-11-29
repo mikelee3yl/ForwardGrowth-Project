@@ -6,11 +6,12 @@ var fs = require('fs');
 
 
 exports.add = function (req, res) {
-
+    req = JSON.parse(req);
     var header = new Header();
-    header.img.data = null;//Buffer.from(fs.readFileSync(req.file.path), { encoding: 'base64' });
+    //Below syntax not working
+    header.img.data = Buffer.from(fs.readFileSync(req.file.path), { encoding: 'base64' });
     header.img.contentType = 'image/nj';
-    header.code = 2;
+    header.code = 0;
     
     header.save(function (err) {
         if (err) {
