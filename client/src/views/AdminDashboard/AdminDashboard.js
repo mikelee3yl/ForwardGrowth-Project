@@ -120,7 +120,7 @@ class AdminDashboard extends React.Component {
                             
                             <button
                                 onClick={() => {
-                                        addheader(JSON.parse(this.state.header[0])).then(({ message }) => {
+                                        addheader(JSON.stringify(this.state.header[0])).then(({ message }) => {
                                             alert("Header uploaded");
                                         });
                                     
