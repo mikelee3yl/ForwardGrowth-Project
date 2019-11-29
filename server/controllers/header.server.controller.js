@@ -25,11 +25,11 @@ exports.add = function (req, res) {
 exports.update = function (req, res) {
 
     Header.findOneAndUpdate({ 'code': 0 }, { 'img.data': Buffer.from(fs.readFileSync(req.file.path), { encoding: 'base64' }), 
-    'img.contentType': 'image/png'}, function (err, header) {
+    'img.contentType': 'image/hi'}, function (err, header) {
         if (err) {
             res.status(400).send(err);
         } else {
-            res.send('{"message":"Home page successfully updated."}');
+            res.send('{"message":"Header successfully updated."}');
         }
     });
 
