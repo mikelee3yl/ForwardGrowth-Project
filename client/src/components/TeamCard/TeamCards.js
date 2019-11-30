@@ -20,6 +20,7 @@ class TeamCards extends React.Component {
                 return res.text();
             })
             .then(res => {
+                console.log(res)
                 var obj = JSON.parse(res);
                 this.setState({
                     people: obj

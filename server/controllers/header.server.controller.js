@@ -6,13 +6,11 @@ var fs = require('fs');
 
 
 exports.add = function (req, res) {
-    req = JSON.parse(req);
     var header = new Header();
-    //Below syntax not working
     header.img.data = Buffer.from(fs.readFileSync(req.file.path), { encoding: 'base64' });
-    header.img.contentType = 'image/nj';
+    header.img.contentType = 'image/png';
     header.code = 0;
-    
+
     header.save(function (err) {
         if (err) {
             res.status(400).send(err);
@@ -24,33 +22,21 @@ exports.add = function (req, res) {
 
 };
 
-exports.update = function (req, res) {
-    var buffer = Buffer.from(fs.readFileSync(req.file.path), { encoding: 'base64' });
-    var contentType = 'image/png';
-    Header.findOneAndUpdate({ 'code': 0 }, { 'img': {buffer, contentType}}, function (err, header) {
-        if (err) {
-            res.status(400).send(err);
-        } else {
-            res.send('{"message":"Header successfully updated."}');
-        }
-    });
-
-};
-
-
 exports.get = function (req, res) {
+    // // if (Header.find({}) = null) res.status(400);
+    // var header = Header.find({}).sort({_id:-1}).limit(1); 
+    // console.log(header);
+    // res.send(header);
     Header.find({}, function (err, header) {
         if (err) {
             console.log(err);
 
             res.status(400).send(err);
         } else {
-            console.log(header);
-            res.send(header);
-
+            res.send(header[Number(header.length) - 1]);
         }
     });
-}
+};
 
 
 
