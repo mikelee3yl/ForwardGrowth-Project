@@ -7,6 +7,8 @@ const homeTrigger = <h1>Home Page</h1>
 const aboutTrigger = <h1>About the Team Page</h1>
 const blogTrigger = <h1>Blog Page</h1>
 const serveTrigger = <h1>Mailing Page</h1>
+const headerTrigger = <h1>Header</h1>
+
 
 const updateInsta = (instagramlink) => {
     return fetch("/api/update_insta", {
@@ -43,13 +45,19 @@ const listServe = (subject, body) => {
     }).then(response => response.json());
 
 };
-const addheader = (img) => {
-    return fetch("/api/add_header", {
+const updateHeader = (form) => {
+    return fetch("/api/update_header", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: img,
+        body: form
     }).then(response => response.json());
 
+};
+const addHeader = (form) => {
+    return fetch("/api/add_header", {
+        method: "POST",
+        body: form
+    }).then(response => response.json());
 };
 
 
@@ -75,6 +83,7 @@ class AdminDashboard extends React.Component {
                 return res.text();
             })
             .then(res => {
+                console.log('My data is' + res)
                 var obj = JSON.parse(res);
 
                 this.setState({
@@ -114,25 +123,28 @@ class AdminDashboard extends React.Component {
     render() {
         return (
             <div className="App">
-                    
-                                <h4>Update the header of the website:</h4>
+
+                    <h1>Admin Dashboard</h1>
+                    <h4>Here you can edit the contents of your website. Make sure to save your changes once you're done editing!</h4>
+                    <br></br>
+                    <div className="colStyle">
+                    <Collapsible trigger={headerTrigger} className="headerStyle" transitionTime="10" transitionCloseTime="10">
+                    <h4>Update the header of the website:</h4>
                                 <input type="file" onChange={this.onChange2} ref="header"/>
-                            
                             <button
                                 onClick={() => {
-                                        addheader(JSON.parse(this.state.header[0])).then(({ message }) => {
-                                            alert("Header uploaded");
+                                    var headerForm = new FormData();
+                                        headerForm.append('file', this.state.header[0]);
+                                        console.log(this.state.header[0]);
+                                        addHeader(headerForm).then(({ message }) => {
+                                            alert(message);
                                         });
                                     
                                 }}
                             >
                                 Update Header
                     </button>
-
-                    <h1>Admin Dashboard</h1>
-                    <h4>Here you can edit the contents of your website. Make sure to save your changes once you're done editing!</h4>
-                    <br></br>
-                    <div className="colStyle">
+                    </Collapsible>
                         <Collapsible trigger={homeTrigger} className="headerStyle" transitionTime="10" transitionCloseTime="10">
                             <form className="formStyle" id="homePage">
                                 <h3><u>Features: </u></h3>
@@ -184,7 +196,7 @@ class AdminDashboard extends React.Component {
                                         formData.append('name', this.refs.name.value);
                                         formData.append('position', this.refs.position.value);
                                         formData.append('file', this.state.photo[0]);
-
+                                        console.log(this.state.photo[0]);
                                         addTile(formData).then(({ message }) => {
                                             alert(message);
                                         });
