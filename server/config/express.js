@@ -9,6 +9,8 @@ const path = require('path'),
     insta_update = require("../controllers/blog.server.controller"),
     homeCtrl = require("../controllers/home.server.controller"),
     tileCtrl = require("../controllers/tile.server.controller");
+    headerController = require("../controllers/header.server.controller");
+
 
 const multer = require('multer');
 const upload = multer();
@@ -89,6 +91,15 @@ module.exports.init = () => {
     });
     app.post("/api/update_tile", function (req, res) {
         tileCtrl.update(req, res);
+    });
+    app.post("/api/add_header", upload.single('file'), function (req, res) {
+        headerController.add(req, res);
+    });
+    app.get("/api/get_header", function (req, res) {
+        headerController.get(req, res);
+    });
+    app.post("/api/update_header", upload.single('file'), function (req, res) {
+        headerController.update(req, res);
     });
     // add a router
     app.use('/api/example', exampleRouter);

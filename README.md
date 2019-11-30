@@ -17,6 +17,7 @@ npm install react-collapsible --save
 
 npm install --save jimp
 
+npm install react-slick --save
 
 ## Available Scripts
 

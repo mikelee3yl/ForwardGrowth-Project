@@ -3,14 +3,14 @@
     "",
     "\\client",
     "\\client\\src",
-    "\\client\\src\\components",
-    "\\client\\src\\components\\TeamCard",
     "\\client\\src\\views",
     "\\client\\src\\views\\AdminDashboard",
+    "\\client\\src\\views\\Blog",
     "\\server",
+    "\\server\\config",
     "\\server\\controllers",
     "\\server\\models"
   ],
-  "SelectedNode": "\\server\\controllers\\tile.server.controller.js",
+  "SelectedNode": "\\server\\config",
   "PreviewInSolutionExplorer": false
 }
