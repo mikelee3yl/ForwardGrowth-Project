@@ -62,10 +62,11 @@ exports.update = function (req, res) {
         }
         if(_tile.name != req.body.name) _tile.name = req.body.name;
         if (_tile.position != req.body.position) _tile.position = req.body.position;
-        if (req.body.photo != null) _tile.photo = req.body.photo;
-        
-        _tile.photo.data = Buffer.from(fs.readFileSync(req.file.path), { encoding: 'base64' });
-        _tile.photo.contentType = 'image/png';
+        if (req.body.photo != null) {
+            _tile.photo = req.body.photo;
+            _tile.photo.data = Buffer.from(fs.readFileSync(req.file.path), { encoding: 'base64' });
+            _tile.photo.contentType = 'image/png';
+        }
 
         _tile.save(function (err) {
           if (err)
