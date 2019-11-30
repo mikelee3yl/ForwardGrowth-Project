@@ -20,24 +20,16 @@ class TeamCards extends React.Component {
                 return res.text();
             })
             .then(res => {
+                console.log(res)
                 var obj = JSON.parse(res);
                 this.setState({
                     people: obj
                 })
             })
     }
-   
-    
-
-      
-
-    
 
 render() {
     const cards = this.state.people.map((person,index) => {
-        
-        
-
         return (
             <div key={index} class="card">
                 <img src={`data:${person.img.contentType};base64,${Buffer.from(person.img.data).toString('base64')}`} alt="" />
