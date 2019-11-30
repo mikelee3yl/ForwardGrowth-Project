@@ -25,20 +25,6 @@ const updateHome = (company, payment, about, applink) => {
         body: JSON.stringify({ company, payment, about, applink })
     }).then(response => response.json());
 };
-const updateTile = (name, position, photo) => {
-    return fetch("/api/update_tile", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, position, photo})
-    }).then(response => response.json());
-};
-const deleteTile = (name) => {
-    return fetch("/api/delete_tile", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name })
-    }).then(response => response.json());
-};
 const addTile = (form) => {
     return fetch("/api/add_tile", {
         method: "POST",
