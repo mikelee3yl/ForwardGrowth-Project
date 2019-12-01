@@ -36,7 +36,7 @@ const deleteTile = (name) => {
     return fetch("/api/delete_tile", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: form
+        body: JSON.stringify({ name })
     }).then(response => response.json());
 
 };
