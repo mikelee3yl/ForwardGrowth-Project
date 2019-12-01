@@ -23,6 +23,8 @@ class TeamCards extends React.Component {
         this.state = {
             people: [],
             photo: null,
+            name: '',
+            position: '',
         };
     }
     componentDidMount() {
@@ -44,7 +46,19 @@ class TeamCards extends React.Component {
             photo: e.target.files,
         })
     }
+    setName = e => {
 
+        this.setState({
+            name: e.target.value,
+        })
+    }
+    setPosition = e => {
+
+        this.setState({
+            position: e.target.value,
+        })
+    }
+    
     render() {
         const cards = this.state.people.map((person, index) => {
 
@@ -53,28 +67,41 @@ class TeamCards extends React.Component {
                 <div key={index} class="card">
                     <img src={`data:${person.img.contentType};base64,${Buffer.from(person.img.data).toString('base64')}`} alt="" />
                     <div class="container">
-                        <h4>Name: </h4> <input type="text" defaultValue={person.name} ref="NewName"></input>
-                        <h4>Position: </h4> <input type="text" defaultValue={person.position} ref="NewPosition"></input>
+                        <h4>Name: </h4> <input type="text" defaultValue={person.name} onChange={this.setName}></input>
+                        <h4>Position: </h4> <input type="text" defaultValue={person.position} onChange={this.setPosition}></input>
                         <h4>Replace photo of team member: </h4>
-                        <input type="file" onChange={this.onChange} ref="NewPhoto"/>
+                        <input type="file" onChange={this.onChange} ref="NewPhoto" />
                         <button
                             onClick={() => {
                                 var tileForm = new FormData();
-                                if(this.state.photo != null){
-                                    // tileForm.append('file', this.state.photo[0]);
-                                    //JSON.stringify()
-                                    tileForm.append('file', this.state.photo[0]);
-                                    console.log(this.state.photo[0]);
+                                console.log("New name" + this.state.name);
+                                console.log("New position" + this.state.position);
+                                console.log("New Photo" + this.state.photo);
+
+                                if (this.state.photo != null) tileForm.append('file', this.state.photo[0]);
+                                else tileForm.append('file', null);
+                                // console.log("Photo" + this.state.photo[0]); //Object
+
+                                if (this.state.name) tileForm.append('name', this.state.name);
+                                else tileForm.append('name', person.name);
+
+                                if(this.state.position) tileForm.append('position', this.state.position);
+                                else tileForm.append('position', person.position)
+
+                                tileForm.append('originalname', person.name);
+
+                                for (var pair of tileForm.entries()) {
+                                    console.log(pair[0] + ', ' + pair[1]);
                                 }
-                                if (this.refs.NewName.value && this.refs.NewPosition.value){
-                                    tileForm.append('originalname', person.name)
-                                    tileForm.append('name',this.refs.NewName.value);
-                                    tileForm.append('position', this.refs.NewPosition.value);
+                                if (tileForm != null) {
                                     updateTile(tileForm).then(({ message }) => {
-                                        alert(message);  
+                                        alert(message);
                                     });
                                 }
-                                else alert("Ensure that the name and position of the team member is valid.");
+                                else {
+                                    alert("Cannot update card");                                
+                                }
+
                             }}
                         >
                             Update Card

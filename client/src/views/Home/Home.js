@@ -42,8 +42,8 @@ class Home extends React.Component {
                 return res.text();
             })
             .then(res => {
+                console.log('My data is:' + res);
                 var obj = JSON.parse(res);
-
                 this.setState({
                     company: obj.company,
                     payment: obj.payment,

@@ -3,20 +3,16 @@ var mongoose = require('mongoose')
 //mail = require("../controllers/mail.js"),
 var fs = require('fs');
 
-
-
-
 exports.add = function (req, res) {
-
-    /* Instantiate a Listing */
-    var insta = new tile({ name: req.body.name, position: req.body.position });
+    console.log(req); //Does not print
+    var _tile = new tile({ name: req.body.name, position: req.body.position });
     //console.log(req.body.photo);
-    insta.img.data = Buffer.from(fs.readFileSync(req.file.path),'base64');
-    console.log(insta.img.data)
+    _tile.img.data = Buffer.from(fs.readFileSync(req.file.path), 'base64');
+    console.log(_tile.img.data)
 
-    insta.img.contentType = 'image/png';
+    _tile.img.contentType = 'image/png';
     /* Then save the listing */
-    insta.save(function (err) {
+    _tile.save(function (err) {
         if (err) {
             res.status(400).send(err);
         } else {
@@ -52,35 +48,28 @@ exports.get = function (req, res) {
 
 
 exports.update = function (req, res) {
-    //updateTile(person.name,this.refs.NewName, this.refs.NewPosition, this.refs.NewPhoto).then(({ message }) => {
-    //body: JSON.stringify({ originalname, name, position, photo })
     var original = String(req.body.originalname);
-    console.log(original);
-    tile.findOne({name: original}, function (err, _tile) {
+    tile.findOne({ name: original }, function (err, _tile) {
         if (err) {
-          res.json("err");
+            res.json("err");
         }
         
-        console.log("Req data is: " + req);
-
-        if(_tile.name != req.body.name) _tile.name = req.body.name;
-        console.log(tile_.name);
-        if (_tile.position != req.body.position) _tile.position = req.body.position;
-        console.log(tile_.position);
-        if (req.file != null) {
+        console.log(req);
+        if (req.body.name != "" && req.body.name) _tile.name = req.body.name;
+        if (req.body.position != "" && req.body.position) _tile.position = req.body.position;
+        if (req.file) {
             //Checking if photo had been uploaded
-            var file = JSON.parse(req.file);
-            _tile.img.data = Buffer.from(fs.readFileSync(file.path), 'base64');
+            _tile.img.data = Buffer.from(fs.readFileSync(req.file.path), { encoding: 'base64' });
             _tile.img.contentType = 'image/png';
         }
 
         _tile.save(function (err) {
-          if (err)
-            res.json(err);
-          res.json(_tile);
+            if (err)
+                res.json(err);
+            res.json(_tile);
         });
-        res.send('{"message":"Team member has been updated"');
-      });
+        res.send('{"message":"Team member has been updated"}');
+    });
 };
 
 
