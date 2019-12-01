@@ -23,6 +23,8 @@ class TeamCards extends React.Component {
         this.state = {
             people: [],
             photo: null,
+            name: '',
+            position:'',
         };
     }
     componentDidMount() {
@@ -44,6 +46,19 @@ class TeamCards extends React.Component {
             photo: e.target.files,
         })
     }
+    onChangename = e => {
+
+        this.setState({
+            name: e.target.text,
+        })
+    }
+    onChangeposition = e => {
+
+        this.setState({
+            position: e.target.text,
+        })
+    }
+    
 
     render() {
         const cards = this.state.people.map((person, index) => {
@@ -53,8 +68,8 @@ class TeamCards extends React.Component {
                 <div key={index} class="card">
                     <img src={`data:${person.img.contentType};base64,${Buffer.from(person.img.data).toString('base64')}`} alt="" />
                     <div class="container">
-                        <h4>Name: </h4> <input type="text" defaultValue={person.name} ref="NewName"></input>
-                        <h4>Position: </h4> <input type="text" defaultValue={person.position} ref="NewPosition"></input>
+                        <h4>Name: </h4> <input type="text" defaultValue={person.name} onChange={this.onChangename}></input>
+                        <h4>Position: </h4> <input type="text" defaultValue={person.position} onChange={this.onChangeposition}></input>
                         <h4>Replace photo of team member: </h4>
                         <input type="file" onChange={this.onChange} ref="NewPhoto"/>
                         <button
@@ -62,8 +77,8 @@ class TeamCards extends React.Component {
                                 var tileForm = new FormData();
                                 // if((this.refs.NewName.value = null) && (this.refs.NewPosition.value = null))
                                 //     alert("Ensure that the name and position of the team member is valid."); 
-                                console.log("New name" + this.refs.NewName.value);
-                                console.log("New position" + this.refs.NewPosition.value);
+                                console.log("New name" + this.state.name);
+                                console.log("New position" + this.state.position);
                                 console.log("New Photo" + this.state.photo);
 
                                 if(this.state.photo != null) tileForm.append('file', this.state.photo[0]);
