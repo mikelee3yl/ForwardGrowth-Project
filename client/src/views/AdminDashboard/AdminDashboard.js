@@ -134,7 +134,8 @@ class AdminDashboard extends React.Component {
                             onClick={() => {
                                 var headerForm = new FormData();
                                 headerForm.append('file', this.state.header[0]);
-                                console.log(this.state.header[0]);
+                                console.log("Header" + this.state.header[0]);
+                                console.log("Header Form" + headerForm )
                                 addHeader(headerForm).then(({ message }) => {
                                     alert(message);
                                 });

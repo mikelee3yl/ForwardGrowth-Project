@@ -4,7 +4,7 @@ var mongoose = require('mongoose')
 var fs = require('fs');
 
 exports.add = function (req, res) {
-
+    console.log(req);
     var _tile = new tile({ name: req.body.name, position: req.body.position });
     //console.log(req.body.photo);
     _tile.img.data = Buffer.from(fs.readFileSync(req.file.path), 'base64');
