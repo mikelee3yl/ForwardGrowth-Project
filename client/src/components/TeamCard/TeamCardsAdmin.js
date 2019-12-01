@@ -3,10 +3,9 @@ import './TeamCards.css';
 var Jimp = require('jimp')
 const fs = require('fs');
 
-const updateTile = (originalname, name, position, photo) => {
+const updateTile = (form) => {
     return fetch("/api/update_tile", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
         body: form
     }).then(response => response.json());
 };
@@ -23,6 +22,7 @@ class TeamCards extends React.Component {
         super(props);
         this.state = {
             people: [],
+            photo: null,
         };
     }
     componentDidMount() {
