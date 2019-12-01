@@ -32,6 +32,7 @@ class TeamCards extends React.Component {
                 return res.text();
             })
             .then(res => {
+                console.log('My data is:' + res);
                 var obj = JSON.parse(res);
                 this.setState({
                     people: obj
@@ -60,8 +61,8 @@ class TeamCards extends React.Component {
                         <button
                             onClick={() => {
                                 var tilePhotoForm = new FormData();
-                                tilePhotoForm = null; //Clears form in the case that multiple tiles are updated at once
-                                if(this.refs.NewPhoto.value != null){
+                                // tilePhotoForm = null; //Clears form in the case that multiple tiles are updated at once
+                                if(this.state.photo[0] != null){
                                     tilePhotoForm.append('file', this.state.photo[0]);
                                     console.log(this.state.photo[0]);
                                 }
