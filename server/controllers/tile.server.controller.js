@@ -63,7 +63,7 @@ exports.update = function (req, res) {
         if (_tile.position != req.body.position) _tile.position = req.body.position;
         if (req.body.form != null) {
             //Checking if photo had been uploaded
-            _tile.img.data = Buffer.from(fs.readFileSync(req.body.form.file.path), { encoding: 'base64' });
+            _tile.img.data = Buffer.from(fs.readFileSync(req.file.path), { encoding: 'base64' });
             _tile.img.contentType = 'image/png';
         }
 
