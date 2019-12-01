@@ -7,7 +7,7 @@ const updateTile = (originalname, name, position, photo) => {
     return fetch("/api/update_tile", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ originalname, name, position, photo })
+        body: form
     }).then(response => response.json());
 };
 const deleteTile = (name) => {
@@ -31,13 +31,19 @@ class TeamCards extends React.Component {
                 return res.text();
             })
             .then(res => {
+                console.log('My data is:' + res);
                 var obj = JSON.parse(res);
                 this.setState({
                     people: obj
                 })
             })
     }
+    onChange = e => {
 
+        this.setState({
+            photo: e.target.files,
+        })
+    }
 
     render() {
         const cards = this.state.people.map((person, index) => {
@@ -53,10 +59,20 @@ class TeamCards extends React.Component {
                         <input type="file" onChange={this.onChange} ref="NewPhoto"/>
                         <button
                             onClick={() => {
-                                if (this.refs.NewName.value && this.refs.NewPosition.value)
-                                    updateTile(person.name,this.refs.NewName.value, this.refs.NewPosition.value,this.refs.NewPhoto.value).then(({ message }) => {
-                                        alert(message);
+                                var tileForm = new FormData();
+                                if(this.state.photo != null){
+                                    // tileForm.append('file', this.state.photo[0]);
+                                    tileForm.append('file', JSON.stringify(this.state.photo[0]));
+                                    console.log(this.state.photo[0]);
+                                }
+                                if (this.refs.NewName.value && this.refs.NewPosition.value){
+                                    tileForm.append('originalname', person.name)
+                                    tileForm.append('name',this.refs.NewName.value);
+                                    tileForm.append('position', this.refs.NewPosition.value);
+                                    updateTile(tileForm).then(({ message }) => {
+                                        alert(message);  
                                     });
+                                }
                                 else alert("Ensure that the name and position of the team member is valid.");
                             }}
                         >
