@@ -54,10 +54,10 @@ exports.update = function (req, res) {
 //body: originalname, name, position, form 
     var original = String(req.body.originalname);
     tile.findOne({ name: original }, function (err, _tile) {
+        // res.send(JSON.stringify(_tile));
         if (err) {
             res.json("err");
         }
-        console.log(_tile);
         if (_tile.name != req.body.name) _tile.name = req.body.name;
         if (_tile.position != req.body.position) _tile.position = req.body.position;
         // if (req.body.form != null) {
@@ -71,7 +71,7 @@ exports.update = function (req, res) {
                 res.json(err);
             res.json(_tile);
         });
-        res.send('{"message":"Team member has been updated"');
+        res.send('{"message":"Team member has been updated"}');
     });
 };
 

@@ -3,11 +3,11 @@ import './TeamCards.css';
 var Jimp = require('jimp')
 const fs = require('fs');
 
-const updateTile = (originalname, name, position, form) => {
+const updateTile = (originalname, name, position) => {
     return fetch("/api/update_tile", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ originalname, name, position, form })
+        body: JSON.stringify({ originalname, name, position })
     }).then(response => response.json());
 };
 const deleteTile = (name) => {
@@ -62,12 +62,12 @@ class TeamCards extends React.Component {
                             onClick={() => {
                                 var tilePhotoForm = new FormData();
                                 // tilePhotoForm = null; //Clears form in the case that multiple tiles are updated at once
-                                if(this.state.photo != null){
-                                    tilePhotoForm.append('file', this.state.photo[0]);
-                                    console.log(this.state.photo[0]);
-                                }
+                                // if(this.state.photo != null){
+                                //     tilePhotoForm.append('file', this.state.photo[0]);
+                                //     console.log(this.state.photo[0]);
+                                // }
                                 if (this.refs.NewName.value && this.refs.NewPosition.value)
-                                    updateTile(person.name,this.refs.NewName.value, this.refs.NewPosition.value,tilePhotoForm).then(({ message }) => {
+                                    updateTile(person.name,this.refs.NewName.value, this.refs.NewPosition.value).then(({ message }) => {
                                         alert(message);  
                                 });
                                 else alert("Ensure that the name and position of the team member is valid."); //Does not need to update photo

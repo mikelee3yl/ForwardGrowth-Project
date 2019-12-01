@@ -207,7 +207,7 @@ class AdminDashboard extends React.Component {
                                 }
                             }}
                         >Add a team member</button>
-                        <h2>Delete a team member:</h2>
+                        <h2>Edit team members:</h2>
                         <TeamCardsAdmin></TeamCardsAdmin>
                     </Collapsible>
                     <Collapsible trigger={blogTrigger} className="headerStyle" transitionTime="10" transitionCloseTime="10">
