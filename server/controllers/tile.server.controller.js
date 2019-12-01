@@ -56,20 +56,20 @@ exports.update = function (req, res) {
         }
         
         console.log(req);
-        // if (_tile.name != req.body.name) _tile.name = req.body.name;
-        // if (_tile.position != req.body.position) _tile.position = req.body.position;
-        // if (req.file != null) {
-        //     //Checking if photo had been uploaded
-        //     _tile.img.data = Buffer.from(fs.readFileSync(req.file.path), { encoding: 'base64' });
-        //     _tile.img.contentType = 'image/png';
-        // }
-        if (req.body.name) _tile.name = req.body.name;
-        if (req.body.position) _tile.position = req.body.position;
+        if (_tile.name != req.body.name) _tile.name = req.body.name;
+        if (_tile.position != req.body.position) _tile.position = req.body.position;
         if (req.file != null) {
             //Checking if photo had been uploaded
             _tile.img.data = Buffer.from(fs.readFileSync(req.file.path), { encoding: 'base64' });
             _tile.img.contentType = 'image/png';
         }
+        // if (req.body.name) _tile.name = req.body.name;
+        // if (req.body.position) _tile.position = req.body.position;
+        // if (req.file != null) {
+        //     //Checking if photo had been uploaded
+        //     _tile.img.data = Buffer.from(fs.readFileSync(req.file.path), { encoding: 'base64' });
+        //     _tile.img.contentType = 'image/png';
+        // }
 
         _tile.save(function (err) {
             if (err)
