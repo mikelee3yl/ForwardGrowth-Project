@@ -62,7 +62,7 @@ class TeamCards extends React.Component {
                             onClick={() => {
                                 var tilePhotoForm = new FormData();
                                 // tilePhotoForm = null; //Clears form in the case that multiple tiles are updated at once
-                                if(this.state.photo[0] != null){
+                                if(this.state.photo != null){
                                     tilePhotoForm.append('file', this.state.photo[0]);
                                     console.log(this.state.photo[0]);
                                 }

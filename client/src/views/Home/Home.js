@@ -50,7 +50,6 @@ class Home extends React.Component {
             .then(res => {
                 console.log('My data is:' + res);
                 var obj = JSON.parse(res);
-
                 this.setState({
                     company: obj.company,
                     payment: obj.payment,
