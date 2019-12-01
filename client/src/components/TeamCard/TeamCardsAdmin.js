@@ -86,11 +86,11 @@ class TeamCards extends React.Component {
                                 // console.log("Photo" + this.state.photo[0]); //Object
 
                                 // if (this.refs.NewName.value) 
-                                tileForm.append('name', this.refs.NewName.value);
+                                tileForm.append('name', this.state.name);
                                 // else tileForm.append('name', null);
 
                                 // if(this.refs.NewPosition.value) 
-                                tileForm.append('position', this.refs.NewPosition.value);
+                                tileForm.append('position', this.state.position);
                                 // else tileForm.append('position', null)
 
                                 tileForm.append('originalname', person.name);
