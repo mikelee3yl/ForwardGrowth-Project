@@ -60,7 +60,7 @@ class TeamCards extends React.Component {
                         <button
                             onClick={() => {
                                 var tileForm = new FormData();
-                                if(this.state.photo != null){
+                                if(this.state.photo[0] != null){
                                     // tileForm.append('file', this.state.photo[0]);
                                     tileForm.append('file', JSON.stringify(this.state.photo[0]));
                                     console.log(this.state.photo[0]);

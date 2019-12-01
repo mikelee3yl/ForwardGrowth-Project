@@ -64,11 +64,13 @@ exports.update = function (req, res) {
         console.log(req);
 
         if(_tile.name != req.body.name) _tile.name = req.body.name;
+        console.log(tile_.name);
         if (_tile.position != req.body.position) _tile.position = req.body.position;
+        console.log(tile_.position);
         if (req.file != null) {
             //Checking if photo had been uploaded
             var file = JSON.parse(req.file);
-            _tile.img.data = Buffer.from(fs.readFileSync(file.path), { encoding: 'base64' });
+            _tile.img.data = Buffer.from(fs.readFileSync(file.path), 'base64');
             _tile.img.contentType = 'image/png';
         }
 
