@@ -24,7 +24,7 @@ class TeamCards extends React.Component {
             people: [],
             photo: null,
             name: '',
-            position:'',
+            position: '',
         };
     }
     componentDidMount() {
@@ -58,7 +58,7 @@ class TeamCards extends React.Component {
             position: e.target.value,
         })
     }
-    
+
 
     render() {
         const cards = this.state.people.map((person, index) => {
@@ -71,17 +71,15 @@ class TeamCards extends React.Component {
                         <h4>Name: </h4> <input type="text" defaultValue={person.name} onChange={this.setName}></input>
                         <h4>Position: </h4> <input type="text" defaultValue={person.position} onChange={this.setPosition}></input>
                         <h4>Replace photo of team member: </h4>
-                        <input type="file" onChange={this.onChange} ref="NewPhoto"/>
+                        <input type="file" onChange={this.onChange} ref="NewPhoto" />
                         <button
                             onClick={() => {
                                 var tileForm = new FormData();
-                                // if((this.refs.NewName.value = null) && (this.refs.NewPosition.value = null))
-                                //     alert("Ensure that the name and position of the team member is valid."); 
                                 console.log("New name" + this.state.name);
                                 console.log("New position" + this.state.position);
                                 console.log("New Photo" + this.state.photo);
 
-                                if(this.state.photo != null) tileForm.append('file', this.state.photo[0]);
+                                if (this.state.photo != null) tileForm.append('file', this.state.photo[0]);
                                 else tileForm.append('file', null);
                                 // console.log("Photo" + this.state.photo[0]); //Object
 
@@ -96,12 +94,17 @@ class TeamCards extends React.Component {
                                 tileForm.append('originalname', person.name);
 
                                 for (var pair of tileForm.entries()) {
-                                    console.log(pair[0]+ ', ' + pair[1]); 
+                                    console.log(pair[0] + ', ' + pair[1]);
+                                }
+                                if (tileForm != null) {
+                                    updateTile(tileForm).then(({ message }) => {
+                                        alert(message);
+                                    });
+                                }
+                                else {
+                                    alert("Cannot update card");                                
                                 }
 
-                                updateTile(tileForm).then(({ message }) => {
-                                    alert(message);  
-                                });
                             }}
                         >
                             Update Card
