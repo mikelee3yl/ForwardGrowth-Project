@@ -60,21 +60,24 @@ class TeamCards extends React.Component {
                         <button
                             onClick={() => {
                                 var tileForm = new FormData();
-                                if(this.refs.NewPhoto != null){
-                                    // tileForm.append('file', this.state.photo[0]);
-                                    tileForm.append('file', this.state.photo[0]);
-                                }
+                                if((this.refs.NewName.value = null) && (this.refs.NewPosition = null))
+                                    alert("Ensure that the name and position of the team member is valid."); //Does not need to update photo
+
+                                if(this.refs.NewPhoto != null) tileForm.append('file', this.state.photo[0]);
+                                else tileForm.append('file', null);
                                 // console.log("Photo" + this.state.photo[0]); //Object
-                                if (this.refs.NewName.value && this.refs.NewPosition.value){
-                                    tileForm.append('originalname', person.name)
-                                    tileForm.append('name', this.refs.NewName.value);
-                                    tileForm.append('position', this.refs.NewPosition.value);
-                                    console.log("Tile Form" + tileForm)
-                                    updateTile(tileForm).then(({ message }) => {
-                                        alert(message);  
-                                    });
-                                }
-                                else alert("Ensure that the name and position of the team member is valid."); //Does not need to update photo
+
+                                if (this.refs.NewName.value) tileForm.append('originalname', person.name)
+                                else tileForm.append('originalname', null);
+
+                                if(this.refs.NewPosition.value) tileForm.append('position'. this.refs.NewPosition.value)
+                                else tileForm.append('position',null)
+
+                                tileForm.append('originalname', person.name);
+                                
+                                updateTile(tileForm).then(({ message }) => {
+                                    alert(message);  
+                                });
                             }}
                         >
                             Update Card
