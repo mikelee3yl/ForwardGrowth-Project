@@ -53,14 +53,6 @@ const listServe = (subject, body) => {
     }).then(response => response.json());
 
 };
-const updateHeader = (form) => {
-    return fetch("/api/update_header", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: form
-    }).then(response => response.json());
-
-};
 const addHeader = (form) => {
     return fetch("/api/add_header", {
         method: "POST",
