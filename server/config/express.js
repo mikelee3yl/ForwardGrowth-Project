@@ -89,7 +89,7 @@ module.exports.init = () => {
     app.get("/api/get_tile", function (req, res) {
         tileCtrl.get(req, res);
     });
-    app.post("/api/update_tile", function (req, res) {
+    app.post("/api/update_tile", upload.single('file'), function (req, res) {
         tileCtrl.update(req, res);
     });
     // app.post("/api/update_photo", upload.single('file'), function (req, res) {
