@@ -46,16 +46,16 @@ class TeamCards extends React.Component {
             photo: e.target.files,
         })
     }
-    onChangename = e => {
+    setName = e => {
 
         this.setState({
-            name: e.target.text,
+            name: e.target.value,
         })
     }
-    onChangeposition = e => {
+    setPosition = e => {
 
         this.setState({
-            position: e.target.text,
+            position: e.target.value,
         })
     }
     
@@ -68,8 +68,8 @@ class TeamCards extends React.Component {
                 <div key={index} class="card">
                     <img src={`data:${person.img.contentType};base64,${Buffer.from(person.img.data).toString('base64')}`} alt="" />
                     <div class="container">
-                        <h4>Name: </h4> <input type="text" defaultValue={person.name} onChange={this.onChangename}></input>
-                        <h4>Position: </h4> <input type="text" defaultValue={person.position} onChange={this.onChangeposition}></input>
+                        <h4>Name: </h4> <input type="text" defaultValue={person.name} onChange={this.setName}></input>
+                        <h4>Position: </h4> <input type="text" defaultValue={person.position} onChange={this.setPosition}></input>
                         <h4>Replace photo of team member: </h4>
                         <input type="file" onChange={this.onChange} ref="NewPhoto"/>
                         <button
