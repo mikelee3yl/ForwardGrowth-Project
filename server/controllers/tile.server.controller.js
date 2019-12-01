@@ -49,9 +49,6 @@ exports.get = function (req, res) {
 
 
 exports.update = function (req, res) {
-//updateTile(person.name,this.refs.NewName.value, this.refs.NewPosition.value,tilePhotoForm).then(({ message }) => {
-
-//body: originalname, name, position, form 
     var original = String(req.body.originalname);
     tile.findOne({ name: original }, function (err, _tile) {
         //Can find tile
@@ -65,8 +62,8 @@ exports.update = function (req, res) {
         if (_tile.position != req.body.position) _tile.position = req.body.position;
         if (req.file != null) {
             //Checking if photo had been uploaded
-            // var file = JSON.parse(req.file);
-            _tile.img.data = Buffer.from(fs.readFileSync(req.file.path), { encoding: 'base64' });
+            var file = JSON.parse(req.file);
+            _tile.img.data = Buffer.from(fs.readFileSync(file.path), { encoding: 'base64' });
             _tile.img.contentType = 'image/png';
         }
 
