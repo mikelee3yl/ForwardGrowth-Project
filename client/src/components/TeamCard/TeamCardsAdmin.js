@@ -3,11 +3,11 @@ import './TeamCards.css';
 var Jimp = require('jimp')
 const fs = require('fs');
 
-const updateTile = (originalname, name, position, photo) => {
+const updateTile = (originalname, name, position, form) => {
     return fetch("/api/update_tile", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ originalname, name, position, photo })
+        body: JSON.stringify({ originalname, name, position, form })
     }).then(response => response.json());
 };
 const deleteTile = (name) => {
@@ -23,6 +23,7 @@ class TeamCards extends React.Component {
         super(props);
         this.state = {
             people: [],
+            photo: null,
         };
     }
     componentDidMount() {
@@ -37,7 +38,12 @@ class TeamCards extends React.Component {
                 })
             })
     }
+    onChange = e => {
 
+        this.setState({
+            photo: e.target.files,
+        })
+    }
 
     render() {
         const cards = this.state.people.map((person, index) => {
@@ -53,11 +59,17 @@ class TeamCards extends React.Component {
                         <input type="file" onChange={this.onChange} ref="NewPhoto"/>
                         <button
                             onClick={() => {
+                                var tilePhotoForm = new FormData();
+                                tilePhotoForm = null; //Clears form in the case that multiple tiles are updated at once
+                                if(this.refs.NewPhoto.value != null){
+                                    tilePhotoForm.append('file', this.state.photo[0]);
+                                    console.log(this.state.photo[0]);
+                                }
                                 if (this.refs.NewName.value && this.refs.NewPosition.value)
-                                    updateTile(person.name,this.refs.NewName.value, this.refs.NewPosition.value,this.refs.NewPhoto.value).then(({ message }) => {
-                                        alert(message);
-                                    });
-                                else alert("Ensure that the name and position of the team member is valid.");
+                                    updateTile(person.name,this.refs.NewName.value, this.refs.NewPosition.value,tilePhotoForm).then(({ message }) => {
+                                        alert(message);  
+                                });
+                                else alert("Ensure that the name and position of the team member is valid."); //Does not need to update photo
                             }}
                         >
                             Update Card
