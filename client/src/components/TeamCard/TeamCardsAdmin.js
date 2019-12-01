@@ -80,6 +80,10 @@ class TeamCards extends React.Component {
 
                                 tileForm.append('originalname', person.name);
 
+                                for (var pair of tileForm.entries()) {
+                                    console.log(pair[0]+ ', ' + pair[1]); 
+                                }
+
                                 updateTile(tileForm).then(({ message }) => {
                                     alert(message);  
                                 });
