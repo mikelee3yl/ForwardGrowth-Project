@@ -61,7 +61,7 @@ exports.update = function (req, res) {
           res.json("err");
         }
         
-        console.log(req);
+        console.log("Req data is: " + req);
 
         if(_tile.name != req.body.name) _tile.name = req.body.name;
         console.log(tile_.name);
