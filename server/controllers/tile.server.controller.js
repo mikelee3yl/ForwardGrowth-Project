@@ -6,26 +6,25 @@ var fs = require('fs');
 
 
 
-    exports.add = function (req, res) {
+exports.add = function (req, res) {
 
-        /* Instantiate a Listing */
-        var insta = new tile({ name: req.body.name, position: req.body.position });
-        //console.log(req.body.photo);
-        insta.img.data = Buffer.from(fs.readFileSync(req.file.path),'base64');
-        console.log(insta.img.data)
+    /* Instantiate a Listing */
+    var insta = new tile({ name: req.body.name, position: req.body.position });
+    //console.log(req.body.photo);
+    insta.img.data = Buffer.from(fs.readFileSync(req.file.path),'base64');
+    console.log(insta.img.data)
 
-        insta.img.contentType = 'image/png';
-        /* Then save the listing */
-        insta.save(function (err) {
-            if (err) {
-                res.status(400).send(err);
-            } else {
-                res.send('{"message":"Successfully added a team member."}');
-            }
-        });
-        
-  
+    insta.img.contentType = 'image/png';
+    /* Then save the listing */
+    insta.save(function (err) {
+        if (err) {
+            res.status(400).send(err);
+        } else {
+            res.send('{"message":"Successfully added a team member."}');
+        }
+    });
 };
+
 exports.delete = function (req, res) {
     tile.deleteOne({ name: req.body.name }, function (err, tileDeleted) {
         if (err) {
@@ -56,6 +55,7 @@ exports.update = function (req, res) {
     //updateTile(person.name,this.refs.NewName, this.refs.NewPosition, this.refs.NewPhoto).then(({ message }) => {
     //body: JSON.stringify({ originalname, name, position, photo })
     var original = String(req.body.originalname);
+    console.log(original);
     tile.findOne({name: original}, function (err, _tile) {
         if (err) {
           res.json("err");
