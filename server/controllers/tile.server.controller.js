@@ -54,16 +54,19 @@ exports.update = function (req, res) {
 //body: originalname, name, position, form 
     var original = String(req.body.originalname);
     tile.findOne({ name: original }, function (err, _tile) {
+        //Can find tile
         // res.send(JSON.stringify(_tile));
         if (err) {
             res.json("err");
         }
-        console.log(req.body);
-        if (_tile.name != req.body.name) _tile.name = req.body.name;
-        if (_tile.position != req.body.position) _tile.position = req.body.position;
-        if (req.body.form != null) {
+        
+        console.log(req);
+        if (_tile.name != req.body.name) _tile.name = req.name;
+        if (_tile.position != req.body.position) _tile.position = req.position;
+        if (req.file != null) {
             //Checking if photo had been uploaded
-            _tile.img.data = Buffer.from(fs.readFileSync(req.file.path), { encoding: 'base64' });
+            var file = JSON.parse(req.file);
+            _tile.img.data = Buffer.from(fs.readFileSync(file.path), { encoding: 'base64' });
             _tile.img.contentType = 'image/png';
         }
 
