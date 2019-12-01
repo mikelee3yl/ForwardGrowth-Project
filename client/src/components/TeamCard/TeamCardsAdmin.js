@@ -60,12 +60,11 @@ class TeamCards extends React.Component {
                         <button
                             onClick={() => {
                                 var tileForm = new FormData();
-                                // if(this.state.photo != null){
-                                //     // tileForm.append('file', this.state.photo[0]);
-                                //     tileForm.append('file', JSON.stringify(this.state.photo[0]));
-                                //     console.log(this.state.photo[0]);
-                                // }
-                                console.log("Photo" + JSON.parse(this.state.photo[0])); //Object, trying to get JSON
+                                if(this.refs.NewPhoto != null){
+                                    // tileForm.append('file', this.state.photo[0]);
+                                    tileForm.append('file', this.state.photo[0]);
+                                }
+                                console.log("Photo" + this.state.photo[0]); //Object
                                 if (this.refs.NewName.value && this.refs.NewPosition.value){
                                     tileForm.append('originalname', person.name)
                                     tileForm.append('name', this.refs.NewName.value);

@@ -134,8 +134,8 @@ class AdminDashboard extends React.Component {
                             onClick={() => {
                                 var headerForm = new FormData();
                                 headerForm.append('file', this.state.header[0]);
-                                console.log("Header" + this.state.header[0]);
-                                console.log("Header Form" + headerForm )
+                                console.log("Header" + this.state.header[0]); //Object
+                                console.log("Header Form" + headerForm ) //Object
                                 addHeader(headerForm).then(({ message }) => {
                                     alert(message);
                                 });
@@ -190,7 +190,7 @@ class AdminDashboard extends React.Component {
                                     formData.append('name', this.refs.name.value);
                                     formData.append('position', this.refs.position.value);
                                     formData.append('file', this.state.photo[0]);
-                                    console.log(this.state.photo[0]);
+                                    console.log(this.state.photo[0]); //File JSON
                                     addTile(formData).then(({ message }) => {
                                         alert(message);
                                     });
