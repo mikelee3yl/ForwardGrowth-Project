@@ -61,12 +61,12 @@ exports.update = function (req, res) {
         }
         
         console.log(req);
-        if (_tile.name != req.body.name) _tile.name = req.name;
-        if (_tile.position != req.body.position) _tile.position = req.position;
+        if (_tile.name != req.body.name) _tile.name = req.body.name;
+        if (_tile.position != req.body.position) _tile.position = req.body.position;
         if (req.file != null) {
             //Checking if photo had been uploaded
-            var file = JSON.parse(req.file);
-            _tile.img.data = Buffer.from(fs.readFileSync(file.path), { encoding: 'base64' });
+            // var file = JSON.parse(req.file);
+            _tile.img.data = Buffer.from(fs.readFileSync(req.file.path), { encoding: 'base64' });
             _tile.img.contentType = 'image/png';
         }
 
