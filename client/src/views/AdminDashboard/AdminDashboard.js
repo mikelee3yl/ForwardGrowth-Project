@@ -25,20 +25,6 @@ const updateHome = (company, payment, about, applink) => {
         body: JSON.stringify({ company, payment, about, applink })
     }).then(response => response.json());
 };
-const addTile = (form) => {
-    return fetch("/api/add_tile", {
-        method: "POST",
-        body: form
-    }).then(response => response.json());
-};
-const listServe = (subject, body) => {
-    return fetch("/api/list_serve", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ subject, body })
-    }).then(response => response.json());
-
-};
 // const updateTile = (name, position, photo) => {
 //     return fetch("/api/update_tile", {
 //         method: "POST",
@@ -54,8 +40,8 @@ const deleteTile = (name) => {
     }).then(response => response.json());
 
 };
-const addHeader = (form) => {
-    return fetch("/api/add_header", {
+const addTile = (form) => {
+    return fetch("/api/add_tile", {
         method: "POST",
         body: form
     }).then(response => response.json());
@@ -74,8 +60,6 @@ const addHeader = (form) => {
         body: form
     }).then(response => response.json());
 };
-
-
 
 class AdminDashboard extends React.Component {
 
