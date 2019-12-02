@@ -7,7 +7,6 @@ import Login from "./views/Login/Login.js"
 import Header from "./components/Header/Header"
 import AdminDashboard from './views/AdminDashboard/AdminDashboard';
 import NotFound from "./views/NotFound"
-import { AuthContext } from "./context/auth";
 import PrivateRoute from './PrivateRoute';
 import { withRouter } from "react-router-dom";
 

@@ -113,6 +113,16 @@ module.exports.init = () => {
             res.status(401).send('{"message":"incorrect token"}');
         }
     });
+    app.post("/api/removeEmailee", function (req, res) {
+        if (checkToken(req.body.token)) {
+            emailList.delete(req, res);
+
+        }
+        else {
+            res.status(401).send('{"message":"incorrect token"}');
+        }
+
+    });
     app.post("/api/update_insta", function (req, res) {
         if (checkToken(req.body.token)) {
             insta_update.update(req, res);
@@ -178,6 +188,8 @@ module.exports.init = () => {
         }
 
     });
+    
+
 
     // add a router
     app.use('/api/example', exampleRouter);

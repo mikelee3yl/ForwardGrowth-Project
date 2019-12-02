@@ -1,7 +1,6 @@
 import React from 'react';
 import './AdminDashboard.css';
 import Collapsible from 'react-collapsible';
-import { useAuth } from "../../context/auth";
 import {Redirect } from 'react-router-dom';
 
 
@@ -68,7 +67,14 @@ const passUpdate = (password, token) => {
 
 };
 
+const deleteEmailee = (email, token) => {
+    return fetch("/api/removeEmailee", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, token })
+    }).then(response => response.json());
 
+};
 class AdminDashboard extends React.Component {
 
     constructor(props) {
@@ -247,6 +253,22 @@ class AdminDashboard extends React.Component {
                             onClick={() => {
                                 if (this.refs.subject.value && this.refs.emailBody.value) {
                                     listServe(this.refs.subject.value, this.refs.emailBody.value, this.props.token).then(({ message }) => {
+                                        alert(message);
+                                    });
+                                }
+                                else {
+                                    alert("Make sure all entries are completed.");
+                                }
+                            }}
+                        >
+                            List Serve
+                     </button>
+                        <h3>Enter email of who you want to unsubscribe </h3>
+                        <input type="text" placeholder="Email" ref="emailee"></input>
+                        <button className="myButton" type="button"
+                            onClick={() => {
+                                if (this.refs.emailee.value ) {
+                                    deleteEmailee(this.refs.emailee.value, this.props.token).then(({ message }) => {
                                         alert(message);
                                     });
                                 }

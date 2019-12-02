@@ -1,10 +1,7 @@
 import './Login.css';
 import React, { useState } from 'react';
 import { Link, Redirect } from "react-router-dom";
-import { useAuth } from "../../context/auth";
 
-const email = "";
-const password = "";
 
 class Login extends React.Component {
      
