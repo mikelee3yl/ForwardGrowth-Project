@@ -57,9 +57,6 @@ module.exports.init = () => {
         req.body.receiver = 'fowardgrowth@yahoo.com';
         req.body.receiverName = 'forwardgrowth';
         mail.request(req, res);
-
-
-
     });
 
     app.post("/api/add_email", function (req, res) {
@@ -89,6 +86,9 @@ module.exports.init = () => {
     app.get("/api/get_tile", function (req, res) {
         tileCtrl.get(req, res);
     });
+    app.post("/api/update_tile", upload.single('file'), function (req, res) {
+        tileCtrl.update(req, res);
+    });
     app.post("/api/add_header", upload.single('file'), function (req, res) {
         headerController.add(req, res);
     });
@@ -111,6 +111,5 @@ module.exports.init = () => {
         });
     }
 
-    return app
-}
-
+    return app;
+    }
