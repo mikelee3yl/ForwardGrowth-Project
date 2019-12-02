@@ -9,11 +9,11 @@ const updateTile = (form) => {
         body: form
     }).then(response => response.json());
 };
-const deleteTile = (name) => {
+const deleteTile = (name, token) => {
     return fetch("/api/delete_tile", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name })
+        body: JSON.stringify({ name, token })
     }).then(response => response.json());
 };
 
@@ -33,7 +33,7 @@ class TeamCards extends React.Component {
                 return res.text();
             })
             .then(res => {
-                console.log('My data is:' + res);
+                //console.log('My data is:' + res);
                 var obj = JSON.parse(res);
                 this.setState({
                     people: obj
@@ -58,7 +58,8 @@ class TeamCards extends React.Component {
             position: e.target.value,
         })
     }
-    
+
+
     render() {
         const cards = this.state.people.map((person, index) => {
 
@@ -74,13 +75,12 @@ class TeamCards extends React.Component {
                         <button
                             onClick={() => {
                                 var tileForm = new FormData();
-                                console.log("New name: " + this.state.name);
-                                console.log("New position: " + this.state.position);
-                                console.log("New Photo: " + this.state.photo);
-                                console.log("Old Photo: " + person.img);
+                                //console.log("New name" + this.state.name);
+                                //console.log("New position" + this.state.position);
+                                //console.log("New Photo" + this.state.photo);
 
                                 if (this.state.photo != null) tileForm.append('file', this.state.photo[0]);
-                                else tileForm.append('file', person.img);
+                                else tileForm.append('file', null);
                                 // console.log("Photo" + this.state.photo[0]); //Object
 
                                 if (this.state.name) tileForm.append('name', this.state.name);
@@ -90,10 +90,11 @@ class TeamCards extends React.Component {
                                 else tileForm.append('position', person.position)
 
                                 tileForm.append('originalname', person.name);
+                                tileForm.append('token', localStorage.getItem('token'));
 
-                                for (var pair of tileForm.entries()) {
-                                    console.log(pair[0] + ', ' + pair[1]);
-                                }
+                                //for (var pair of tileForm.entries()) {
+                                //   // console.log(pair[0] + ', ' + pair[1]);
+                                //}
                                 if (tileForm != null) {
                                     updateTile(tileForm).then(({ message }) => {
                                         alert(message);
@@ -109,8 +110,8 @@ class TeamCards extends React.Component {
                     </button>
                         <button
                             onClick={() => {
-                                if (person._id) {
-                                    deleteTile(person._id).then(({ message }) => {
+                                if (person.name) {
+                                    deleteTile(person.name, localStorage.getItem('token')).then(({ message }) => {
                                         alert(message);
                                     });
                                 }
