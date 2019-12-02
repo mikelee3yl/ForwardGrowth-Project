@@ -9,11 +9,11 @@ const updateTile = (form) => {
         body: form
     }).then(response => response.json());
 };
-const deleteTile = (_id, token) => {
+const deleteTile = (name, token) => {
     return fetch("/api/delete_tile", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ _id, token })
+        body: JSON.stringify({ name, token })
     }).then(response => response.json());
 };
 
@@ -25,6 +25,7 @@ class TeamCards extends React.Component {
             photo: null,
             name: '',
             position: '',
+            id: '',
         };
     }
     componentDidMount() {
@@ -81,6 +82,7 @@ class TeamCards extends React.Component {
                                 //console.log("New name" + this.state.name);
                                 //console.log("New position" + this.state.position);
                                 //console.log("New Photo" + this.state.photo);
+                                console.log("ID: " + person.id);
 
                                 if (this.state.photo != null) tileForm.append('file', this.state.photo[0]);
                                 else tileForm.append('file', null);
@@ -101,12 +103,12 @@ class TeamCards extends React.Component {
                                 if (tileForm != null) {
                                     updateTile(tileForm).then(({ message }) => {
                                         alert(message);
+                                        this.setState(this.state);
                                     });
                                 }
                                 else {
                                     alert("Cannot update card");                                
                                 }
-                                this.setState(this.state);
                             }}
                         >
                             Update Card
@@ -116,9 +118,9 @@ class TeamCards extends React.Component {
                                 if (person.name) {
                                     deleteTile(person._id, localStorage.getItem('token')).then(({ message }) => {
                                         alert(message);
+                                        this.setState(this.state);
                                     });
                                 }
-                                this.setState(this.state);
                             }}
                         >
                             Delete Card
