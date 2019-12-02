@@ -58,6 +58,9 @@ class TeamCards extends React.Component {
             position: e.target.value,
         })
     }
+    refresh = e => {
+        this.setState(this.state);
+    }
 
 
     render() {
@@ -104,6 +107,7 @@ class TeamCards extends React.Component {
                                     alert("Cannot update card");                                
                                 }
                                 //this.setState(this.state);
+                                this.refresh;
                             }}
                         >
                             Update Card
@@ -116,6 +120,7 @@ class TeamCards extends React.Component {
                                     });
                                 }
                                 //this.setState(this.state);
+                                this.refresh;
                             }}
                         >
                             Delete Card
