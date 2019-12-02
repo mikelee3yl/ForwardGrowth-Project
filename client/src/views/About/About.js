@@ -1,7 +1,6 @@
 import React from 'react';
-import logo from '../../assets/OrchardGroveLogo.png';
 import './About.css';
-import avatar from './img_avatar.png';
+import TeamCards from '../../components/TeamCard/TeamCards';
 
 const sendyEmail = (sender, subject, body) => {
     return fetch("/api/send_email", {
@@ -12,74 +11,22 @@ const sendyEmail = (sender, subject, body) => {
 
 };
 
-
 class About extends React.Component {
+
     render() {
-
-
         return (
-            <div>
-                <div className="App">
-                    <h1>About the Team Page</h1>
-                </div>
-                <div class="card">
-                <img src={avatar} alt="Avatar" alt="Avatar" />
-                <div class="container">
-                    <h4><b>Daniel Luckman</b></h4>
-                    <p>UF STUDENT</p>
-                </div>
-            </div>
-                {/* <div class="card-row">
-                    <table>
-                        <tr>
-                            <td>
-                                <div class="flip-card">
-                                    <div class="flip-card-inner">
-                                        <div class="flip-card-front">
-                                            <img src={avatar} alt="Avatar" />
-                                            <div class="container">
-                                                <h1><b>John Doe</b></h1>
-                                                <p>Architect &#38; Engineer</p>
-                                            </div>
-                                        </div>
-                                        <div class="flip-card-back">
-                                            <h1>John Doe</h1>
-                                            <p>Architect &#38; Engineer</p>
-                                            <p>We love that guy</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="flip-card">
-                                    <div class="flip-card-inner">
-                                        <div class="flip-card-front">
-                                            <img src={avatar} alt="Avatar" />
-                                            <div class="container">
-                                                <h1><b>John Doe</b></h1>
-                                                <p>Architect &#38; Engineer</p>
-                                            </div>
-                                        </div>
-                                        <div class="flip-card-back">
-                                            <h1>John Doe</h1>
-                                            <h1>Architect &#38; Engineer</h1>
-                                            <p>We love that guy</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                    </table>
-                </div> */}
-
-                    <div className="App">
+            <div className="App">
+                <h1>About the Team</h1>
+                <br></br>
+                <TeamCards></TeamCards>
+                
                         <div className="email-container">
-                        <h1>Send an email to the team</h1>
+                        <h1>Contact Us</h1>
                             <form>
-                                <input type="text" placeholder="Your Name" ref="sender" />
+                                <input class="email-name" type="text" placeholder="Your Name" ref="sender" />
                             </form>
                             <form>
-                                <input type="text" placeholder="Subject" ref="subject" />
+                                <input class="email-subject" type="text" placeholder="Subject" ref="subject" />
                             </form>
                             <form>
                                 <textarea class="email-body" type="text" placeholder="Body" ref="body" />
@@ -98,9 +45,8 @@ class About extends React.Component {
                             >
                                 Send Email
                             </button>
-                        </div>
-                    </div>
                 </div>
+            </div>
         );
     }
 }
