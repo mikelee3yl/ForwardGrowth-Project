@@ -15,9 +15,28 @@ function loginShow() {
         
     }
 };
-const Header = () => {
-    
-  return (
+class Header extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      logo: null,
+
+    };
+  }
+  componentDidMount() {
+    fetch('/api/get_header')
+      .then(res => {
+        return res.text();
+      })
+      .then(res => {
+        var obj = JSON.parse(res);
+        this.setState({
+          logo: `data:${obj.img.contentType};base64,${Buffer.from(obj.img.data).toString('base64')}`
+        })
+      })
+  }
+  render() {
+    return (
     // <div class="header" id="myHeader">
     //   <a href="/Home"><img src={logo} width={'50 px'} align = "center" alt="logo"></img></a>
     //   </div>
@@ -55,20 +74,8 @@ const Header = () => {
 
           
     </div>
-
-
-
-
-    //Below is old code for the top navigation default from the MERN Template in case we want to switch back to this
-    // <div className='topnav'>
-    //         <Link className="topnav-link" to="/about">About</Link> */}
-
-    //         <Link className="topnav-link" to='/Home'>Home</Link>
-    //         <Link className="topnav-link" to='/About'>About the Team</Link>
-    //         <Link className="topnav-link" to="/Blog">Blog Posts</Link>
-    //     </div>
-    // </div>
-  )
+    );
+  };
 }
 
 export default Header;
