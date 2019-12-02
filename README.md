@@ -19,6 +19,8 @@ npm install --save jimp
 
 npm install react-slick --save
 
+npm install slick-carousel
+
 npm install password-hash
 
 
