@@ -24,7 +24,7 @@ const Header = () => {
     <div class="wrapper">
       <div class="header" align="center">
               <a href="/Home"><img src={logo} width={'100 px'} alt="logo"></img></a>
-              {(localStorage.getItem('token') !== 'blah') ?
+              {(localStorage.getItem('token') !== 'blah' && localStorage.getItem('token') !== null) ?
                   <div class="button" align="right">
                       <button>
                           <a href="/Admin">Admin Dashboard</a>

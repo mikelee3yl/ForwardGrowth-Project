@@ -66,7 +66,8 @@ class TeamCards extends React.Component {
 
             return (
                 <div key={index} class="card">
-                    <img src={`data:${person.img.contentType};base64,${Buffer.from(person.img.data).toString('base64')}`} alt="" />
+                    <img class="fit-picture" src={`data:${person.img.contentType};base64,${Buffer.from(person.img.data).toString('base64')}`} alt="" />
+                        
                     <div class="container">
                         <h4>Name: </h4> <input type="text" defaultValue={person.name} onChange={this.setName}></input>
                         <h4>Position: </h4> <input type="text" defaultValue={person.position} onChange={this.setPosition}></input>

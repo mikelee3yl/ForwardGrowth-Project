@@ -33,7 +33,7 @@ render() {
 
         return (
             <div key={index} class="card">
-                <img src={`data:${person.img.contentType};base64,${Buffer.from(person.img.data).toString('base64')}`} alt="" />
+                <img class="fit-picture" src={`data:${person.img.contentType};base64,${Buffer.from(person.img.data).toString('base64')}`} alt="" />
                 <div class="container">
                     <h4><b>{person.name}</b></h4>
                     <p>{person.position}</p>
