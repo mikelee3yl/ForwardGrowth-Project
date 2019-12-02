@@ -25,12 +25,6 @@ class TeamCards extends React.Component {
                 })
             }).catch(err => { throw (err) })
     }
-   
-    
-
-      
-
-    
 
 render() {
     const cards = this.state.people.map((person,index) => {
