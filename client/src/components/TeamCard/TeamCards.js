@@ -23,7 +23,7 @@ class TeamCards extends React.Component {
                 this.setState({
                     people: obj
                 })
-            })
+            }).catch(err => { throw (err) })
     }
    
     

@@ -45,7 +45,7 @@ class App extends React.Component {
                     <Route exact path="/login" 
                         render={(props) => <Login {...props} tokenUpdate={this.tokenUpdate.bind(this)} token={this.state.token} />}
                     />
-                    <Route path="/admin" render={(props) => <AdminDashboard {...props} token={this.state.token} />} />
+                    <Route path="/admin" render={(props) => <AdminDashboard {...props} token={this.state.token} tokenUpdate={this.tokenUpdate.bind(this)} />} />
                     <Route component={NotFound} />
                     </Switch>
 

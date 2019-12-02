@@ -32,15 +32,18 @@ class Login extends React.Component {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ username, password })
-        }).then(result => {
+        }).then((response) => {
+            return response.text() 
+        })
+            .then(result => {
             //console.log(result.status);
-            if (result.status === 200) {
-                this.props.tokenUpdate("kapow");
-                //useAuth().setToken("al.kgnlanglagal");
+
+            if (!(result === "incorrect")) {
+                this.props.tokenUpdate(result);
                 boolie = true;
-                //console.log(useAuth().token)
             } else {
                 //this.state.setIsError = true;
+                //alert("incorrect password or username")
             } 
             //console.log(boolie);
             if (boolie) {

@@ -9,29 +9,29 @@ const homeTrigger = <h1>Home Page</h1>
 const aboutTrigger = <h1>About the Team Page</h1>
 const blogTrigger = <h1>Blog Page</h1>
 const serveTrigger = <h1>Mailing Page</h1>
+const passwordTrigger = <h1>Change your password</h1>
 
 
-//const { setAuthority } = useAuth();
 
-const updateInsta = (instagramlink) => {
+const updateInsta = (instagramlink, token) => {
     return fetch("/api/update_insta", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ instagramlink })
+        body: JSON.stringify({ instagramlink, token })
     }).then(response => response.json());
 };
-const updateHome = (company, payment, about, applink) => {
+const updateHome = (company, payment, about, applink, token) => {
     return fetch("/api/update_home", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ company, payment, about, applink })
+        body: JSON.stringify({ company, payment, about, applink, token })
     }).then(response => response.json());
 };
-const deleteTile = (name) => {
+const deleteTile = (name, token) => {
     return fetch("/api/delete_tile", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name })
+        body: JSON.stringify({ name, token })
     }).then(response => response.json());
 };
 const addTile = (form) => {
@@ -40,17 +40,33 @@ const addTile = (form) => {
         body: form
     }).then(response => response.json());
 };
-const listServe = (subject, body) => {
+const listServe = (subject, body,token) => {
     return fetch("/api/list_serve", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ subject, body })
+        body: JSON.stringify({ subject, body, token })
     }).then(response => response.json());
 
 };
-function logOut() {
-    //setAuthority();
+const logout = (token) => {
+    return fetch("/api/token", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ token })
+    }).then(response => response.json());
+   
+    
+   
+
 }
+const passUpdate = (password, token) => {
+    return fetch("/api/passyBoi", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ password, token})
+    }).then(response => response.json());
+
+};
 
 
 class AdminDashboard extends React.Component {
@@ -82,7 +98,7 @@ class AdminDashboard extends React.Component {
                     about: obj.about,
                     applink: obj.applink
                 })
-            })
+            }).catch(err => { console.log(err) })
 
         fetch('/api/instagramlink')
             .then(res => {
@@ -100,15 +116,14 @@ class AdminDashboard extends React.Component {
     onChange = e => {
 
         this.setState({
-            photo: e.target.files
+            photo: e.target.files 
         })
     }
 
     
     render() {
-        console.log(this.props.token)
-        if (!(this.props.token === 'blah')) {
-            
+    if(!(this.props.token === 'blah')) {
+
         return (
             <div className="App">
                 <h1>Admin Dashboard</h1>
@@ -133,7 +148,7 @@ class AdminDashboard extends React.Component {
                         <button
                             onClick={() => {
                                 if (this.refs.company.value && this.refs.payment.value && this.refs.about.value && this.refs.applink.value) {
-                                    updateHome(this.refs.company.value, this.refs.payment.value, this.refs.about.value, this.refs.applink.value).then(({ message }) => {
+                                    updateHome(this.refs.company.value, this.refs.payment.value, this.refs.about.value, this.refs.applink.value, this.props.token).then(({ message }) => {
                                         alert('Home page successfully updated.');
                                     });
                                 }
@@ -166,7 +181,7 @@ class AdminDashboard extends React.Component {
                                     formData.append('name', this.refs.name.value);
                                     formData.append('position', this.refs.position.value);
                                     formData.append('file', this.state.photo[0]);
-
+                                    formData.append('token',this.props.token)
                                     addTile(formData).then(({ message }) => {
                                         alert(message);
                                     });
@@ -188,7 +203,7 @@ class AdminDashboard extends React.Component {
                         <button
                             onClick={() => {
                                 if (this.refs.deleteName.value) {
-                                    deleteTile(this.refs.deleteName.value).then(({ message }) => {
+                                    deleteTile(this.refs.deleteName.value, this.props.token).then(({ message }) => {
                                         alert(message);
                                     });
                                 }
@@ -208,7 +223,7 @@ class AdminDashboard extends React.Component {
                         <button className="myButton" type="button"
                             onClick={() => {
                                 if (this.refs.body.value) {
-                                    updateInsta(this.refs.body.value).then(({ message }) => {
+                                    updateInsta(this.refs.body.value, this.props.token).then(({ message }) => {
                                         alert(message);
                                     });
                                 }
@@ -231,7 +246,7 @@ class AdminDashboard extends React.Component {
                         <button className="myButton" type="button"
                             onClick={() => {
                                 if (this.refs.subject.value && this.refs.emailBody.value) {
-                                    listServe(this.refs.subject.value, this.refs.emailBody.value).then(({ message }) => {
+                                    listServe(this.refs.subject.value, this.refs.emailBody.value, this.props.token).then(({ message }) => {
                                         alert(message);
                                     });
                                 }
@@ -244,10 +259,36 @@ class AdminDashboard extends React.Component {
                      </button>
 
                     </Collapsible>
-                    <div>
-                        <button onClick={logOut}>Log out</button>
-                    </div>
+                    <Collapsible trigger={passwordTrigger} className="headerStyle" transitionTime="10" transitionCloseTime="10">
+                        <form className="formStyle" id="socialMedia">
+                            <h3>Enter new password</h3>
+                            <input type="text" placeholder="New Password" ref="passy"></input>
+                            
 
+                        </form>
+                        <button className="myButton" type="button"
+                            onClick={() => {
+                                if (this.refs.passy.value) {
+                                    passUpdate(this.refs.passy.value, this.props.token).then(({ message }) => {
+                                        alert(message);
+                                    });
+                                }
+                                else {
+                                    alert("Make sure all entries are completed.");
+                                }
+                            }}
+                        >
+                            Update Password
+                     </button>
+
+                    </Collapsible>
+                    <div>
+                        <button onClick={() => {
+                            logout(this.props.token)
+                            this.props.tokenUpdate("blah")
+                            this.props.history.push('/login')
+                        }}>Logout</button>
+                    </div>
                 </div>
             </div>
             );

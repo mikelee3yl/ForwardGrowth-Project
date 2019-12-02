@@ -3,6 +3,7 @@ var mongoose = require('mongoose'),
 
 
 var loginSchema = new Schema({
+    code: Number,
     username: String,
     password: String,
     created_at: Date,
