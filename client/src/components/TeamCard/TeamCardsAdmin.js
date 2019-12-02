@@ -9,11 +9,11 @@ const updateTile = (form) => {
         body: form
     }).then(response => response.json());
 };
-const deleteTile = (name) => {
+const deleteTile = (name, token) => {
     return fetch("/api/delete_tile", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name })
+        body: JSON.stringify({ name, token })
     }).then(response => response.json());
 };
 
@@ -90,6 +90,7 @@ class TeamCards extends React.Component {
                                 else tileForm.append('position', person.position)
 
                                 tileForm.append('originalname', person.name);
+                                tileForm.append('token', this.props.token);
 
                                 for (var pair of tileForm.entries()) {
                                     console.log(pair[0] + ', ' + pair[1]);
@@ -110,7 +111,7 @@ class TeamCards extends React.Component {
                         <button
                             onClick={() => {
                                 if (person.name) {
-                                    deleteTile(person.name).then(({ message }) => {
+                                    deleteTile(person.name, this.props.token).then(({ message }) => {
                                         alert(message);
                                     });
                                 }

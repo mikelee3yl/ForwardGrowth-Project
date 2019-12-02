@@ -232,35 +232,35 @@ class AdminDashboard extends React.Component {
                                     alert("Make sure all entries are completed.");
                                 }
                             }}
-/*                        >
-                            Add a team member
-        </button>
+///*                        >
+//                            Add a team member
+//        </button>
 
-                        <h2>Delete a team member:</h2>
-                        <form>
-                            <input type="text" placeholder="Name of member" ref="deleteName" />
+//                        <h2>Delete a team member:</h2>
+//                        <form>
+//                            <input type="text" placeholder="Name of member" ref="deleteName" />
 
-                        </form>
+//                        </form>
 
-                        <button
-                            onClick={() => {
-                                if (this.refs.deleteName.value) {
-                                    deleteTile(this.refs.deleteName.value, this.props.token).then(({ message }) => {
-                                        alert(message);
-                                    });
-                                }
-                                else {
-                                    alert("Make sure all entries are completed.");
-                                }
-                            }}
-                        >
-                            Delete a team member
-        </button>
-*/
+//                        <button
+//                            onClick={() => {
+//                                if (this.refs.deleteName.value) {
+//                                    deleteTile(this.refs.deleteName.value, this.props.token).then(({ message }) => {
+//                                        alert(message);
+//                                    });
+//                                }
+//                                else {
+//                                    alert("Make sure all entries are completed.");
+//                                }
+//                            }}
+//                        >
+//                            Delete a team member
+//        </button>
+//*/
 //DO NOT DELETE COMMENT BLOCK ABOVE FOR ANY REASON
                         >Add a team member</button>
                         <h2>Edit team members:</h2>
-                        <TeamCardsAdmin></TeamCardsAdmin>
+                        <TeamCardsAdmin token={this.props.token} />
 
                     </Collapsible>
                     <Collapsible trigger={blogTrigger} className="headerStyle" transitionTime="10" transitionCloseTime="10">
