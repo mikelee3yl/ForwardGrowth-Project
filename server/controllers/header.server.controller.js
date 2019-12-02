@@ -6,10 +6,7 @@ var fs = require('fs');
 
 
 exports.add = function (req, res) {
-<<<<<<< HEAD
-=======
     console.log("Header req" + req); //Does not print
->>>>>>> 697f3e85c772d9c261efae8f773e216a4ec69ec6
     var header = new Header();
     header.img.data = Buffer.from(fs.readFileSync(req.file.path), { encoding: 'base64' });
     header.img.contentType = 'image/png';
