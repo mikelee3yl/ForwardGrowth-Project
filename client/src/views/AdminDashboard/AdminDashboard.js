@@ -226,7 +226,7 @@ class AdminDashboard extends React.Component {
                                     //console.log(this.state.photo[0]); //File JSON
                                     addTile(formData).then(({ message }) => {
                                         alert(message);
-                                        this.forceUpdate();
+                                        window.location.reload(false);
                                     });
                                 }
                                 else {

@@ -9,11 +9,11 @@ const updateTile = (form) => {
         body: form
     }).then(response => response.json());
 };
-const deleteTile = (name, token) => {
+const deleteTile = (_id, token) => {
     return fetch("/api/delete_tile", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, token })
+        body: JSON.stringify({ _id, token })
     }).then(response => response.json());
 };
 
@@ -82,7 +82,7 @@ class TeamCards extends React.Component {
                                 //console.log("New name" + this.state.name);
                                 //console.log("New position" + this.state.position);
                                 //console.log("New Photo" + this.state.photo);
-                                console.log("ID: " + person._id);
+                                //console.log("ID: " + person._id);
 
                                 if (this.state.photo != null) tileForm.append('file', this.state.photo[0]);
                                 else tileForm.append('file', null);
@@ -95,6 +95,7 @@ class TeamCards extends React.Component {
                                 else tileForm.append('position', person.position)
 
                                 tileForm.append('originalname', person.name);
+                                tileForm.append('_id', person._id);
                                 tileForm.append('token', localStorage.getItem('token'));
 
                                 //for (var pair of tileForm.entries()) {
@@ -103,7 +104,7 @@ class TeamCards extends React.Component {
                                 if (tileForm != null) {
                                     updateTile(tileForm).then(({ message }) => {
                                         alert(message);
-                                        this.forceUpdate();
+                                        window.location.reload(false);
                                     });
                                 }
                                 else {
@@ -118,7 +119,7 @@ class TeamCards extends React.Component {
                                 if (person.name) {
                                     deleteTile(person._id, localStorage.getItem('token')).then(({ message }) => {
                                         alert(message);
-                                        this.forceUpdate();
+                                        window.location.reload(false);
                                     });
                                 }
                             }}
