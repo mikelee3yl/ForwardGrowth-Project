@@ -50,7 +50,7 @@ exports.get = function (req, res) {
 
 exports.update = function (req, res) {
     var original = String(req.body.originalname);
-    tile.findOne({ name: original }, function (err, _tile) {
+    tile.findOne({ _id: req.body._id }, function (err, _tile) {
         if (err) {
             res.status(400).send(json("err"));
         }
