@@ -70,6 +70,7 @@ const logout = (token) => {
    
 
 }
+
 const passUpdate = (password, token) => {
     return fetch("/api/passyBoi", {
         method: "POST",
@@ -93,6 +94,8 @@ const deleteEmailee = (email, token) => {
     }).then(response => response.json());
 
 };
+
+
 class AdminDashboard extends React.Component {
 
     constructor(props) {
@@ -110,6 +113,7 @@ class AdminDashboard extends React.Component {
     }
     componentDidMount() {
         
+
         fetch('/api/get_home')
             .then(res => {
                 return res.text();
@@ -151,6 +155,7 @@ class AdminDashboard extends React.Component {
         })
     }
     render() {
+        
     if(!(localStorage.getItem('token') === 'blah')) {
 
         return (

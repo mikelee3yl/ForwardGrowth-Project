@@ -104,7 +104,7 @@ module.exports.init = () => {
 
         }
         else {
-            res.status(401).send('{"message":"incorrect token"}');
+            res.status(401).send('{"message":"Current Session Timed out. Please Login Again."}');
         }
     });
     app.post("/api/removeEmailee", function (req, res) {
@@ -113,7 +113,7 @@ module.exports.init = () => {
 
         }
         else {
-            res.status(401).send('{"message":"incorrect token"}');
+            res.status(401).send('{"message":"Current Session Timed out. Please Login Again."}');
         }
 
     });
@@ -123,7 +123,7 @@ module.exports.init = () => {
 
         }
         else {
-            res.status(401).send('{"message":"incorrect token"}');
+            res.status(401).send('{"message":"Current Session Timed out. Please Login Again."}');
         }
     });
     app.get("/api/instagramlink", function (req, res) {
@@ -136,7 +136,7 @@ module.exports.init = () => {
 
         }
         else {
-            res.status(401).send('{"message":"incorrect token"}');
+            res.status(401).send('{"message":"Current Session Timed out. Please Login Again."}');
         }
     });
     app.get("/api/get_home", function (req, res) {
@@ -148,7 +148,7 @@ module.exports.init = () => {
 
         }
         else {
-            res.status(401).send('{"message":"incorrect token"}');
+            res.status(401).send('{"message":"Current Session Timed out. Please Login Again."}');
         }
     });
     app.post("/api/delete_tile", function (req, res) {
@@ -157,7 +157,7 @@ module.exports.init = () => {
 
         }
         else {
-            res.status(401).send('{"message":"incorrect token"}');
+            res.status(401).send('{"message":"Current Session Timed out. Please Login Again."}');
         }
     });
     app.get("/api/get_tile", function (req, res) {
@@ -168,21 +168,29 @@ module.exports.init = () => {
         loginCtrl.login(req, res);
     });
     app.post("/api/token", function (req, res) {
-        console.log("test");
+        //console.log("test");
         deleteToken(req.body.token);
-        res.status(200).send('{"message":"token mega ooofed. F to pay respects"}');
+        res.status(200).send('{"message":"Token gone; reduced to atoms"}');
     });
+    /*app.post("/api/check_token", function (req, res) {
+        if (checkToken(req.body.token)) {
+            res.status(200).send('{"message":"True"}');
+        }
+        else {
+            res.status(401).send('{"message:"False"}');
+        }
+    
+    })*/
     app.post("/api/passyBoi", function (req, res) {
         if (checkToken(req.body.token)) {
             loginCtrl.passUpdate(req, res);
 
         }
         else {
-            res.status(401).send('{"message":"incorrect token"}');
+            res.status(401).send('{"message":"Current Session Timed out. Please Login Again."}');
         }
 
     });
-
     app.post("/api/update_tile", upload.single('file'), function (req, res) {
         tileCtrl.update(req, res);
     });
