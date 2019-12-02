@@ -128,7 +128,7 @@ module.exports.init = () => {
     });
     app.get("/api/instagramlink", function (req, res) {
         insta_update.get(req, res);
-    });
+    }); 
     app.post("/api/update_home", function (req, res) {
         
         if (checkToken(req.body.token)) {

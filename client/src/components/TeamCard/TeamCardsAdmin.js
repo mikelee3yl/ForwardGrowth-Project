@@ -90,7 +90,7 @@ class TeamCards extends React.Component {
                                 else tileForm.append('position', person.position)
 
                                 tileForm.append('originalname', person.name);
-                                tileForm.append('token', this.props.token);
+                                tileForm.append('token', localStorage.getItem('token'));
 
                                 for (var pair of tileForm.entries()) {
                                     console.log(pair[0] + ', ' + pair[1]);
@@ -111,7 +111,7 @@ class TeamCards extends React.Component {
                         <button
                             onClick={() => {
                                 if (person.name) {
-                                    deleteTile(person.name, this.props.token).then(({ message }) => {
+                                    deleteTile(person.name, localStorage.getItem('token')).then(({ message }) => {
                                         alert(message);
                                     });
                                 }

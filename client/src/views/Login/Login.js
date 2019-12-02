@@ -35,10 +35,13 @@ class Login extends React.Component {
             .then(result => {
             //console.log(result.status);
 
-            if (!(result === "incorrect")) {
-                this.props.tokenUpdate(result);
-                boolie = true;
-            } else {
+                if (!(result === "incorrect")) {
+                    localStorage.setItem('token', result);
+
+                    this.props.tokenUpdate(result);
+                    boolie = true;
+                }
+             else {
                 //this.state.setIsError = true;
                 //alert("incorrect password or username")
             } 

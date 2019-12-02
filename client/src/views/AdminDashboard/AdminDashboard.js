@@ -109,7 +109,7 @@ class AdminDashboard extends React.Component {
 
     }
     componentDidMount() {
-
+        
         fetch('/api/get_home')
             .then(res => {
                 return res.text();
@@ -151,7 +151,7 @@ class AdminDashboard extends React.Component {
         })
     }
     render() {
-    if(!(this.props.token === 'blah')) {
+    if(!(localStorage.getItem('token') === 'blah')) {
 
         return (
             <div className="App">
@@ -192,7 +192,7 @@ class AdminDashboard extends React.Component {
                         <button
                             onClick={() => {
                                 if (this.refs.company.value && this.refs.payment.value && this.refs.about.value && this.refs.applink.value) {
-                                    updateHome(this.refs.company.value, this.refs.payment.value, this.refs.about.value, this.refs.applink.value, this.props.token).then(({ message }) => {
+                                    updateHome(this.refs.company.value, this.refs.payment.value, this.refs.about.value, this.refs.applink.value, localStorage.getItem('token')).then(({ message }) => {
                                         alert(message);
                                     });
                                 }
@@ -222,7 +222,7 @@ class AdminDashboard extends React.Component {
                                     formData.append('name', this.refs.name.value);
                                     formData.append('position', this.refs.position.value);
                                     formData.append('file', this.state.photo[0]);
-                                    formData.append('token',this.props.token)
+                                    formData.append('token',localStorage.getItem('token'))
                                     console.log(this.state.photo[0]); //File JSON
                                     addTile(formData).then(({ message }) => {
                                         alert(message);
@@ -245,7 +245,7 @@ class AdminDashboard extends React.Component {
 //                        <button
 //                            onClick={() => {
 //                                if (this.refs.deleteName.value) {
-//                                    deleteTile(this.refs.deleteName.value, this.props.token).then(({ message }) => {
+//                                    deleteTile(this.refs.deleteName.value, localStorage.getItem('token')).then(({ message }) => {
 //                                        alert(message);
 //                                    });
 //                                }
@@ -260,7 +260,7 @@ class AdminDashboard extends React.Component {
 //DO NOT DELETE COMMENT BLOCK ABOVE FOR ANY REASON
                         >Add a team member</button>
                         <h2>Edit team members:</h2>
-                        <TeamCardsAdmin token={this.props.token} />
+                        <TeamCardsAdmin token={localStorage.getItem('token')} />
 
                     </Collapsible>
                     <Collapsible trigger={blogTrigger} className="headerStyle" transitionTime="10" transitionCloseTime="10">
@@ -270,7 +270,7 @@ class AdminDashboard extends React.Component {
                         <button className="myButton" type="button"
                             onClick={() => {
                                 if (this.refs.body.value) {
-                                    updateInsta(this.refs.body.value, this.props.token).then(({ message }) => {
+                                    updateInsta(this.refs.body.value, localStorage.getItem('token')).then(({ message }) => {
                                         alert(message);
                                     });
                                 }
@@ -290,7 +290,7 @@ class AdminDashboard extends React.Component {
                         <button className="myButton" type="button"
                             onClick={() => {
                                 if (this.refs.subject.value && this.refs.emailBody.value) {
-                                    listServe(this.refs.subject.value, this.refs.emailBody.value, this.props.token).then(({ message }) => {
+                                    listServe(this.refs.subject.value, this.refs.emailBody.value, localStorage.getItem('token')).then(({ message }) => {
                                         alert(message);
                                     });
                                 }
@@ -306,7 +306,7 @@ class AdminDashboard extends React.Component {
                         <button className="myButton" type="button"
                             onClick={() => {
                                 if (this.refs.emailee.value ) {
-                                    deleteEmailee(this.refs.emailee.value, this.props.token).then(({ message }) => {
+                                    deleteEmailee(this.refs.emailee.value, localStorage.getItem('token')).then(({ message }) => {
                                         alert(message);
                                     });
                                 }
@@ -329,7 +329,7 @@ class AdminDashboard extends React.Component {
                         <button className="myButton" type="button"
                             onClick={() => {
                                 if (this.refs.passy.value) {
-                                    passUpdate(this.refs.passy.value, this.props.token).then(({ message }) => {
+                                    passUpdate(this.refs.passy.value, localStorage.getItem('token')).then(({ message }) => {
                                         alert(message);
                                     });
                                 }
@@ -344,8 +344,9 @@ class AdminDashboard extends React.Component {
                     </Collapsible>
                     <div>
                         <button onClick={() => {
-                            logout(this.props.token)
-                            this.props.tokenUpdate("blah")
+                            logout(localStorage.getItem('token'))
+                            localStorage.setItem('token', 'blah');
+
                             this.props.history.push('/login')
                         }}>Logout</button>
                     </div>
@@ -354,7 +355,7 @@ class AdminDashboard extends React.Component {
             );
         }
         else {
-            //console.log(this.props.token)
+            //console.log(localStorage.getItem('token'))
             this.props.history.push('/login')
             return null; 
 
