@@ -316,7 +316,7 @@ class AdminDashboard extends React.Component {
                                 }
                             }}
                         >
-                            List Serve
+                            Delete Email
                      </button>
 
                     </Collapsible>
@@ -356,7 +356,6 @@ class AdminDashboard extends React.Component {
             );
         }
         else {
-            //console.log(localStorage.getItem('token'))
             this.props.history.push('/login')
             return null; 
 

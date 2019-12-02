@@ -14,6 +14,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 
 //const App = () => {
 class App extends React.Component {
+    
 
     //const [authority, setAuthority] = useState();
     constructor(props) {
@@ -28,7 +29,13 @@ class App extends React.Component {
             token: value
         })
     }
+    componentDidMount() {
+        if (localStorage.getItem('token') === null) {
+            localStorage.setItem('token', 'blah');
+        }
+    }
     render() {
+       
         return (
             <div>
 

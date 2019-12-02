@@ -5,7 +5,10 @@
     width: 300px;
     margin: 0 auto;
   }
-  
+.fit-picture {
+    width: 250px;
+    height: 250px;
+}
  .card img {
     max-width: 100%;
   }
