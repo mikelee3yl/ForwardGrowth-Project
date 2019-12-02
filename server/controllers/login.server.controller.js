@@ -43,7 +43,7 @@ exports.login = function (req, res) {
                 res.status(200).send(token);
             }
             else {
-                res.status(401).send("Incorrect username or password.");
+                res.status(401).send("incorrect");
             }
 
         }

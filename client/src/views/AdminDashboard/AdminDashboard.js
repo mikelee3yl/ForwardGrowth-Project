@@ -149,7 +149,7 @@ class AdminDashboard extends React.Component {
                             onClick={() => {
                                 if (this.refs.company.value && this.refs.payment.value && this.refs.about.value && this.refs.applink.value) {
                                     updateHome(this.refs.company.value, this.refs.payment.value, this.refs.about.value, this.refs.applink.value, this.props.token).then(({ message }) => {
-                                        alert('Home page successfully updated.');
+                                        alert(message);
                                     });
                                 }
                                 else {
