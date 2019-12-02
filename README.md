@@ -13,6 +13,17 @@ npm i react-instagram-embed
 
 npm install node-mailjet 
 
+npm install react-collapsible --save
+
+npm install --save jimp
+
+npm install react-slick --save
+
+npm install slick-carousel
+
+npm install password-hash
+
+
 ## Available Scripts
 
 In the project directory, you can run:

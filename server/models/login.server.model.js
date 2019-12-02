@@ -2,18 +2,19 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 
-var homeSchema = new Schema({
+var loginSchema = new Schema({
     code: Number,
-    company: String,
-    payment: String,
-    about: String,
-    applink: String,
+    username: String,
+    password: String,
     created_at: Date,
     updated_at: Date
 });
 
-homeSchema.pre('save', function (next) {
-    
+loginSchema.pre('save', function (next) {
+    if (this.username == null)
+        throw err;
+    if (this.password == null)
+        throw err;
     var currentDate = new Date();
     this.updated_at = currentDate;
     if (!this.created_at) {
@@ -22,5 +23,5 @@ homeSchema.pre('save', function (next) {
     next();
 });
 
-var home = mongoose.model('home', homeSchema);
-module.exports = home;
+var login = mongoose.model('login', loginSchema);
+module.exports = login;

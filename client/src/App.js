@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from "react"
 import { Route, Switch, Redirect  } from 'react-router-dom';
 import Home from "./views/Home/Home"
 import About from "./views/About/About.js"
@@ -7,25 +7,50 @@ import Login from "./views/Login/Login.js"
 import Header from "./components/Header/Header"
 import AdminDashboard from './views/AdminDashboard/AdminDashboard';
 import NotFound from "./views/NotFound"
+import PrivateRoute from './PrivateRoute';
+import { withRouter } from "react-router-dom";
 
+import { BrowserRouter as Router } from "react-router-dom";
 
-const App = () => {
-  return (
-    <div>
-      <Header />
-      
-      <Switch>
-        <Route exact path="/home" component={Home} />
-        <Route exact path="/"><Redirect to="/home" /></Route>
-        <Route exact path="/about" component={About}/>
-        <Route exact path="/blog" component={Blog}/>
-        <Route exact path="/login" component={Login}/>
-        <Route exact path="/admin" component={AdminDashboard}/>
-        <Route component={NotFound}/>
-      </Switch>
-    </div>
-  );
+//const App = () => {
+class App extends React.Component {
+
+    //const [authority, setAuthority] = useState();
+    constructor(props) {
+        super(props);
+        this.state = {
+            token:'blah'
+        };
+
+    }
+    tokenUpdate(value) {
+        this.setState({
+            token: value
+        })
+    }
+    render() {
+        return (
+            <div>
+
+                
+
+                    <Header />
+
+                    <Switch>
+                    <Route exact path="/home" render={(props) => <Home {...props} token={this.state.token} />}/>
+                    <Route exact path="/"><Redirect to="/home" render={(props) => <Home {...props} token={this.state.token} />} /></Route>
+                    <Route exact path="/about" render={(props) => <About {...props} token={this.state.token} />} />
+                    <Route exact path="/blog" render={(props) => <Blog {...props} token={this.state.token} />}/>
+                    <Route exact path="/login" 
+                        render={(props) => <Login {...props} tokenUpdate={this.tokenUpdate.bind(this)} token={this.state.token} />}
+                    />
+                    <Route path="/admin" render={(props) => <AdminDashboard {...props} token={this.state.token} tokenUpdate={this.tokenUpdate.bind(this)} />} />
+                    <Route component={NotFound} />
+                    </Switch>
+
+            </div>
+        );
+    }
 }
-
-export default App;
+export default withRouter(App);
 
