@@ -1,6 +1,7 @@
 import React from 'react';
 import './AdminDashboard.css';
 import Collapsible from 'react-collapsible';
+import TeamCardsAdmin from '../../components/TeamCard/TeamCardsAdmin';
 
 
 const homeTrigger = <h1>Home Page</h1>
@@ -24,13 +25,20 @@ const updateHome = (company, payment, about, applink) => {
         body: JSON.stringify({ company, payment, about, applink })
     }).then(response => response.json());
 };
-const deleteTile = (name) => {
-    return fetch("/api/delete_tile", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name })
-    }).then(response => response.json());
-};
+// const updateTile = (name, position, photo) => {
+//     return fetch("/api/update_tile", {
+//         method: "POST",
+//         headers: { "Content-Type": "application/json" },
+//         body: JSON.stringify({ name, position, photo })
+//     }).then(response => response.json());
+// };
+// const deleteTile = (name) => {
+//     return fetch("/api/delete_tile", {
+//         method: "POST",
+//         headers: { "Content-Type": "application/json" },
+//         body: JSON.stringify({ name })
+//     }).then(response => response.json());
+// };
 const addTile = (form) => {
     return fetch("/api/add_tile", {
         method: "POST",
@@ -42,14 +50,6 @@ const listServe = (subject, body) => {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ subject, body })
-    }).then(response => response.json());
-
-};
-const updateHeader = (form) => {
-    return fetch("/api/update_header", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: form
     }).then(response => response.json());
 
 };
@@ -123,26 +123,24 @@ class AdminDashboard extends React.Component {
     render() {
         return (
             <div className="App">
-                    <h1>Admin Dashboard</h1>
-                    <h4>Here you can edit the contents of your website. Make sure to save your changes once you're done editing!</h4>
-                    <br></br>
-                    <div className="colStyle">
+                <h1>Admin Dashboard</h1>
+                <h4>Here you can edit the contents of your website. Make sure to save your changes once you're done editing!</h4>
+                <br></br>
+                <div className="colStyle">
                     <Collapsible trigger={headerTrigger} className="headerStyle" transitionTime="10" transitionCloseTime="10">
-                      <h4>Update the header of the website:</h4>
-                                <input type="file" onChange={this.onChange2} ref="header"/>
-                            <button
-                                onClick={() => {
-                                    var headerForm = new FormData();
-                                        headerForm.append('file', this.state.header[0]);
-                                        console.log(this.state.header[0]);
-                                        addHeader(headerForm).then(({ message }) => {
-                                            alert(message);
-                                        });
-                                    
-                                }}
-                            >
-                                Update Header
-                            </button>
+                        <h4>Update the header of the website:</h4>
+                        <input type="file" onChange={this.onChange2} ref="header" />
+                        <button
+                            onClick={() => {
+                                var headerForm = new FormData();
+                                headerForm.append('file', this.state.header[0]);
+                                console.log("Header" + this.state.header[0]); //Object
+                                console.log("Header Form" + headerForm ) //Object
+                                addHeader(headerForm).then(({ message }) => {
+                                    alert(message);
+                                });
+                            }}
+                        >Update Header</button>
                     </Collapsible>
                     <Collapsible trigger={homeTrigger} className="headerStyle" transitionTime="10" transitionCloseTime="10">
                         <form className="formStyle" id="homePage">
@@ -170,10 +168,7 @@ class AdminDashboard extends React.Component {
                                     alert("Make sure all entries are completed.");
                                     console.log(this.refs);
                                 }
-                            }}>
-                            Update home
-
-                          </button>
+                            }}>Update home</button>
                     </Collapsible>
                     <Collapsible trigger={aboutTrigger} className="headerStyle" transitionTime="10" transitionCloseTime="10">
                         <h2>Add a team member:</h2>
@@ -189,35 +184,14 @@ class AdminDashboard extends React.Component {
                             <input type="file" onChange={this.onChange} />
                         </div>
                         <button
-                          onClick={() => {
-                              if (this.refs.name.value && this.refs.position.value) {
-                                  var formData = new FormData();
-                                  formData.append('name', this.refs.name.value);
-                                  formData.append('position', this.refs.position.value);
-                                  formData.append('file', this.state.photo[0]);
-                                  console.log(this.state.photo[0]);
-                                  addTile(formData).then(({ message }) => {
-                                      alert(message);
-                                  });
-                              }
-                              else {
-                                  alert("Make sure all entries are completed.");
-                              }
-                          }}
-                          >
-                          Add a team member
-                          </button>
-
-                        <h2>Delete a team member:</h2>
-                        <form>
-                            <input type="text" placeholder="Name of member" ref="deleteName" />
-
-                        </form>
-
-                        <button
                             onClick={() => {
-                                if (this.refs.deleteName.value) {
-                                    deleteTile(this.refs.deleteName.value).then(({ message }) => {
+                                if (this.refs.name.value && this.refs.position.value) {
+                                    var formData = new FormData();
+                                    formData.append('name', this.refs.name.value);
+                                    formData.append('position', this.refs.position.value);
+                                    formData.append('file', this.state.photo[0]);
+                                    console.log(this.state.photo[0]); //File JSON
+                                    addTile(formData).then(({ message }) => {
                                         alert(message);
                                     });
                                 }
@@ -225,58 +199,51 @@ class AdminDashboard extends React.Component {
                                     alert("Make sure all entries are completed.");
                                 }
                             }}
-                        >
-                            Delete a team member
-                         </button>
+                        >Add a team member</button>
+                        <h2>Edit team members:</h2>
+                        <TeamCardsAdmin></TeamCardsAdmin>
+                    </Collapsible>
+                    <Collapsible trigger={blogTrigger} className="headerStyle" transitionTime="10" transitionCloseTime="10">
+                        <form className="formStyle" id="socialMedia">
+                            <h3>Link to an Instagram post: </h3> <input type="text" defaultValue={this.state.instagramlink} ref="body"></input>
+                        </form>
+                        <button className="myButton" type="button"
+                            onClick={() => {
+                                if (this.refs.body.value) {
+                                    updateInsta(this.refs.body.value).then(({ message }) => {
+                                        alert(message);
+                                    });
+                                }
+                                else {
+                                    alert("Make sure all entries are completed.");
+                                }
+                            }}
+                        >Update Instagram</button>
+                    </Collapsible>
+                    <Collapsible trigger={serveTrigger} className="headerStyle" transitionTime="10" transitionCloseTime="10">
+                        <form className="formStyle" id="socialMedia">
+                            <h3>Send mail to email subscribers </h3>
+                            <input type="text" placeholder="Subject of email" ref="subject"></input>
+                            <textarea type="text" placeholder="Body of email" ref="emailBody"></textarea>
 
-                        </Collapsible>
-                        <Collapsible trigger={blogTrigger} className="headerStyle" transitionTime="10" transitionCloseTime="10">
-                            <form className="formStyle" id="socialMedia">
-                                <h3>Link to an Instagram post: </h3> <input type="text" defaultValue={this.state.instagramlink} ref="body"></input>
-                            </form>
-                            <button className="myButton" type="button"
-                                onClick={() => {
-                                    if (this.refs.body.value) {
-                                        updateInsta(this.refs.body.value).then(({ message }) => {
-                                            alert(message);
-                                        });
-                                    }
-                                    else {
-                                        alert("Make sure all entries are completed.");
-                                    }
-                                }}
-                            >
-                                Update Instagram
-                     </button>
+                        </form>
+                        <button className="myButton" type="button"
+                            onClick={() => {
+                                if (this.refs.subject.value && this.refs.emailBody.value) {
+                                    listServe(this.refs.subject.value, this.refs.emailBody.value).then(({ message }) => {
+                                        alert(message);
+                                    });
+                                }
+                                else {
+                                    alert("Make sure all entries are completed.");
+                                }
+                            }}
+                        >List Serve </button>
+                    </Collapsible>
 
-                        </Collapsible>
-                        <Collapsible trigger={serveTrigger} className="headerStyle" transitionTime="10" transitionCloseTime="10">
-                            <form className="formStyle" id="socialMedia">
-                                <h3>Send mail to email subscribers </h3>
-                                <input type="text" placeholder="Subject of email" ref="subject"></input>
-                                <textarea type="text" placeholder="Body of email" ref="emailBody"></textarea>
-
-                            </form>
-                            <button className="myButton" type="button"
-                                onClick={() => {
-                                    if (this.refs.subject.value && this.refs.emailBody.value) {
-                                        listServe(this.refs.subject.value, this.refs.emailBody.value).then(({ message }) => {
-                                            alert(message);
-                                        });
-                                    }
-                                    else {
-                                        alert("Make sure all entries are completed.");
-                                    }
-                                }}
-                            >
-                                List Serve
-                     </button>
-
-                        </Collapsible>
-
-                    </div>
+                </div>
             </div>
-                );
-            };
-        }
+        );
+    };
+}
 export default AdminDashboard;
