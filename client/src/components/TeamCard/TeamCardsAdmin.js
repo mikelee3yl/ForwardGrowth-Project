@@ -9,11 +9,11 @@ const updateTile = (form) => {
         body: form
     }).then(response => response.json());
 };
-const deleteTile = (name, token) => {
+const deleteTile = (_id, token) => {
     return fetch("/api/delete_tile", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, token })
+        body: JSON.stringify({ _id, token })
     }).then(response => response.json());
 };
 
@@ -117,7 +117,7 @@ class TeamCards extends React.Component {
                         <button
                             onClick={() => {
                                 if (person.name) {
-                                    deleteTile(person.name, localStorage.getItem('token')).then(({ message }) => {
+                                    deleteTile(person._id, localStorage.getItem('token')).then(({ message }) => {
                                         alert(message);
                                         window.location.reload(false);
                                     });
