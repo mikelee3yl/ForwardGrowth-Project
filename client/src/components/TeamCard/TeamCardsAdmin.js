@@ -106,8 +106,7 @@ class TeamCards extends React.Component {
                                 else {
                                     alert("Cannot update card");                                
                                 }
-                                //this.setState(this.state);
-                                this.refresh;
+                                this.setState({});
                             }}
                         >
                             Update Card
@@ -119,8 +118,7 @@ class TeamCards extends React.Component {
                                         alert(message);
                                     });
                                 }
-                                //this.setState(this.state);
-                                this.refresh;
+                                this.setState({});
                             }}
                         >
                             Delete Card
