@@ -3,6 +3,7 @@ var mongoose = require('mongoose'),
 
 
 var tileSchema = new Schema({
+    // _id: String,
     img:
         {data:Buffer, contentType:String},
     name: String,
@@ -12,6 +13,8 @@ var tileSchema = new Schema({
 });
 
 tileSchema.pre('save', function (next) {
+    // if (this._id == null)
+    //     throw err;
     if (this.name == null)
         throw err;
     if (this.img == null)
