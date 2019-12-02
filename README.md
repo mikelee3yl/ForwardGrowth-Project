@@ -23,6 +23,7 @@ npm install slick-carousel
 
 npm install password-hash
 
+npm install --save multer
 
 ## Available Scripts
 
