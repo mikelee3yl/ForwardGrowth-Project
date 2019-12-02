@@ -70,7 +70,7 @@ class Login extends React.Component {
                     <h1>Login to the Admin Dashboard</h1>
                     <form id="LoginForm">
                         <h3>Username:</h3> <input name="user"></input>
-                        <h3>Password:</h3> <input name="pass"></input>
+                        <h3>Password:</h3> <input type="password" name="pass"></input>
                     </form>
                     <br></br>
                     <button className="LoginButton" onClick={() => this.submit(

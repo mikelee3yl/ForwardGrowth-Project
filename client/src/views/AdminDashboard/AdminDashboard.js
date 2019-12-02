@@ -115,7 +115,7 @@ class AdminDashboard extends React.Component {
                 return res.text();
             })
             .then(res => {
-                console.log('My data is' + res)
+                //console.log('My data is' + res)
                 var obj = JSON.parse(res);
 
                 this.setState({
@@ -223,7 +223,7 @@ class AdminDashboard extends React.Component {
                                     formData.append('position', this.refs.position.value);
                                     formData.append('file', this.state.photo[0]);
                                     formData.append('token',localStorage.getItem('token'))
-                                    console.log(this.state.photo[0]); //File JSON
+                                    //console.log(this.state.photo[0]); //File JSON
                                     addTile(formData).then(({ message }) => {
                                         alert(message);
                                     });

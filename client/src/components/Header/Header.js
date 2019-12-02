@@ -4,6 +4,7 @@ import './Header.css';
 import { slide as Menu } from 'react-burger-menu' //https://www.npmjs.com/package/react-burger-menu
 import logo from '../../assets/OrchardGroveLogo.png';
 import menuButton from '../../assets/Hamburger_icon.png';
+import {Redirect } from 'react-router-dom';
 
 function loginShow() {
     if (localStorage.getItem('token') !== 'blah') {
@@ -23,8 +24,25 @@ const Header = () => {
     <div class="wrapper">
       <div class="header" align="center">
               <a href="/Home"><img src={logo} width={'100 px'} alt="logo"></img></a>
+              {(localStorage.getItem('token') !== 'blah') ?
+                  <div class="button" align="right">
+                      <button>
+                          <a href="/Admin">Admin Dashboard</a>
+                      </button>
+                  </div>
+
+                  :
+                  <div class="button" align="right">
+                      <button>
+                          <a href="/Login">Login</a>
+                      </button>
+                  </div>
+
+
+                  }
+
         </div>
-        
+          
               
           
       <Menu width={'15rem'} customBurgerIcon={<img src={menuButton} />}>
@@ -33,26 +51,9 @@ const Header = () => {
         <a id="contact" className="menu-item" href="/blog" style={{ textDecoration: 'none' }}>Blog</a>
 
           </Menu>
-          <div>
+          
 
-              {(localStorage.getItem('token') !== 'blah') ?
-                  <div align="right">
-                      <a href="Admin">Admin Dashboard</a>
-                            </div>
-
-                  : 
-                  <div align="right">
-
-                <a href="Login">Login </a>
-                </div>
-
-
-              }
-          </div>
-
-          <div>
-              <loginShow/>
-          </div>
+          
     </div>
 
 
