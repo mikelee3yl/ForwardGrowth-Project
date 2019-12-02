@@ -24,7 +24,7 @@ exports.add = function (req, res) {
 };
 
 exports.delete = function (req, res) {
-    tile.deleteOne({ _id: req.body._id }, function (err, tileDeleted) {
+    tile.deleteOne({ name: req.body.name }, function (err, tileDeleted) {
         if (err) {
             res.status(400).send(err);
         } else {
