@@ -110,7 +110,7 @@ class Home extends React.Component {
                         <br></br>
 
                     </form>
-                    <button
+                    <button className = "mybutton"
                         onClick={() => {
                             if (this.refs.name.value && this.refs.email.value) {
                                 newEmail(this.refs.name.value, this.refs.email.value).then((message) => {
