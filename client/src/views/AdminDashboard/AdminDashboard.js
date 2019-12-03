@@ -347,7 +347,8 @@ class AdminDashboard extends React.Component {
                      </button>
 
                         </Collapsible>
-                        <div>
+                    </div>
+                    <div>
                             <button onClick={() => {
                                 logout(localStorage.getItem('token'))
                                 localStorage.setItem('token', 'blah');
@@ -355,7 +356,6 @@ class AdminDashboard extends React.Component {
                                 this.props.history.push('/login')
                             }}>Logout</button>
                         </div>
-                    </div>
                 </div>
             );
         }

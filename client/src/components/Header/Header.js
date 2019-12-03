@@ -51,11 +51,12 @@ class Header extends React.Component {
             </div>
 
             :
-            <div class="button" align="right">
-              <button>
-                <a href="/Login">Login</a>
-              </button>
-            </div>
+            // <div class="button" align="right">
+            //   <button>
+            //     <a href="/Login">Login</a>
+            //   </button>
+            // </div>
+            <a class="button" alight = "right" href="/Login">Login</a>
 
 
           }
