@@ -15,9 +15,28 @@ function loginShow() {
         
     }
 };
-const Header = () => {
-    
-  return (
+class Header extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      logo: null,
+
+    };
+  }
+  componentDidMount() {
+    fetch('/api/get_header')
+      .then(res => {
+        return res.text();
+      })
+      .then(res => {
+        var obj = JSON.parse(res);
+        this.setState({
+          logo: `data:${obj.img.contentType};base64,${Buffer.from(obj.img.data).toString('base64')}`
+        })
+      })
+  }
+  render() {
+    return (
     // <div class="header" id="myHeader">
     //   <a href="/Home"><img src={logo} width={'50 px'} align = "center" alt="logo"></img></a>
     //   </div>
@@ -25,20 +44,18 @@ const Header = () => {
       <div class="header" align="center">
               <a href="/Home"><img src={logo} width={'100 px'} alt="logo"></img></a>
               {(localStorage.getItem('token') !== 'blah' && localStorage.getItem('token') !== null) ?
-                  // <div class="button" align="right">
-                  //     <button>
-                  //         <a href="/Admin">Admin Dashboard</a>
-                  //     </button>
-                  // </div>
-                  < a class="button" alight="right" href="/Admin">Admin Dashboard</a>
+                  <div class="button" align="right">
+                      <button>
+                          <a href="/Admin">Admin Dashboard</a>
+                      </button>
+                  </div>
 
                   :
-                  // <div class="button" align="right">
-                  //     <button>
-                  //         <a href="/Login">Login</a>
-                  //     </button>
-                  // </div>
-                  < a class="button" alight="right" href="/Login">Login</a>
+                  <div class="button" align="right">
+                      <button>
+                          <a href="/Login">Login</a>
+                      </button>
+                  </div>
 
 
                   }
