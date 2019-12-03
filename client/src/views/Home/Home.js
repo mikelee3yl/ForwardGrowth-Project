@@ -60,6 +60,7 @@ class Home extends React.Component {
             <h2 class="font_2">
                     Backpack Adventurers
             </h2>
+            <br></br>
             {/* <p className="font_7">
             A gaming app that will teach about the fundamentals of budgeting and traveling
             </p> */}
