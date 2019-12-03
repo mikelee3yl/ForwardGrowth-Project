@@ -44,19 +44,20 @@ class Header extends React.Component {
         <div class="header" align="center">
           <a href="/Home"><img src={this.state.logo} width={'100 px'} alt="logo"></img></a>
           {(localStorage.getItem('token') !== 'blah' && localStorage.getItem('token') !== null) ?
-            <div class="button" align="right">
-              <button>
-                <a href="/Admin">Admin Dashboard</a>
-              </button>
-            </div>
+            // <div class="button" align="right">
+            //   <button>
+            //     <a href="/Admin">Admin Dashboard</a>
+            //   </button>
+            // </div>
 
-            :
+            < a class="button" alight="right" href="/Admin">Admin Dashboard</a>
+
             // <div class="button" align="right">
             //   <button>
             //     <a href="/Login">Login</a>
             //   </button>
             // </div>
-            <a class="button" alight = "right" href="/Login">Login</a>
+            <a class="button" alight="right" href="/Login">Login</a>
 
 
           }
