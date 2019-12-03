@@ -175,25 +175,22 @@ p {
 }
 
 .mybutton {
-    border: none;
-    outline: 0;
-    padding: 12px;
-    color: white;
-    background: rgb(178, 190, 70);
-    box-shadow:rgb(120, 129, 37);
-    text-align: center;
-    cursor: pointer;
-    width: 30%;
-    font-size: 18px;
-    align-self: center;
-    display: inline-block;
+    background-color: rgb(160,174,38); /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  width: 35%;
     /* margin-left: auto; */
     /* float: left; */
     font-family: Tahoma, Geneva, sans-serif;
   }
 
 button:hover{
-    background-color: #ff933b;
+    background-color: rgb(162, 175, 47);
 }
 
 input{
