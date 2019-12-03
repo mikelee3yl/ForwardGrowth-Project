@@ -162,7 +162,7 @@ class AdminDashboard extends React.Component {
                         <Collapsible trigger={headerTrigger} className="headerStyle" transitionTime="10" transitionCloseTime="10">
                             <h4>Update the header of the website:</h4>
                             <input type="file" onChange={this.onChange2} ref="header" />
-                            <button
+                            <button className="myButton"
                                 onClick={() => {
                                     if (this.state.header) {
                                         var headerForm = new FormData();
@@ -194,7 +194,7 @@ class AdminDashboard extends React.Component {
                                 <input type="text" defaultValue={this.state.applink} ref="applink"></input>
                                 <br></br>
                             </form>
-                            <button
+                            <button className="myButton"
                                 onClick={() => {
                                     if (this.refs.company.value && this.refs.payment.value && this.refs.about.value && this.refs.applink.value) {
                                         updateHome(this.refs.company.value, this.refs.payment.value, this.refs.about.value, this.refs.applink.value, localStorage.getItem('token')).then(({ message }) => {
@@ -220,7 +220,7 @@ class AdminDashboard extends React.Component {
                                 <h4>Upload a photo of the team member:</h4>
                                 <input type="file" onChange={this.onChange} />
                             </div>
-                            <button
+                            <button className="myButton"
                                 onClick={() => {
                                     if (this.refs.name.value && this.refs.position.value) {
                                         var formData = new FormData();
@@ -347,15 +347,16 @@ class AdminDashboard extends React.Component {
                      </button>
 
                         </Collapsible>
-                        <div>
-                            <button onClick={() => {
+                    </div>
+                    <div>
+                            <button className="myButton"
+                            onClick={() => {
                                 logout(localStorage.getItem('token'))
                                 localStorage.setItem('token', 'blah');
 
                                 this.props.history.push('/login')
                             }}>Logout</button>
                         </div>
-                    </div>
                 </div>
             );
         }
