@@ -22,8 +22,10 @@
     text-align: right;
     right: 36px;
     top: 36px;
-    width: 50%;
+    width: 40%;
     z-index: auto;
+    text-decoration: none;
+    color: white;
 }
 
 img.banner {

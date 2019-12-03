@@ -189,7 +189,7 @@ p {
     font-family: Tahoma, Geneva, sans-serif;
   }
 
-button:hover{
+.mybutton:hover{
     background-color: rgb(162, 175, 47);
 }
 
