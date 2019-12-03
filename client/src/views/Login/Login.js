@@ -71,16 +71,15 @@ class Login extends React.Component {
                     <form id="LoginForm">
                         <h3>Username:</h3> <input name="user"></input>
                         <h3>Password:</h3> <input type="password" name="pass"></input>
-                        <br></br>
+                    </form>
+                    <br></br>
                     <button className="LoginButton" onClick={() => this.submit(
                         document.getElementById("LoginForm").elements["user"].value,
                         document.getElementById("LoginForm").elements["pass"].value
                     )
                     }> Login</button>
-                    </form>
-                    </div>
+                </div>
             </div>
-                    
         );
     }
 }
