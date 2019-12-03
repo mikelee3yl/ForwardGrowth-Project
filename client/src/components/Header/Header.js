@@ -73,21 +73,10 @@ class Header extends React.Component {
           
 
           
-    </div>
-
-
-
-
-    //Below is old code for the top navigation default from the MERN Template in case we want to switch back to this
-    // <div className='topnav'>
-    //         <Link className="topnav-link" to="/about">About</Link> */}
-
-    //         <Link className="topnav-link" to='/Home'>Home</Link>
-    //         <Link className="topnav-link" to='/About'>About the Team</Link>
-    //         <Link className="topnav-link" to="/Blog">Blog Posts</Link>
-    //     </div>
-    // </div>
-  )
+           
+          </div>
+    );
+  };
 }
 
 export default Header;
