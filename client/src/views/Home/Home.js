@@ -58,9 +58,7 @@ class Home extends React.Component {
         return (
             <div className="App">
             <h2 class="font_2">
-                <span class="color_11">
                     Backpack Adventurers
-                </span>
             </h2>
             {/* <p className="font_7">
             A gaming app that will teach about the fundamentals of budgeting and traveling
