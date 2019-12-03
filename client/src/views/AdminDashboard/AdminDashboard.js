@@ -28,6 +28,7 @@ const updateHome = (company, payment, about, applink, token) => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ company, payment, about, applink, token })
     }).then(response => response.json());
+
 };
 
 // const updateTile = (name, position, photo) => {
@@ -65,12 +66,7 @@ const logout = (token) => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ token })
     }).then(response => response.json());
-
-
-
-
 }
-
 const passUpdate = (password, token) => {
     return fetch("/api/passyBoi", {
         method: "POST",
@@ -85,7 +81,6 @@ const addHeader = (form) => {
         body: form
     }).then(response => response.json());
 };
-
 const deleteEmailee = (email, token) => {
     return fetch("/api/removeEmailee", {
         method: "POST",
