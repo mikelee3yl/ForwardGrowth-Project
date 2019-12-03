@@ -178,10 +178,11 @@ button {
     outline: 0;
     padding: 12px;
     color: white;
-    background-color: #fda55d;
+    background: rgb(178, 190, 70);
+    box-shadow:rgb(120, 129, 37);
     text-align: center;
     cursor: pointer;
-    width: 100%;
+    width: 30%;
     font-size: 22px;
     margin-left: auto;
     /* float: left; */
