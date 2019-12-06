@@ -11,22 +11,34 @@ Currently the application is deployed on Heroku (https://forwardgrowth.herokuapp
 * Dynamic, editable text about the mobile application including information that may be userful to the users of "Backpack Adventurers"
 * Link to download the "Backpack Adventurers" application 
 * Sign up form for users to subscribe to a newsletter from the creators of the mobile application 
+![Alt text](/Screenshots/HomePage1.png?raw=true "Home")
+![Alt text](/Screenshots/HomePage2.png?raw=true "Home")
+![Alt text](/Screenshots/HomePage3.png?raw=true "Home")
 
 ### About the Team Page: 
 * Cards including pictures, name, and position title of the team members who are creating "Backpack Adventurers"
 * "Contact Us" form where users can send Forward Growth an email
+![Alt text](/Screenshots/About1.png?raw=true "About")
+![Alt text](/Screenshots/About2.png?raw=true "About")
+![Alt text](/Screenshots/About3.png?raw=true "About")
 
 ### Blog Page: 
 * Includes Forward Growth's embedded Twitter timeline and Instagram post
+![Alt text](/Screenshots/Blog1.png?raw=true "Blog")
 
 ### Admin Dashboard: 
 * The client of this application can login edit the website and interact with users. 
-  * Editable features: changing admin password, header image, edit text on the "Home" page, update App store link to "Backpack Adventurers", update/delete/add team members to the "About the Team" page, edit the Instragram post features on the "Blog" page, and sending a newletter to those who subscribed through the "Home" page. 
+* Editable features: changing admin password, header image, edit text on the "Home" page, update App store link to "Backpack Adventurers", update/delete/add team members to the "About the Team" page, edit the Instragram post features on the "Blog" page, and sending a newletter to those who subscribed through the "Home" page. 
+![Alt text](/Screenshots/Admin1.png?raw=true "Admin")
+![Alt text](/Screenshots/Admin2.png?raw=true "Admin")
+![Alt text](/Screenshots/Admin3.png?raw=true "Admin")
+![Alt text](/Screenshots/Admin4.png?raw=true "Admin")
+
 
 ## Credits
 For this project, the developers utilized the following resources. 
 
-## Requirements/Packages
+### Requirements/Packages
 
 npm install bootstrap
 
