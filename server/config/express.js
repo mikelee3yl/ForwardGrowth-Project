@@ -37,11 +37,11 @@ module.exports.init = () => {
     app.use(bodyParser.json());
 
     var tokens = [];
-    function tokenStruct() {
+    function tokenStruct() { //create new token
         this.tokenString = null;
         this.time = new Date();
     }
-    const checkToken = (token) => {
+    const checkToken = (token) => { //if token has timed out after 45 minutes or token doesn't exist, invalidate user
         var boolie = false;
         currDate = new Date();
         tokens.forEach((element, index) => {
@@ -67,7 +67,7 @@ module.exports.init = () => {
                 tokens.splice(index, 1);
 
             }
-        });
+        });//deletes the user's current token
         return;
 
     }
@@ -78,7 +78,7 @@ module.exports.init = () => {
         tokenBoi.tokenString = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
         tokens.push(tokenBoi);
         return tokenBoi.tokenString;
-    }
+    }//Generates sudo random token for login security
     var storage = multer.diskStorage({
         destination: './files',
 
@@ -117,7 +117,7 @@ module.exports.init = () => {
         }
 
     });
-    app.post("/api/update_insta", function (req, res) {
+    app.post("/api/update_insta", function (req, res) { //Post request to update instagram link
         if (checkToken(req.body.token)) {
             insta_update.update(req, res);
 
@@ -126,7 +126,7 @@ module.exports.init = () => {
             res.status(401).send('{"message":"Current Session Timed out. Please Login Again."}');
         }
     });
-    app.get("/api/instagramlink", function (req, res) {
+    app.get("/api/instagramlink", function (req, res) {//Get request to update instagram link
         insta_update.get(req, res);
     }); 
     app.post("/api/update_home", function (req, res) {
@@ -164,24 +164,13 @@ module.exports.init = () => {
         tileCtrl.get(req, res);
     });
     app.post("/api/login", function (req, res) {
-        //res.status(200).send(generateToken());
         loginCtrl.login(req, res);
     });
     app.post("/api/token", function (req, res) {
-        //console.log("test");
         deleteToken(req.body.token);
         res.status(200).send('{"message":"Token gone; reduced to atoms"}');
-    });
-    /*app.post("/api/check_token", function (req, res) {
-        if (checkToken(req.body.token)) {
-            res.status(200).send('{"message":"True"}');
-        }
-        else {
-            res.status(401).send('{"message:"False"}');
-        }
-    
-    })*/
-    app.post("/api/passyBoi", function (req, res) {
+    });//post request to delete token
+    app.post("/api/passyBoi", function (req, res) { //post request to update password
         if (checkToken(req.body.token)) {
             loginCtrl.passUpdate(req, res);
 

@@ -45,11 +45,10 @@ class Login extends React.Component {
                 //this.state.setIsError = true;
                 //alert("incorrect password or username")
             } 
-            //console.log(boolie);
+            
             if (boolie) {
                 return this.props.history.push('/admin')
-                //return null; 
-                //  this.props.history.push('/home')
+                
 
             }
             else {
@@ -77,7 +76,7 @@ class Login extends React.Component {
                         document.getElementById("LoginForm").elements["user"].value,
                         document.getElementById("LoginForm").elements["pass"].value
                     )
-                    }> Login</button>
+                    }> Login</button> {/*Pulls user entry and submits to be checked by backend*/}
                 </div>
             </div>
         );
