@@ -151,7 +151,7 @@ class AdminDashboard extends React.Component {
     }
     render() {
 
-        if (!(localStorage.getItem('token') === 'blah')) {
+        if (!(localStorage.getItem('token') === 'blah')) { //checks to see if token exists. Kicks user to login page if not
 
             return (
                 <div className="App">
@@ -262,7 +262,7 @@ class AdminDashboard extends React.Component {
                             //                            Delete a team member
                             //        </button>
                             //*/
-                            //DO NOT DELETE COMMENT BLOCK ABOVE FOR ANY REASON
+                        
                             >Add a team member</button>
                             <h2>Edit team members:</h2>
                             <TeamCardsAdmin token={localStorage.getItem('token')} />
@@ -271,7 +271,7 @@ class AdminDashboard extends React.Component {
                         <Collapsible trigger={blogTrigger} className="headerStyle" transitionTime="10" transitionCloseTime="10">
                             <form className="formStyle" id="socialMedia">
                                 <h3>Link to an Instagram post: </h3> <input type="text" defaultValue={this.state.instagramlink} ref="body"></input>
-                            </form>
+                            </form> {/*Updates instagram link only if token is valid*/}
                             <button className="myButton" type="button"
                                 onClick={() => {
                                     if (this.refs.body.value) {
@@ -323,7 +323,7 @@ class AdminDashboard extends React.Component {
                                 Delete Email
                      </button>
 
-                        </Collapsible>
+                        </Collapsible> {/*Change password*/}
                         <Collapsible trigger={passwordTrigger} className="headerStyle" transitionTime="10" transitionCloseTime="10">
                             <form className="formStyle" id="socialMedia">
                                 <h3>Enter new password</h3>
@@ -336,7 +336,7 @@ class AdminDashboard extends React.Component {
                                     if (this.refs.passy.value) {
                                         passUpdate(this.refs.passy.value, localStorage.getItem('token')).then(({ message }) => {
                                             alert(message);
-                                        });
+                                        }); {/*Only updates if token is still valid*/}
                                     }
                                     else {
                                         alert("Make sure all entries are completed.");
