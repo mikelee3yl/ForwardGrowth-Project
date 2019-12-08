@@ -1,6 +1,7 @@
 import React from 'react';
 
 class NotFound extends React.Component {
+        //Page not found HTML
         render() {
                 return (
                         <div className="App" >
