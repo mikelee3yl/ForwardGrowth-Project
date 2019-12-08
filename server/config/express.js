@@ -107,6 +107,7 @@ module.exports.init = () => {
             res.status(401).send('{"message":"Current Session Timed out. Please Login Again."}');
         }
     });
+    //request to unsubscribe user from newsletter
     app.post("/api/removeEmailee", function (req, res) {
         if (checkToken(req.body.token)) {
             emailList.delete(req, res);
@@ -117,6 +118,7 @@ module.exports.init = () => {
         }
 
     });
+    //request to change the instagram link 
     app.post("/api/update_insta", function (req, res) { //Post request to update instagram link
         if (checkToken(req.body.token)) {
             insta_update.update(req, res);
@@ -126,9 +128,11 @@ module.exports.init = () => {
             res.status(401).send('{"message":"Current Session Timed out. Please Login Again."}');
         }
     });
+    //request to get the instagram link 
     app.get("/api/instagramlink", function (req, res) {//Get request to update instagram link
         insta_update.get(req, res);
     }); 
+    //request to change home page contents
     app.post("/api/update_home", function (req, res) {
         
         if (checkToken(req.body.token)) {
@@ -139,9 +143,11 @@ module.exports.init = () => {
             res.status(401).send('{"message":"Current Session Timed out. Please Login Again."}');
         }
     });
+    //request to get home page contents
     app.get("/api/get_home", function (req, res) {
         homeCtrl.get(req, res);
     });
+    //request to add a team member tile 
     app.post("/api/add_tile", upload.single('file'), function (req, res) {
         if (checkToken(req.body.token)) {
             tileCtrl.add(req, res);
@@ -151,6 +157,7 @@ module.exports.init = () => {
             res.status(401).send('{"message":"Current Session Timed out. Please Login Again."}');
         }
     });
+    //request to delete team member tile 
     app.post("/api/delete_tile", function (req, res) {
         if (checkToken(req.body.token)) {
             tileCtrl.delete(req, res);
@@ -160,6 +167,7 @@ module.exports.init = () => {
             res.status(401).send('{"message":"Current Session Timed out. Please Login Again."}');
         }
     });
+    //request to get team member information 
     app.get("/api/get_tile", function (req, res) {
         tileCtrl.get(req, res);
     });
@@ -180,15 +188,19 @@ module.exports.init = () => {
         }
 
     });
+    //request to update team member tile 
     app.post("/api/update_tile", upload.single('file'), function (req, res) {
         tileCtrl.update(req, res);
     });
+    //request to add new header image to DB
     app.post("/api/add_header", upload.single('file'), function (req, res) {
         headerController.add(req, res);
     });
+    //request to get header imahe 
     app.get("/api/get_header", function (req, res) {
         headerController.get(req, res);
     });
+    //request to update header image 
     app.post("/api/update_header", upload.single('file'), function (req, res) {
         headerController.update(req, res);
     });
