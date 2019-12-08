@@ -4,10 +4,6 @@ import { Link, Redirect } from "react-router-dom";
 
 
 class Login extends React.Component {
-     
-
-
-    //Need to change the below function so that only client can login
     submit(username, password) {
         var boolie = false;
         //console.log(email, password)
@@ -30,10 +26,10 @@ class Login extends React.Component {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ username, password })
         }).then((response) => {
-            return response.text() 
+            return response.text()
         })
             .then(result => {
-            //console.log(result.status);
+                //console.log(result.status);
 
                 if (!(result === "incorrect")) {
                     localStorage.setItem('token', result);
@@ -41,26 +37,24 @@ class Login extends React.Component {
                     this.props.tokenUpdate(result);
                     boolie = true;
                 }
-             else {
-                //this.state.setIsError = true;
-                //alert("incorrect password or username")
-            } 
-            
-            if (boolie) {
-                return this.props.history.push('/admin')
-                
+                else {
+                    //this.state.setIsError = true;
+                    //alert("incorrect password or username")
+                }
 
-            }
-            else {
-                alert("Incorrect login info.");
-                this.props.history.push('/login')
-            }
+                if (boolie) {
+                    return this.props.history.push('/admin')
 
-        })
-        
 
+                }
+                else {
+                    alert("Incorrect login info.");
+                    this.props.history.push('/login')
+                }
+
+            })
     }
-
+    //form for the client to login to the admin dashboard. the username and password submitted is sent to the backend to be verified
     render() {
         //const {  } = this.props;
         return (
