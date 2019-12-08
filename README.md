@@ -5,6 +5,9 @@ This website will be a landing page for "Backpack Adventurers," an application c
 
 *Deploying:*
 Currently the application is deployed on Heroku (https://forwardgrowth.herokuapp.com/). 
+To deploy on Heroku, the "Config Vars" in the settings must be set. 
+To deploy locally, a config.js file should be made in the root with proper environment variables. 
+The following keys must be set: Mongo DB URI, public mailjet key, and the private mailjet key. 
 
 ## Layout and Features:
 ### Home Page:
