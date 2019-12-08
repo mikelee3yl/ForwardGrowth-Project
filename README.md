@@ -68,7 +68,7 @@ npm install --save multer
 ## Available Scripts
 **The following text in this section is taken from the README file from the MERN Template used to create this application. The template was provided by the user: @UFWebApps.**
 
-Since this project will hold both the client application and the server application there will be node modules in two different places. First run npm install from the root. After this you will run npm run-script install-all from the root. 
+Since this project will hold both the client application and the server application there will be node modules in two different places. First run `npm install` from the root. After this you will run `npm run-script install-all` from the root. 
 
 In the project directory, you can run:
 
